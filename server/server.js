@@ -18,8 +18,9 @@ app.get('/', (req, res) => {
 
 // DB Connection
 mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  //SLA disabled these because they were stating they are deprecated. Can turn back on if we need them.
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 })
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error(err));

@@ -50,8 +50,7 @@ authRouter.post('/signin', async (req, res) => {
 
         //if user exist, check pw
         if (!bcrypt.compareSync(req.body.password, user.password)) {
-            res.status(400).json( { error: "incorrect password"});
-
+            return res.status(400).json( { error: "incorrect password"});
         }
             const sessionToken = jwt.sign(
             {_id: user._id},

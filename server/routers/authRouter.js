@@ -1,3 +1,4 @@
+//AUTHENTICATION ROUTES
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import express from 'express';
@@ -8,7 +9,6 @@ const app = express();
 app.use(express.json());
 const authRouter = Router();
 
-//AUTHENTICATION ROUTES
 authRouter.post('/signup', async (req, res) => {
     try {
         // Check if user already exists

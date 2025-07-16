@@ -34,34 +34,54 @@ export default function Signin() {
                 localStorage.setItem('sessionToken', result.sessionToken);
                 setIsLoggedIn(true);
                 alert('Successfully signed in!');
-                navigate("/");
+                // navigate("/");
             } else {
                 alert(result.error || 'Sign in failed');
-                navigate("/");
+                // navigate("/");
             }
         } catch (err) {
             alert('Network error. Please try again.');
-             navigate("/");
+            //  navigate("/");
         } finally {
             setLoading(false);
-            navigate("/");
+            // navigate("/");
         }
     };
 
     // Login Form
     return (
-        <div>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSignIn} >
-                <input type="email" name="email" placeholder="Email" required 
-               />
-                <input type="password" name="password" placeholder="Password" required 
-                />
-                {/* disbles the button if loading so that you can not continually click on it */}
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Signing in...' : 'Sign In'}
-                </button>
-            </form>
+        <div className="flex items-center justify-center min-h-screen bg-F87060">
+            <div className="flex flex-col items-center justify-center w-full">
+                <div className='flex flex-col gap-2 w-full max-w-xs'>
+                    <h1 className="text-xl font-bold m-2 self-center text-center">Sign In</h1>
+                    <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center">
+                        <input
+                            type="email"
+                            className="input input-md m-2"
+                            name="email"
+                            placeholder="Email"
+                            required
+                        />
+                        <input
+                            type="password"
+                            className="input input-md m-2"
+                            name="password"
+                            placeholder="Password"
+                            required
+                        />
+                        <button
+                            type="submit"
+                            className="btn btn-primary input input-md m-2 cursor-pointer"
+                            disabled={loading}
+                        >
+                            {loading ? 'Signing in...' : 'Sign In'}
+                        </button>
+                    </form>
+                    <div className="cursor-pointer hover:underline self-center text-center mt-4">
+                        New? Click here to create a new account
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 export default function Signin() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     // Check for existing session token on component mount
     useEffect(() => {
@@ -33,52 +34,51 @@ export default function Signin() {
             if (response.ok) {
                 localStorage.setItem('sessionToken', result.sessionToken);
                 setIsLoggedIn(true);
-                alert('Successfully signed in!');
                 // navigate("/");
             } else {
-                alert(result.error || 'Sign in failed');
-                // navigate("/");
+                setErrorMessage(result.error || 'Sign in failed');
             }
         } catch (err) {
-            alert('Network error. Please try again.');
-            //  navigate("/");
+            setErrorMessage('Network error. Please try again.');
         } finally {
             setLoading(false);
-            // navigate("/");
         }
     };
 
     // Login Form
     return (
-        <div className="flex items-center justify-center min-h-screen bg-F87060">
-            <div className="flex flex-col items-center justify-center w-full">
-                <div className='flex flex-col gap-2 w-full max-w-xs'>
+        <div className="flex items-center justify-center min-h-screen bg-red-500 p-8">
+            <div className="flex flex-col items-center justify-center w-full bg-white max-w-md">
+                <div className='flex flex-col gap-2 w-full max-w-xs text-black'>
                     <h1 className="text-xl font-bold m-2 self-center text-center">Sign In</h1>
-                    <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center">
+                    <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center w-full">
                         <input
                             type="email"
-                            className="input input-md m-2"
+                            className="input input-md m-2 bg-white border-black w-full"
                             name="email"
                             placeholder="Email"
                             required
                         />
                         <input
                             type="password"
-                            className="input input-md m-2"
+                            className="input input-md m-2 bg-white border-black w-full"
                             name="password"
                             placeholder="Password"
                             required
                         />
                         <button
                             type="submit"
-                            className="btn btn-primary input input-md m-2 cursor-pointer"
+                            className="m-2 px-4 py-2 rounded bg-black text-white font-semibold cursor-pointer w-full"
                             disabled={loading}
                         >
                             {loading ? 'Signing in...' : 'Sign In'}
                         </button>
                     </form>
                     <div className="cursor-pointer hover:underline self-center text-center mt-4">
-                        New? Click here to create a new account
+                        {errorMessage && (<div>
+                            {errorMessage}
+                            </div>)}
+                        {/* New? Click here to create a new account */}
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ authRouter.post('/signup', async (req, res) => {
             ...req.body,
             password: passwordHash,
             role: null,
-            status: 'pending'
+            status: 'initial'
         });
         await newUser.save();
         // Create a sessionToken that is unique to one person _id and JWT Secret

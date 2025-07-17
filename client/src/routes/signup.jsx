@@ -1,60 +1,67 @@
 import { useNavigate } from "react-router";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-
-export default function Signin() {
+export default function Signup() {
     // const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [showSignInLink, setShowSignInLink] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-
-    // Check for existing session token on component mount
-    useEffect(() => {
-        const token = localStorage.getItem('sessionToken');
-        if (token) {
-            setIsLoggedIn(true);
-        }
-    }, []);
-
-    const handleSignIn = async (event) => {
-        event.preventDefault();
-        setLoading(true);
-
-        const formData = new FormData(event.currentTarget);
-        const data = Object.fromEntries(formData);
-
+    
+    async function handleSignUp(event) {
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/signin`, {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/signup`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(Object.fromEntries(formData))
             });
-
+            
             const result = await response.json();
 
             if (response.ok) {
                 localStorage.setItem('sessionToken', result.sessionToken);
-                setIsLoggedIn(true);
+                alert(`You have successfully created an account!`);
                 // navigate("/");
             } else {
-                setErrorMessage(result.error || 'Sign in failed');
+                if (result.error === 'User already exists') {
+                    console.log(result.error)
+                    setErrorMessage(result.error);
+                    // Show the Signin button          
+                    setShowSignInLink(true); 
+                } else {
+                setErrorMessage(result.error || 'Signup failed');
+                setShowSignInLink(false);
+                }
             }
         } catch (err) {
-            setErrorMessage('Network error. Please try again.');
-        } finally {
-            setLoading(false);
+            alert(`Error: ${err}`);
         }
-    };
+    } 
 
-    // Login Form
     return (
         <div className="flex items-center justify-center min-h-screen bg-red-500 p-8">
             <div className="flex flex-col items-center justify-center w-full bg-white max-w-md">
                 <div className='flex flex-col gap-2 w-full max-w-md text-black p-6'>
-                    <h1 className="text-xl font-bold m-2 self-center text-center">Sign In</h1>
-                    <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center w-full p-2" >
+                    <h1 className="text-xl font-bold m-2 self-center text-center">Sign Up</h1>
+                    <form onSubmit={handleSignUp} className="flex flex-col gap-2 self-center text-center w-full p-2" >
+                        <input
+                            type="text"
+                            className="input input-md m-2 bg-white border-black w-full"
+                            name="firstName"
+                            placeholder="First Name"
+                            required
+                        />
+                        <input
+                            type="text"
+                            className="input input-md m-2 bg-white border-black w-full"
+                            name="lastName"
+                            placeholder="Last Name"
+                            required
+                        />
                         <input
                             type="email"
                             className="input input-md m-2 bg-white border-black w-full"
@@ -72,9 +79,8 @@ export default function Signin() {
                         <button
                             type="submit"
                             className="m-2 px-4 py-2 rounded bg-black text-white font-semibold cursor-pointer w-full"
-                            disabled={loading}
                         >
-                            {loading ? 'Signing in...' : 'Sign In'}
+                            Sign Up
                         </button>
                     </form>
                     <div className='text-center mt-4'>
@@ -83,8 +89,8 @@ export default function Signin() {
                             {errorMessage}
                             </div>)}
                         <div className="flex justify-center items-center gap-2 mt-2">
-                            <span>Don't have an account?</span>
-                            <a href="/signup" className="text-blue-600 underline whitespace-nowrap">Click here to create one!</a>
+                            <span>Have an account already?</span>
+                            <Link to ="/signin" className="text-blue-600 underline whitespace-nowrap">Click here to sign in!</Link>
                         </div>
                     </div>
                 </div>

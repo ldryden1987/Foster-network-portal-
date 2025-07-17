@@ -4,6 +4,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import authRouter from './routers/authRouter.js';
+import resourceRouter from './routers/resourceRouter.js'
 
 const app = express();
 const PORT = process.env.PORT || 5000;

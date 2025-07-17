@@ -13,7 +13,7 @@ function Home() {
             <Link>Meet Your Future Friends!</Link>
             <Link>Applications</Link>
             <Link>About Us!</Link>
-            <Link>Login/Register</Link>
+            <Link to='/signin'>Login/Register</Link>
             
         </nav>
       </div>

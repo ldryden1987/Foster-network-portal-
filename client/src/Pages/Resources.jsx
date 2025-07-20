@@ -1,17 +1,18 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import AdminResources from "../components/AdminResources.jsx";
+import ManageResource from "../components/ManageResource.jsx";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { useUser } from '../context/UserContext.jsx';
 
 
 export default function ResourcesPage() {
 const [resources, setResources] = useState([]);
+const { user, loading } = useUser();
 
-    useEffect(() => {
-        const fetchResources = async () => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/resources`);
+useEffect(() => {
+    const fetchResources = async () => {
+        try { const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/resources`);
                 if (!response.ok) throw new Error('Failed to fetch resources');
                 const data = await response.json();
                 setResources(data);
@@ -22,7 +23,17 @@ const [resources, setResources] = useState([]);
         fetchResources();
     }, []);
 
-    
+// Check if user is admin or staff
+const isAdminOrStaff = user && (user.role === 'admin' || user.role === 'staff');
+console.log (user)
+    // Group resources by category
+    const resourcesByCategory = resources.reduce((acc, resource) => {
+        const category = resource.category || 'Uncategorized';
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(resource);
+        return acc;
+    }, {});
+
     return (
         <div>
             <Header/>
@@ -39,21 +50,27 @@ const [resources, setResources] = useState([]);
             </div>
             <div>
                 <h2>Resources</h2>
-                <ul>
-                    {resources.map((resource) => (
-                        <li key={resource.id}>
-                            <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                                {resource.name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                {Object.entries(resourcesByCategory).map(([category, resources]) => (
+                    <div key={category}>
+                        <h3>{category}</h3>
+                        <ul>
+                            {resources.map((resource) => (
+                                <li key={resource._id}>
+                                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                        {resource.name}
+                                    </a>
+                                    <p>{resource.description}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
-            <div>
-                Admin Access
-                <AdminResources/>
-
-            </div>        
+            {isAdminOrStaff && (
+                <div>
+                    <ManageResource/>
+                </div>
+            )}    
             <div>
                 <Footer/>
             </div>

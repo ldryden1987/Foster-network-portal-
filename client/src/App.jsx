@@ -5,8 +5,11 @@ import Signin from "./routes/signin.jsx";
 import Signup from "./routes/signup.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ResourcesPage from "./Pages/Resources.jsx";
+import { UserProvider } from './context/UserContext.jsx';
+
 function App() {
   return (
+    <UserProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -15,6 +18,7 @@ function App() {
         <Route path="/resources" element={<ResourcesPage/>}/>
       </Routes>
     </Router>
+    </UserProvider>
   );
 }
 

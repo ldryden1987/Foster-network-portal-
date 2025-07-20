@@ -2,9 +2,11 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
+import { useUser } from '../context/UserContext.jsx';
 
 function Home() {
-    
+   const { user, loading } = useUser();
+  console.log (user)
   return (
     <div>
       <Header/>
@@ -13,6 +15,7 @@ function Home() {
             <Link>Meet Your Future Friends!</Link>
             <Link>Applications</Link>
             <Link>About Us!</Link>
+            <Link to='/resources'>Resources</Link>
             <Link to='/signin'>Login/Register</Link>
             
         </nav>

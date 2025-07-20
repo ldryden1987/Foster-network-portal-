@@ -9,6 +9,19 @@ const app = express();
 app.use(express.json());
 const authRouter = Router();
 
+// Middleware to authenticate JWT token
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.status(401).json({ error: 'No token provided' });
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        if (err) return res.status(403).json({ error: 'Invalid token' });
+        req.user = user;
+        next();
+    });
+}
+
 authRouter.post('/signup', async (req, res) => {
     try {
         // Check if user already exists
@@ -68,5 +81,16 @@ authRouter.post('/signin', async (req, res) => {
         console.log(err);
     }
 });
+
+authRouter.get('/profile', authenticateToken, async (req, res) => {
+    try {
+        // req.user should be set by your authenticateToken middleware
+        const user = await User.findById(req.user._id).select('-password');
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 
 export default authRouter

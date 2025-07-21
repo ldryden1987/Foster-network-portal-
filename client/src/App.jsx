@@ -4,6 +4,7 @@ import Home from "./Pages/Home.jsx";
 import Signin from "./routes/signin.jsx";
 import Signup from "./routes/signup.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Application from "./Pages/Application.jsx";
 import ResourcesPage from "./Pages/Resources.jsx";
 import { UserProvider } from './context/UserContext.jsx';
 

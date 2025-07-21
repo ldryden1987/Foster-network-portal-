@@ -11,20 +11,20 @@ function Footer() {
   </div>
 
   <div className="flex flex-col items-center text-[#102542]">
-    <span className="footer-title">Services</span>
+    <span className="footer-title font-bold">Services</span>
     <Link className="link link-hover">Adopt</Link>
     <Link className="link link-hover">Volunteer</Link>
     <Link className="link link-hover">Foster</Link>
   </div>
 
   <div className="flex flex-col items-center text-[#102542]">
-    <span className="footer-title">More Info</span>
+    <span className="footer-title font-bold">More Info</span>
     <Link className="link link-hover">About Us</Link>
     <Link className="link link-hover">Contact Us</Link>
   </div>
 
   <div className="flex flex-col items-center text-[#102542]">
-    <span className="footer-title">Get Connected</span>
+    <span className="footer-title font-bold">Get Connected</span>
     <a className="link link-hover" href="#">Facebook</a>
     <a className="link link-hover" href="#">LinkedIn</a>
     <a className="link link-hover" href="#">YouTube</a>

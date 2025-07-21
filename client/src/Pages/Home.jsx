@@ -1,65 +1,60 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import Nav from "../components/Nav.jsx"; 
 import { Link } from "react-router-dom";
 import React from "react";
 
 function Home() {
   return (
-<<<<<<< HEAD
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <Header />
-
-      {/* Navigation Section */}
-      <nav className="flex justify-end gap-4 py-4 text-[#102542] text-sm">
-        <Link to="/" className="hover:underline">Meet Your Future Friends!</Link>
-        <Link to="/applications" className="hover:underline">Applications</Link>
-        <Link to="/about" className="hover:underline">About Us!</Link>
-        <Link 
-          to="/login" 
-          className="bg-[#102542] text-white px-3 py-.5 rounded hover:bg-[#dc5a4e] transition"
-        >
-          Login/Register
-        </Link>
-      </nav>
+      <Nav />
 
       {/* Main Image */}
-      <div className="flex justify-center my-6">
-        <img src="https://via.placeholder.com/600x300" alt="Main" className="rounded shadow-md" />
+      <div className="flex justify-center my-8 px-4">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/66ec3b49803ab81bf84f89e4/1726789423907-OMC6SOD7GIZ2NLNGMGM9/house-cat-lying-on-floor-8529064-scaled.jpg?format=2500w"
+          alt="Main"
+          className="rounded-xl shadow-lg max-w-5xl w-full h-100 object-cover"
+        />
       </div>
 
-      {/* Featured Pets */}
+
       <section className="text-center my-10">
         <h2 className="text-2xl font-bold mb-4">Featured Pets</h2>
-        <div className="flex justify-center gap-6">
-          <img src="https://via.placeholder.com/150" alt="Pet 1" className="rounded shadow-md" />
-          <img src="https://via.placeholder.com/150" alt="Pet 2" className="rounded shadow-md" />
-          <img src="https://via.placeholder.com/150" alt="Pet 3" className="rounded shadow-md" />
-        </div>
-=======
-    <div>
-      <Header/>
-      <div>
-        <nav class= "space-x-20">
-            <Link>Meet Your Future Friends!</Link>
-            <Link>Applications</Link>
-            <Link>About Us!</Link>
-            <Link>Login/Register</Link>
-            
-        </nav>
-      </div>
-      <div>
-        <img src="https://images.squarespace-cdn.com/content/v1/66ec3b49803ab81bf84f89e4/1726789423907-OMC6SOD7GIZ2NLNGMGM9/house-cat-lying-on-floor-8529064-scaled.jpg?format=2500w" alt="Main Image" />
-      </div>
+        <div className="flex flex-wrap justify-center gap-20">
+          {/* Pet 1 */}
+          <div className="flex flex-col items-center w-[300px]">
+            <img
+              src="https://www.battersea.org.uk/sites/default/files/animal_images/068Nz00000U9GfNIAV-thumb.webp?id=63463.0717202510449030052"
+              alt="Pet 1"
+              className="w-full h-[300px] object-cover rounded shadow-md"
+            />
+            <p className="mt-3 font-semibold text-gray-800">Roscoe</p>
+          </div>
 
-      {/* featured pet space */}
-      <h2>Feature Pets</h2>
-      <div class= "flex justify-center space-x-12">
-        <img src="https://www.battersea.org.uk/sites/default/files/animal_images/068Nz00000TRyslIAD.webp" alt="Pet 1" class= "w-64"/>
-        <img src="https://www.battersea.org.uk/sites/default/files/animal_images/068Nz00000TS2W7IAL.webp" alt="Pet 2" class="w-64" />
-        <img src="https://www.battersea.org.uk/sites/default/files/animal_images/068Nz00000U9GfNIAV-thumb.webp?id=63463.0717202510449030052" alt="Pet 3" class="w-64" />
-      </div>
->>>>>>> 55f3451ad7cc244e44fab9df03b233032a2d55aa
+          {/* Pet 2 */}
+          <div className="flex flex-col items-center w-[300px]">
+            <img
+              src="https://placecats.com/300/200"
+              alt="Pet 2"
+              className="w-full h-[300px] object-cover rounded shadow-md"
+            />
+            <p className="mt-3 font-semibold text-gray-800">Bert</p>
+          </div>
+
+          {/* Pet 3 */}
+          <div className="flex flex-col items-center w-[300px]">
+            <img
+              src="https://placecats.com/neo/300/200"
+              alt="Pet 3"
+              className="w-full h-[300px] object-cover rounded shadow-md"
+            />
+            <p className="mt-3 font-semibold text-gray-800">Earnie</p>
+          </div>
+        </div>
+
 
         {/* View All Pets Button */}
         <div className="mt-6">

@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+<<<<<<< HEAD
     "daisyui": "^5.0.46",
+=======
+>>>>>>> 55f3451ad7cc244e44fab9df03b233032a2d55aa
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
@@ -21,7 +24,11 @@
     "@eslint/js": "^9.29.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+<<<<<<< HEAD
     "@vitejs/plugin-react": "^4.6.0",
+=======
+    "@vitejs/plugin-react": "^4.5.2",
+>>>>>>> 55f3451ad7cc244e44fab9df03b233032a2d55aa
     "autoprefixer": "^10.4.21",
     "eslint": "^9.29.0",
     "eslint-plugin-react-hooks": "^5.2.0",

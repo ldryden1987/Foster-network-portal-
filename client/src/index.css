@@ -1,6 +1,24 @@
 @import "tailwindcss";
+<<<<<<< HEAD
 @plugin "daisyui";
+=======
+>>>>>>> 55f3451ad7cc244e44fab9df03b233032a2d55aa
 
 
 
 
+<<<<<<< HEAD
+=======
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+>>>>>>> 55f3451ad7cc244e44fab9df03b233032a2d55aa

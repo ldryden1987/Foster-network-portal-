@@ -12,10 +12,13 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "daisyui": "^5.0.46",
+    "@tailwindcss/vite": "^4.1.11",
+    "daisyui": "^5.0.46",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
-    "tailwinds": "^0.0.0"
+    "tailwinds": "^0.0.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

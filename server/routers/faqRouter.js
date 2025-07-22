@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import FAQ from '../models/faqs.js';
+import FAQ from '../models/FAQs.js';
 import isAdminorStaff from '../middlewares/isAdminorStaff.js'
 
 const faqRouter = Router();

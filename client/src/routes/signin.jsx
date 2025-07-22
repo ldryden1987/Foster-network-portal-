@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router";
 import { useState, useEffect } from 'react';
+import { useUser } from '../context/UserContext.jsx';
 
 
 export default function Signin() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const { login } = useUser(); // Get the login function from context
 
     // Check for existing session token on component mount
     useEffect(() => {
@@ -17,13 +19,16 @@ export default function Signin() {
     }, []);
 
     const handleSignIn = async (event) => {
+        console.log('Form submitted!'); // Debug log
         event.preventDefault();
         setLoading(true);
+        setErrorMessage('');
 
         const formData = new FormData(event.currentTarget);
         const data = Object.fromEntries(formData);
+        console.log('Form data:', data); // Debug log
 
-        try {
+        try {console.log('Making request to:', `${import.meta.env.VITE_SERVER_URL}/signin`); // Debug log
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/signin`, {
                 method: 'POST',
                 headers: {
@@ -31,13 +36,17 @@ export default function Signin() {
                 },
                 body: JSON.stringify(data)
             });
-
+            console.log('Response status:', response.status); // Debug log
             const result = await response.json();
+            console.log('Response data:', result); // Debug log
 
             if (response.ok) {
-                localStorage.setItem('sessionToken', result.sessionToken);
+                console.log('Login successful, calling login function...'); // Debug log
+                login(result.user, result.sessionToken);
+                // localStorage.setItem('sessionToken', result.sessionToken);
                 setIsLoggedIn(true);
-                // navigate("/");
+                console.log('Navigating to home...'); // Debug log
+                navigate("/");
             } else {
                 setErrorMessage(result.error || 'Sign in failed');
             }

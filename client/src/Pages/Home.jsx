@@ -3,12 +3,6 @@ import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx"; 
 import { Link } from "react-router-dom";
 import React from "react";
-function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <Header />
-      <Nav />
 import { useUser } from '../context/UserContext.jsx';
 
 function Home() {

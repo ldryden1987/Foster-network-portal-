@@ -45,7 +45,7 @@ const resourcesByCategory = resources.reduce((acc, resource) => {
                 <h2 className="text-3xl font-bold text-center mb-8">Resources</h2>
                 <div className="space-y-6">
                     {Object.entries(resourcesByCategory).map(([category, resources]) => (
-                        <div key={category} className="w-[96%] mx-auto rounded-lg shadow p-6 bg-white">
+                        <div key={category} className="w-full mx-auto rounded-lg shadow p-6 bg-white">
                             <h3 className="text-xl font-semibold mb-4 text-blue-900">{category}</h3>
                             <ul className="space-y-4">
                                 {resources.map((resource) => (

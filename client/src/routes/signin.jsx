@@ -1,3 +1,6 @@
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
+import Nav from "../components/Nav.jsx";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext.jsx';
@@ -59,45 +62,50 @@ export default function Signin() {
 
     // Login Form
     return (
-        <div className="flex items-center justify-center min-h-screen bg-red-500 p-8">
-            <div className="flex flex-col items-center justify-center w-full bg-white max-w-md">
-                <div className='flex flex-col gap-2 w-full max-w-md text-black p-6'>
-                    <h1 className="text-xl font-bold m-2 self-center text-center">Sign In</h1>
-                    <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center w-full p-2" >
-                        <input
-                            type="email"
-                            className="input input-md m-2 bg-white border-black w-full"
-                            name="email"
-                            placeholder="Email"
-                            required
-                        />
-                        <input
-                            type="password"
-                            className="input input-md m-2 bg-white border-black w-full"
-                            name="password"
-                            placeholder="Password"
-                            required
-                        />
-                        <button
-                            type="submit"
-                            className="m-2 px-4 py-2 rounded bg-black text-white font-semibold cursor-pointer w-full"
-                            disabled={loading}
-                        >
-                            {loading ? 'Signing in...' : 'Sign In'}
-                        </button>
-                    </form>
-                    <div className='text-center mt-4'>
-                        {errorMessage && (<div className="text-red-600 font-bold text-xl
-                     self-center text-center mt-4">
-                            {errorMessage}
-                            </div>)}
-                        <div className="flex justify-center items-center gap-2 mt-2">
-                            <span>Don't have an account?</span>
-                            <a href="/signup" className="text-blue-600 underline whitespace-nowrap">Click here to create one!</a>
+        <div className="flex flex-col min-h-screen">         
+            <Header />
+            <Nav />
+            <div className="flex items-center justify-center flex-1">
+                <div className="flex flex-col items-center justify-center w-full bg-[#F87060] max-w-md">
+                    <div className='flex flex-col gap-2 w-full max-w-md text-black p-6'>
+                        <h1 className="text-xl font-bold m-2 self-center text-center">Sign In</h1>
+                        <form onSubmit={handleSignIn} className="flex flex-col gap-2 self-center text-center w-full p-2" >
+                            <input
+                                type="email"
+                                className="input input-md m-2 bg-[#CDD7D6] border-black w-full"
+                                name="email"
+                                placeholder="Email"
+                                required
+                            />
+                            <input
+                                type="password"
+                                className="input input-md m-2 bg-[#CDD7D6] border-black w-full"
+                                name="password"
+                                placeholder="Password"
+                                required
+                            />
+                            <button
+                                type="submit"
+                                className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer w-full"
+                                disabled={loading}
+                            >
+                                {loading ? 'Signing in...' : 'Sign In'}
+                            </button>
+                        </form>
+                        <div className='text-center mt-4'>
+                            {errorMessage && (<div className="text-red-600 font-bold text-xl
+                         self-center text-center mt-4">
+                                {errorMessage}
+                                </div>)}
+                            <div className="flex justify-center items-center gap-2 mt-2">
+                                <span>Don't have an account?</span>
+                                <a href="/signup" className="text-[#CDD7D6] underline whitespace-nowrap">Click here to create one!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

@@ -39,17 +39,17 @@ const faqsByCategory = faqs.reduce((acc, faqs) => {
                     <ManageFAQs />
                 </div>
             )}
-                <div className="flex-1 overflow-y-auto">
-                        <h2 className="text-3xl font-bold text-center mb-8">FAQs</h2>
+                <div className="flex-1 overflow-y-auto bg-[#102542] p-4">
+                        <h2 className="text-3xl font-bold text-center mb-8 text-white">FAQs</h2>
                         <div className="space-y-6">
                             {Object.entries(faqsByCategory).map(([category, faqs]) => (
-                                <div key={category} className="w-full mx-auto rounded-lg shadow p-6 bg-white">
+                                <div key={category} className="w-full mx-auto rounded-lg shadow p-6 bg-[#F87060]">
                                     <h3 className="text-xl font-semibold mb-4 text-blue-900">{category}</h3>
                                     <ul className="space-y-4">
                                         {faqs.map((faq) => (
                                             <li key={faq._id}>
-                                                <h4 className="text-blue-700 font-medium">{faq.question}</h4>
-                                                <p className="text-sm">{faq.answer}</p>
+                                                <h4 className="text-[#CDD7D6] font-medium hover:underline">{faq.question}</h4>
+                                                <p className="text-sm dark:text-black">{faq.answer}</p>
                                             </li>
                                         ))}
                                     </ul>

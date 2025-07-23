@@ -21,9 +21,6 @@ function Home() {
       <div>
         <Nav />
       </div>
-      <div>
-        <img src="https://via.placeholder.com/600x300" alt="Main Image" />
-      </div>
 
       {/* Main Image */}
       <div className="flex justify-center my-8 px-4">

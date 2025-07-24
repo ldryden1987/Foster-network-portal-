@@ -26,7 +26,6 @@ export default function DisplayResources() {
   // Check if user is admin or staff
   const isAdminOrStaff =
     user && (user.role === "admin" || user.role === "staff");
-  console.log(user);
 
   // Group resources by category
   const resourcesByCategory = resources.reduce((acc, resource) => {

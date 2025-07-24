@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showSignInLink, setShowSignInLink] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -44,9 +44,11 @@ export default function Signup() {
         }
       }
     } catch (err) {
-      alert(`Error: ${err}`);
+      setErrorMessage("Network error. Please try again.");
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">

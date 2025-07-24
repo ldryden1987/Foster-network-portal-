@@ -79,9 +79,11 @@ function Home() {
 
     {/*  Resources button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
+      <Link to="/resources">
       <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
         Resources
       </button>
+      </Link>
       <p className="text-sm text-gray-700 max-w-md">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>

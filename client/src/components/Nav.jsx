@@ -8,7 +8,7 @@ function Nav() {
         <Link to="/applications" className="hover:underline">Applications</Link>
         <Link to="/about" className="hover:underline">About Us!</Link>
         <Link 
-          to="/login" 
+          to="/signin" 
           className="bg-[#102542] text-white px-3 py-.5 rounded hover:bg-[#dc5a4e] transition"
         >
           Login/Register

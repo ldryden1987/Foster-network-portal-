@@ -168,11 +168,11 @@ export default function ManageFAQs() {
     };
 
     return (
-        <div className="max-w-lg mx-auto my-8 p-8">
+        <div className="max-w-lg mx-auto my-2 p-4 rounded-lg">
             {/* Action Buttons */}
             <div className="flex gap-4 mb-6">
                 <button
-                    className="flex-1 py-3 px-6 text-sm font-medium rounded border border-gray-300 hover:bg-blue-50 transition-colors duration-200"
+                    className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
                     onClick={() => {
                         setShowAddForm(!showAddForm);
                         setShowUpdateForm(false);
@@ -182,7 +182,7 @@ export default function ManageFAQs() {
                     {showAddForm ? "Close Add Form" : "Add FAQ"}
                 </button>
                 <button
-                    className="flex-1 py-3 px-6 text-sm font-medium rounded border border-gray-300 hover:bg-blue-50 transition-colors duration-200"
+                    className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
                     onClick={() => {
                         setShowUpdateForm(!showUpdateForm);
                         setShowAddForm(false);
@@ -209,7 +209,7 @@ export default function ManageFAQs() {
                             <select
                                 name="category"
                                 required
-                                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                className="p-2 rounded border dark:bg-black dark:text-white  border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 dark:focus:ring-blue-400 focus:ring-blue-200 dark:focus:border-blue-500"
                             >
                                 <option value="">Select Category</option>
                                 <option value="General">General</option>
@@ -243,7 +243,7 @@ export default function ManageFAQs() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="py-2 px-4 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition disabled:opacity-60"
+                            className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
                         >
                             {loading ? 'Creating...' : 'Create FAQ'}
                         </button>
@@ -282,7 +282,7 @@ export default function ManageFAQs() {
                                     name="category"
                                     defaultValue={selectedFaq.category}
                                     required
-                                    className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                    className="p-2 rounded border dark:bg-black dark:text-white  border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 dark:focus:ring-blue-400 focus:ring-blue-200 dark:focus:border-blue-500"
                                 >
                                     <option value="">Select Category</option>
                                     <option value="General">General</option>

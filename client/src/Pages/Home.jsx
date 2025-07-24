@@ -7,24 +7,10 @@ import { useUser } from '../context/UserContext.jsx';
 
 function Home() {
    const { user, loading } = useUser();
-  console.log (user)
   return (
     <div>
       <Header/>
-      <div>
-        <nav>
-            <Link>Meet Your Future Friends!</Link>
-            <Link>Applications</Link>
-            <Link>About Us!</Link>
-            <Link to='/resources'>Resources</Link>
-            <Link to='/signin'>Login/Register</Link>
-            
-        </nav>
-      </div>
-      <div>
-        <img src="https://via.placeholder.com/600x300" alt="Main Image" />
-      </div>
-
+      <Nav />
       {/* Main Image */}
       <div className="flex justify-center my-8 px-4">
         <img
@@ -93,9 +79,11 @@ function Home() {
 
     {/*  Resources button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
+      <Link to="/resources">
       <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
         Resources
       </button>
+      </Link>
       <p className="text-sm text-gray-700 max-w-md">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>

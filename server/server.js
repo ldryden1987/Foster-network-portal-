@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
+import applicationRouter from './routes/Application.js';
+import dotenv from 'dotenv';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,3 +37,10 @@ mongoose.connect(process.env.MONGO_URI, {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+dotenv.config();
+const app= express();
+
+app.use('/api/applications', applicationRouter);
+
+

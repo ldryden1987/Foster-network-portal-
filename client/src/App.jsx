@@ -17,6 +17,7 @@ function App() {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/resources" element={<ResourcesPage/>}/>
+        <Route path="/application" element={<Application/>}/>
       </Routes>
     </Router>
     </UserProvider>

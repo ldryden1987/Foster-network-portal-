@@ -267,8 +267,10 @@ userUpdateRouter.put(
         notice: "Password reset successfully",
         message: `Password updated for user: ${updatedUser.email}`,
       });
+      return;
     } catch (err) {
       res.status(400).json({ error: err.message });
+      return;
     }
   }
 );

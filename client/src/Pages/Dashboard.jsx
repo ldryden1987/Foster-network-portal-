@@ -56,18 +56,17 @@ export default function Dashboard() {
               Admin Dashboard
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
+                <h3 className="text-lg font-semibold mb-4 text-[#102542] text-left">
                   User Management
                 </h3>
                 <ManagePasswords />
               </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
+                <h3 className="text-lg font-semibold mb-4 text-[#102542] text-left">
                   Update your profile
                 </h3>
                 <p className="text-[#102542]"></p>
-                <UpdateProfile />
               </div>
             </div>
           </section>
@@ -75,194 +74,301 @@ export default function Dashboard() {
 
       case "manager":
         return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">
-              Manager Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Staff Management
-                </h3>
-                <p className="text-[#102542]">Manage staff and volunteers</p>
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Reports
-                </h3>
-                <p className="text-[#102542]">View management reports</p>
-              </div>
-            </div>
-          </section>
+<section className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Manager Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
         );
 
       case "staff":
         return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">
-              Staff Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Foster Management
-                </h3>
-                <p className="text-[#102542]">
-                  Manage foster applications and placements
-                </p>
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Volunteer Coordination
-                </h3>
-                <p className="text-[#102542]">
-                  Coordinate volunteer activities
-                </p>
-              </div>
-            </div>
-          </section>
+<section className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Staff Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
         );
 
       case "volunteer":
         return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">
-              Volunteer Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  My Schedule
-                </h3>
-                <p className="text-[#102542]">View your volunteer schedule</p>
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Training
-                </h3>
-                <p className="text-[#102542]">Access training materials</p>
-              </div>
-            </div>
-          </section>
+<section className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Volunteer Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
         );
 
       case "foster":
         return (
           <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">
-              Foster Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  My Foster Pets
-                </h3>
-                <p className="text-[#102542]">
-                  View and manage your foster pets
-                </p>
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Resources
-                </h3>
-                <p className="text-[#102542]">
-                  Foster care resources and support
-                </p>
-              </div>
-            </div>
-          </section>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Foster Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
         );
 
       case "adopter":
         return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">
-              Adopter Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  My Applications
-                </h3>
-                <p className="text-[#102542]">
-                  Track your adoption applications
-                </p>
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Available Pets
-                </h3>
-                <p className="text-[#102542]">
-                  Browse pets available for adoption
-                </p>
-              </div>
-            </div>
-          </section>
-        );
-
-      case "initial":
-        return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6">
-              Dashboard
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]"></h3>
-                <p className="text-[#102542] text-2xl">
-                  You have nothing pending. How can you make a difference?
-                </p>
-                <UpdateProfile />
-              </div>
-              <div className="bg-[#F87575] rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-4 text-[#102542]">
-                  Available Pets
-                </h3>
-                <p className="text-[#102542]">
-                  Browse pets available for adoption
-                </p>
-              </div>
-            </div>
-          </section>
-        );
-
-      default:
-        return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6 text-[#CDD7D6]">Welcome</h2>
-            <div className="bg-[#F87575] rounded-lg p-4">
-              <p className="text-[#102542]">
-                Your account role is not recognized. Please contact support.
-              </p>
-            </div>
-          </section>
-        );
-    }
-  };
-
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <Nav />
-
-      <main className="flex flex-1 px-8 py-8">
-        {/* Welcome message */}
-        <div className="w-full">
-          <div className="mb-4">
-            <h1 className="text-3xl font-bold">
-              Welcome, {user.firstName || user.email}!
-            </h1>
-            <p className="">
-              Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+<section className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Adoption Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
             </p>
           </div>
-
-          {/* Role-specific dashboard content */}
-          {renderDashboardContent()}
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
         </div>
-      </main>
+      </div>
+    </section>
+        );
 
-      <Footer />
-    </div>
+case "initial":
+  return (
+    <section className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Dashboard
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div className="rounded-lg p-6 border-2 border-[#F87575] bg-white">
+          <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+            Getting Started
+          </h3>
+          <p className="text-[#102542] mb-6">
+            You have nothing pending. How can you make a difference today?
+          </p>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Available Pets
+            </h3>
+            <p className="text-[#102542]">
+              Browse pets available for adoption
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Quick Actions
+            </h3>
+            <p className="text-[#102542]">
+              Volunteer opportunities and foster applications
+            </p>
+          </div>
+          <div className="rounded-lg p-4 border-2 border-[#F87575] bg-white">
+            <h3 className="text-lg font-semibold mb-4 text-[#102542]">
+              Resources
+            </h3>
+            <p className="text-[#102542]">
+              Pet care guides and helpful information
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
+  default:
+    return null;
+  }
+};
+
+return (
+  <div className="flex flex-col min-h-screen">
+    <Header />
+    <Nav />
+
+    <main className="flex flex-1 px-8 py-8">
+      {/* Welcome message */}
+      <div className="w-full">
+        <div className="mb-4">
+          <h1 className="text-3xl font-bold">
+            Welcome, {user.firstName || user.email}!
+          </h1>
+          <p className="">
+            Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+          </p>
+        </div>
+
+        {/* Role-specific dashboard content */}
+        {renderDashboardContent()}
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+);
 }

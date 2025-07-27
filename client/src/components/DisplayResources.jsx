@@ -45,7 +45,7 @@ export default function DisplayResources() {
           {Object.entries(resourcesByCategory).map(([category, resources]) => (
             <div
               key={category}
-              className="w-full mx-auto rounded-lg shadow p-6 bg-[#F87060]"
+              className="rounded-lg p-4 border-2 border-[#F87575]"
             >
               <h3 className="text-xl font-semibold mb-4 text-[#102542]">
                 {category}

@@ -13,14 +13,14 @@ export default function ResourcesPage() {
             <Header />
             <Nav />
         
-            <main className="flex flex-1 px-8 py-8 gap-8">
+            <main className="flex flex-1 px-8 py-8 gap-8 h-screen">
                 {/* Resources Section - Left */}
-                <section className="w-1/2 h-full overflow-y-auto rounded-lg shadow-lg p-6 max-h-[calc(100vh-220px)">
+                <section className="w-1/2 h-full overflow-y-auto  p-6 max-h-[calc(100vh-220px)">
                     <DisplayResources/>
                 </section>
                 
                 {/* FAQs Section - Right */}
-                <section className="w-1/2 h-full overflow-y-auto rounded-lg shadow-lg p-6 max-h-[calc(100vh-220px)]">
+                <section className="w-1/2 h-full overflow-y-auto  p-6 max-h-[calc(100vh-220px)]">
                     <DisplayFAQs/>
                 </section>
             </main>

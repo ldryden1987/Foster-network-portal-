@@ -25,7 +25,7 @@ export default function DisplayResources() {
 
   // Check if user is admin or staff
   const isAdminOrStaff =
-    user && (user.role === "admin" || user.role === "staff");
+    user && (user.role === "admin" || user.role === "staff" || user.role === "manager");
 
   // Group resources by category
   const resourcesByCategory = resources.reduce((acc, resource) => {
@@ -37,8 +37,8 @@ export default function DisplayResources() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto bg-[#102542] p-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">
+      <div className="flex-1 overflow-y-auto p-4">
+        <h2 className="text-3xl font-bold text-center mb-8">
           Resources
         </h2>
         <div className="space-y-6">
@@ -47,7 +47,7 @@ export default function DisplayResources() {
               key={category}
               className="w-full mx-auto rounded-lg shadow p-6 bg-[#F87060]"
             >
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">
+              <h3 className="text-xl font-semibold mb-4 text-[#102542]">
                 {category}
               </h3>
               <ul className="space-y-4">
@@ -58,7 +58,7 @@ export default function DisplayResources() {
                       target="_blank"
                       //keeps the other site from having access to info from this site
                       rel="noopener noreferrer"
-                      className="text-[#CDD7D6] font-medium hover:underline"
+                      className="text-[#102542] font-medium hover:underline"
                     >
                       {resource.name}
                     </a>

@@ -4,6 +4,7 @@ import Nav from "../components/Nav.jsx";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { useUser } from "../context/UserContext.jsx";
+import { Link } from "react-router";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -103,12 +104,11 @@ export default function Signin() {
               )}
               <div className="flex justify-center items-center gap-2 mt-2">
                 <span>Don't have an account?</span>
-                <a
-                  href="/signup"
+                <Link to = "/signup"
                   className="text-[#CDD7D6] underline whitespace-nowrap"
                 >
                   Click here to create one!
-                </a>
+                </Link>
               </div>
             </div>
           </div>

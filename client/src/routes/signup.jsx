@@ -45,6 +45,7 @@ export default function Signup() {
       }
     } catch (err) {
       setErrorMessage("Network error. Please try again.");
+      console.log(err);
     } finally {
       setLoading(false);
     }

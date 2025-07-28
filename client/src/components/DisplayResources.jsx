@@ -1,6 +1,7 @@
 import ManageResource from "../components/ManageResource.jsx";
 import { useState, useEffect } from "react";
 import { useUser } from "../context/UserContext.jsx";
+import { Link } from "react-router-dom";
 
 export default function DisplayResources() {
   const [resources, setResources] = useState([]);
@@ -53,15 +54,15 @@ export default function DisplayResources() {
               <ul className="space-y-4">
                 {resources.map((resource) => (
                   <li key={resource._id}>
-                    <a
-                      href={resource.url}
+                    <Link
+                      to={resource.url}
                       target="_blank"
                       //keeps the other site from having access to info from this site
                       rel="noopener noreferrer"
                       className="text-[#102542] font-medium hover:underline"
                     >
                       {resource.name}
-                    </a>
+                    </Link>
                     <p className="text-sm dark:text-black">
                       {resource.description}
                     </p>

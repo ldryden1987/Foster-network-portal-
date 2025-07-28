@@ -1,12 +1,9 @@
 //AUTHENTICATION ROUTES
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import express from 'express';
 import { Router } from 'express';
 import User from '../models/User.js';
 
-const app = express();
-app.use(express.json());
 const authRouter = Router();
 
 // Middleware to authenticate JWT token

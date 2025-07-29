@@ -3,7 +3,6 @@ import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx";
 import DisplayResources from "../components/DisplayResources.jsx"
 import DisplayFAQs from "../components/DisplayFAQs.jsx";
-import { Link } from "react-router-dom";
 
 
 

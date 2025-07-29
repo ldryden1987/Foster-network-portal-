@@ -40,7 +40,8 @@ export default function Signup() {
           setErrorMessage(result.error);
           // Show the Signin button
           setShowSignInLink(true);
-        } else {
+        } else { 
+          console.log(result.error);
           setErrorMessage(result.error || "Signup failed");
           setShowSignInLink(false);
         }

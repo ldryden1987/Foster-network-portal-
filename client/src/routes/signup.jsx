@@ -9,9 +9,11 @@ export default function Signup() {
   const navigate = useNavigate();
   const [showSignInLink, setShowSignInLink] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSignUp(event) {
     try {
+      setLoading(true);
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
 
@@ -96,6 +98,7 @@ export default function Signup() {
               <button
                 type="submit"
                 className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer w-full"
+                disabled={ loading }
               >
                 Sign Up
               </button>

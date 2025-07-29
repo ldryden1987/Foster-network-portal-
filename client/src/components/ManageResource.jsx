@@ -80,8 +80,8 @@ export default function ManageResource() {
         setShowAddForm(false);
         event.target.reset();
         fetchResources();
-        // Refresh the page after successful creation
-        setTimeout(() => window.location.reload(), 1000);
+        // // Refresh the page after successful creation
+        // setTimeout(() => window.location.reload(), 1000);
       } else {
         setMessage(`Error: ${result.error}`);
       }
@@ -130,7 +130,7 @@ export default function ManageResource() {
         setSelectedResource(null);
         fetchResources();
         // Refresh the page after successful creation
-        setTimeout(() => window.location.reload(), 1000);
+        // setTimeout(() => window.location.reload(), 1000);
       } else {
         setMessage(`Error: ${result.error}`);
       }
@@ -171,8 +171,8 @@ export default function ManageResource() {
         setShowUpdateForm(false);
         setSelectedResource(null);
         await fetchResources();
-        // Refresh the resources list after successful deletion
-        fetchResources();
+        // Refresh the page after successful creation
+        // setTimeout(() => window.location.reload(), 1000);
       } else {
         const result = await response.json();
         setMessage(`Error: ${result.error}`);

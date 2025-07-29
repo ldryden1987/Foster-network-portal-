@@ -171,8 +171,8 @@ export default function ManageResource() {
         setShowUpdateForm(false);
         setSelectedResource(null);
         await fetchResources();
-        // Refresh the page after successful creation
-        window.location.href = '/resource';
+        // Refresh the resources list after successful deletion
+        fetchResources();
       } else {
         const result = await response.json();
         setMessage(`Error: ${result.error}`);

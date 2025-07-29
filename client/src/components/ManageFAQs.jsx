@@ -75,7 +75,7 @@ export default function ManageFAQs() {
                 event.target.reset();
                 fetchFaqs();
                  // Refresh the page after successful creation
-                window.location.href = '/resource';
+                fetchResources();
             } else {
                 setMessage(`Error: ${result.error}`);
             }

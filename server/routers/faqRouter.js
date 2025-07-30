@@ -72,7 +72,7 @@ faqRouter.delete('/faqs/:id', isAuthenticated, isAdminManagerorStaff, async (req
     try {
         const { id } = req.params;
         
-        const deletedFAQ = await Resource.findByIdAndDelete(id);
+        const deletedFAQ = await FAQ.findByIdAndDelete(id);
         
         if (!deletedFAQ) {
             return res.status(404).json({ error: 'FAQ not found' });

@@ -29,6 +29,7 @@ mongoose.connect(process.env.MONGO_URI, {
   //SLA disabled these because they were stating they are deprecated. Can turn back on if we need them.
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000, // 30 seconds
 })
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error(err));

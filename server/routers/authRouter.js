@@ -43,7 +43,7 @@ authRouter.post('/signup', async (req, res) => {
         );
         res.json({ message: 'Sign up successful', sessionToken });
     } catch (err) {
-        res.status(400).json({ error: err });
+        res.status(400).json({ error: err.message });
         console.log(err);
     }
 });

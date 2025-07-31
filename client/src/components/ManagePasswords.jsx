@@ -118,7 +118,7 @@ export default function ManagePasswords() {
       {/* Action Button */}
       <div className="flex gap-4 mb-6">
         <button
-          className="px-6 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+          className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
           onClick={() => {
             setShowUpdateForm(!showUpdateForm);
           }}

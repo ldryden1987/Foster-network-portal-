@@ -81,7 +81,7 @@ export default function ManageResource() {
         event.target.reset();
         fetchResources();
         // // Refresh the page after successful creation
-        // setTimeout(() => window.location.reload(), 1000);
+        setTimeout(() => window.location.reload(), 1000);
       } else {
         setMessage(`Error: ${result.error}`);
       }
@@ -130,7 +130,7 @@ export default function ManageResource() {
         setSelectedResource(null);
         fetchResources();
         // Refresh the page after successful creation
-        // setTimeout(() => window.location.reload(), 1000);
+        setTimeout(() => window.location.reload(), 1000);
       } else {
         setMessage(`Error: ${result.error}`);
       }
@@ -172,7 +172,7 @@ export default function ManageResource() {
         setSelectedResource(null);
         await fetchResources();
         // Refresh the page after successful creation
-        // setTimeout(() => window.location.reload(), 1000);
+        setTimeout(() => window.location.reload(), 1000);
       } else {
         const result = await response.json();
         setMessage(`Error: ${result.error}`);
@@ -189,7 +189,7 @@ export default function ManageResource() {
       {/* /* Action Buttons */}
       <div className="flex gap-4 mb-6">
         <button
-          className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+          className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
           onClick={() => {
             setShowAddForm(!showAddForm);
             setShowUpdateForm(false);
@@ -199,7 +199,7 @@ export default function ManageResource() {
           {showAddForm ? "Close Add Form" : "Add Resource"}
         </button>
         <button
-          className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+          className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
           onClick={() => {
             setShowUpdateForm(!showUpdateForm);
             setShowAddForm(false);
@@ -268,7 +268,7 @@ export default function ManageResource() {
             <button
               type="submit"
               disabled={loading}
-              className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+              className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
             >
               {loading ? "Creating..." : "Create Resource"}
             </button>

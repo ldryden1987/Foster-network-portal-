@@ -45,7 +45,7 @@ export default function Signin() {
       if (response.ok) {
         login(result.user, result.sessionToken);
         setIsLoggedIn(true);
-        navigate("/");
+        navigate(`/dashboard/`);
       } else {
         setErrorMessage(result.error || "Sign in failed");
       }

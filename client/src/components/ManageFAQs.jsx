@@ -74,6 +74,8 @@ export default function ManageFAQs() {
                 setShowAddForm(false);
                 event.target.reset();
                 fetchFaqs();
+                 // Refresh the page after successful creation
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 setMessage(`Error: ${result.error}`);
             }
@@ -118,7 +120,7 @@ export default function ManageFAQs() {
                 setSelectedFaq(null);
                 fetchFaqs();
                  // Refresh the page after successful creation
-                // setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 setMessage(`Error: ${result.error}`);
             }
@@ -153,7 +155,7 @@ export default function ManageFAQs() {
                 setSelectedFaq(null);
                 await fetchFaqs();
                 //  // Refresh the page after successful creation
-                // setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 const result = await response.json();
                 setMessage(`Error: ${result.error}`);
@@ -170,7 +172,7 @@ export default function ManageFAQs() {
             {/* Action Buttons */}
             <div className="flex gap-4 mb-6">
                 <button
-                    className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+                    className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
                     onClick={() => {
                         setShowAddForm(!showAddForm);
                         setShowUpdateForm(false);
@@ -180,7 +182,7 @@ export default function ManageFAQs() {
                     {showAddForm ? "Close Add Form" : "Add FAQ"}
                 </button>
                 <button
-                    className="flex-1 m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+                    className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
                     onClick={() => {
                         setShowUpdateForm(!showUpdateForm);
                         setShowAddForm(false);
@@ -241,7 +243,7 @@ export default function ManageFAQs() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+                            className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
                         >
                             {loading ? 'Creating...' : 'Create FAQ'}
                         </button>

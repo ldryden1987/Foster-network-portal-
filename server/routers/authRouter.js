@@ -31,7 +31,7 @@ authRouter.post('/signup', async (req, res) => {
         const newUser = new User({
             ...req.body,
             password: passwordHash,
-            role: null,
+            role: initial,
             status: 'initial'
         });
         await newUser.save();

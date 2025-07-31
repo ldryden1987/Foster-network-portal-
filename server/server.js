@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
+import updateUserRouter from './routers/userUpdateRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(authRouter);
 app.use(resourceRouter);
 app.use(faqRouter);
+app.use('/userUpdate', updateUserRouter);
 
 // Routes
 app.get('/', (req, res) => {

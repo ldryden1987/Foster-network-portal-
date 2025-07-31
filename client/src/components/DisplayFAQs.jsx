@@ -25,7 +25,7 @@ export default function DisplayFAQs() {
 
   // Check if user is admin or staff
   const isAdminOrStaff =
-    user && (user.role === "admin" || user.role === "staff");
+    user && (user.role === "admin" || user.role === "staff" || user.role === "manager");
 
   // Group FAQs by category
   const faqsByCategory = faqs.reduce((acc, faqs) => {
@@ -37,24 +37,24 @@ export default function DisplayFAQs() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto bg-[#102542] p-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">FAQs</h2>
+      <div className="flex-1 overflow-y-auto p-4">
+        <h2 className="text-3xl font-bold text-center mb-8">FAQs</h2>
         <div className="space-y-6">
           {Object.entries(faqsByCategory).map(([category, faqs]) => (
             <div
               key={category}
-              className="w-full mx-auto rounded-lg shadow p-6 bg-[#F87060]"
+              className="rounded-lg p-4 border-2 border-[#F87575]"
             >
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">
+              <h3 className="text-xl font-semibold mb-4 text-[#102542] dark:text-[#F87060]">
                 {category}
               </h3>
               <ul className="space-y-4">
                 {faqs.map((faq) => (
                   <li key={faq._id}>
-                    <h4 className="text-[#CDD7D6] font-medium hover:underline">
+                    <h4 className="text-[#102542] dark:text-[#CDD7D6] font-medium">
                       {faq.question}
                     </h4>
-                    <p className="text-sm dark:text-black">{faq.answer}</p>
+                    <p className="text-sm">{faq.answer}</p>
                   </li>
                 ))}
               </ul>

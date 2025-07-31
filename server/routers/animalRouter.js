@@ -36,6 +36,21 @@ animalRouter.post('/animals', (req, res) => {
     
 })
 
+animalRouter.push('/animals/:id', async (req, res) => {
+    try{ 
+        const { id } = req.params.id;
+        const foundAnimal = await Animal.find(id);
+        if (!foundAnimal) {
+            return res.status(404).json({ error: 'Animal not found' });
+        };
+        foundAnimal = req.body;
+        await foundAnimal.save();
+        res.json({ message: 'Animal found', foundAnimal });
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+})
+
 animalRouter.delete('/animals/:id', async (req, res) => {
     try{
         const { id } = req.params;

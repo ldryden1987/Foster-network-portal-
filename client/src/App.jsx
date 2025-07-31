@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Application from "./Pages/Application.jsx";
 import ResourcesPage from "./Pages/Resources.jsx";
 import { UserProvider } from './context/UserContext.jsx';
+import Animals from "../../server/models/Animal.js";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/resources" element={<ResourcesPage/>}/>
+        <Route path="/animals" element={<Animals/>}/>
       </Routes>
     </Router>
     </UserProvider>

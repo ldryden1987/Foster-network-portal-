@@ -11,19 +11,7 @@ function Home() {
   return (
     <div>
       <Header/>
-      <div>
-        <nav>
-            <Link>Meet Your Future Friends!</Link>
-            <Link>Applications</Link>
-            <Link>About Us!</Link>
-            <Link to='/resources'>Resources</Link>
-            <Link to='/signin'>Login/Register</Link>
-            
-        </nav>
-      </div>
-      <div>
-        <img src="https://via.placeholder.com/600x300" alt="Main Image" />
-      </div>
+      <Nav/>
 
       {/* Main Image */}
       <div className="flex justify-center my-8 px-4">

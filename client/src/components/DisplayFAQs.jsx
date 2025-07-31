@@ -45,16 +45,16 @@ export default function DisplayFAQs() {
               key={category}
               className="rounded-lg p-4 border-2 border-[#F87575]"
             >
-              <h3 className="text-xl font-semibold mb-4 text-[#102542]">
+              <h3 className="text-xl font-semibold mb-4 text-[#102542] dark:text-[#F87060]">
                 {category}
               </h3>
               <ul className="space-y-4">
                 {faqs.map((faq) => (
                   <li key={faq._id}>
-                    <h4 className="text-[#102542] font-medium">
+                    <h4 className="text-[#102542] dark:text-[#CDD7D6] font-medium">
                       {faq.question}
                     </h4>
-                    <p className="text-sm dark:text-black">{faq.answer}</p>
+                    <p className="text-sm">{faq.answer}</p>
                   </li>
                 ))}
               </ul>

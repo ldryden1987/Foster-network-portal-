@@ -48,7 +48,7 @@ export default function DisplayResources() {
               key={category}
               className="rounded-lg p-4 border-2 border-[#F87575]"
             >
-              <h3 className="text-xl font-semibold mb-4 text-[#102542]">
+              <h3 className="text-xl font-semibold mb-4 text-[#102542] dark:text-[#F87060]">
                 {category}
               </h3>
               <ul className="space-y-4">
@@ -59,11 +59,11 @@ export default function DisplayResources() {
                       target="_blank"
                       //keeps the other site from having access to info from this site
                       rel="noopener noreferrer"
-                      className="text-[#102542] font-medium hover:underline"
+                      className="text-[#102542] dark:text-[#CDD7D6] font-medium hover:underline"
                     >
                       {resource.name}
                     </Link>
-                    <p className="text-sm dark:text-black">
+                    <p className="text-sm">
                       {resource.description}
                     </p>
                   </li>

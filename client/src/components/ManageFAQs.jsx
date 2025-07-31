@@ -74,6 +74,8 @@ export default function ManageFAQs() {
                 setShowAddForm(false);
                 event.target.reset();
                 fetchFaqs();
+                 // Refresh the page after successful creation
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 setMessage(`Error: ${result.error}`);
             }
@@ -118,7 +120,7 @@ export default function ManageFAQs() {
                 setSelectedFaq(null);
                 fetchFaqs();
                  // Refresh the page after successful creation
-                // setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 setMessage(`Error: ${result.error}`);
             }
@@ -153,7 +155,7 @@ export default function ManageFAQs() {
                 setSelectedFaq(null);
                 await fetchFaqs();
                 //  // Refresh the page after successful creation
-                // setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 const result = await response.json();
                 setMessage(`Error: ${result.error}`);

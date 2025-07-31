@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Application from "./Pages/Application.jsx";
 import ResourcesPage from "./Pages/Resources.jsx";
 import { UserProvider } from './context/UserContext.jsx';
-import Animals from "../../server/models/Animal.js";
+import Animals from "./routes/Animals.jsx";
 
 function App() {
   return (

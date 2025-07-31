@@ -4,7 +4,7 @@ import React from "react";
 function Nav() {
   return (
     <nav className="flex justify-end gap-4 py-4 text-[#102542] text-sm">
-        <Link to="/" className="hover:underline">Meet Your Future Friends!</Link>
+        <Link to="/animals" className="hover:underline">Meet Your Future Friends!</Link>
         <Link to="/applications" className="hover:underline">Applications</Link>
         <Link to="/about" className="hover:underline">About Us!</Link>
         <Link 
@@ -13,6 +13,7 @@ function Nav() {
         >
           Login/Register
         </Link>
+        
       
     </nav>
   );

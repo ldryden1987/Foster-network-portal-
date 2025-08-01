@@ -1,13 +1,14 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
-export default async function isAdminOrStaff(req, res, next) {
-  try {
-    // Get token from Authorization header
-    const sessionToken = req.headers.authorization?.split(" ")[1]; // must be added to the value of the Authorization Key in the Headers in PostMan to test!
-    if (!sessionToken) {
-      return res.status(401).json({ error: "Authentication token missing. Please sign in to continue." });
-    }
+export default async function isAuthenticated(req, res, next) {
+    try{
+         // Get token from Authorization header
+        const sessionToken = req.headers.authorization; // must be added to the value of the Authorization Key in the Headers in PostMan to test!
+        if (!sessionToken) {
+            return res.json({ error: "Authentication token missing. Please sign in to continue." });
+        }
+
     // Verify and decode token
     const decoded = jwt.verify(sessionToken, process.env.JWT_SECRET);
     // Find user by ID from token

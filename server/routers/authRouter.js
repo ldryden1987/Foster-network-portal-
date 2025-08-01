@@ -1,12 +1,9 @@
 //AUTHENTICATION ROUTES
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import express from 'express';
 import { Router } from 'express';
 import User from '../models/User.js';
 
-const app = express();
-app.use(express.json());
 const authRouter = Router();
 
 // Middleware to authenticate JWT token
@@ -34,7 +31,7 @@ authRouter.post('/signup', async (req, res) => {
         const newUser = new User({
             ...req.body,
             password: passwordHash,
-            role: null,
+            role: 'initial',
             status: 'initial'
         });
         await newUser.save();
@@ -46,7 +43,7 @@ authRouter.post('/signup', async (req, res) => {
         );
         res.json({ message: 'Sign up successful', sessionToken });
     } catch (err) {
-        res.status(400).json({ error: err });
+        res.status(400).json({ error: err.message });
         console.log(err);
     }
 });

@@ -89,5 +89,5 @@ authRouter.get('/profile', authenticateToken, async (req, res) => {
     }
 });
 
-
+export { authenticateToken }
 export default authRouter

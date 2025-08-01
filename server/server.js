@@ -7,6 +7,7 @@ import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
 import updateUserRouter from './routers/userUpdateRouter.js';
+import contactRoutes from './routers/contact.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.use(authRouter);
 app.use(resourceRouter);
 app.use(faqRouter);
 app.use('/userUpdate', updateUserRouter);
+app.use('/api/contact', contactRoutes);
 
 // Routes
 app.get('/', (req, res) => {

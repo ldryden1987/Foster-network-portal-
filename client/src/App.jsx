@@ -6,6 +6,7 @@ import Signup from "./routes/signup.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Application from "./Pages/Application.jsx";
 import ResourcesPage from "./Pages/Resources.jsx";
+import AboutUs from "./Pages/AboutUs.jsx"
 import { UserProvider } from './context/UserContext.jsx';
 import Dashboard from './Pages/Dashboard.jsx'
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/resources" element={<ResourcesPage/>}/>
         <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/about" element={<AboutUs/>}/>
       </Routes>
     </Router>
     </UserProvider>

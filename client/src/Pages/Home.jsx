@@ -2,34 +2,17 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx"; 
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext.jsx";
 import React from "react";
-function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <Header />
-      <Nav />
-import { useUser } from '../context/UserContext.jsx';
 
 function Home() {
    const { user, loading } = useUser();
   console.log (user)
   return (
-    <div>
-      <Header/>
-      <div>
-        <nav>
-            <Link>Meet Your Future Friends!</Link>
-            <Link>Applications</Link>
-            <Link>About Us!</Link>
-            <Link to='/resources'>Resources</Link>
-            <Link to='/signin'>Login/Register</Link>
-            
-        </nav>
-      </div>
-      <div>
-        <img src="https://via.placeholder.com/600x300" alt="Main Image" />
-      </div>
+     <div className="flex flex-col min-h-screen">
+      {/* Header */}
+      <Header />
+      <Nav />
 
       {/* Main Image */}
       <div className="flex justify-center my-8 px-4">

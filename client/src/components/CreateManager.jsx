@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 
 export default function CreateManager() {
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [showPromoteForm, setShowPromoteForm] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  // State variables
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [loadingUsers, setLoadingUsers] = useState(true);
+  const [message, setMessage] = useState("");
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   // Fetch all users based on role when component loads
   useEffect(() => {
@@ -21,16 +20,14 @@ export default function CreateManager() {
         `${import.meta.env.VITE_SERVER_URL}/userUpdate/allUsers`,
         {
           headers: {
-            'Authorization': sessionToken,
-          }
+            Authorization: sessionToken,
+          },
         }
       );
       if (response.ok) {
         const data = await response.json();
-        console.log("API Response:", data);
-        // Filter out admin and manager users - only show staff users for promotion
-        const staffUsers = (data.users || []).filter(user => user.role === 'staff');
-        setUsers(staffUsers);
+        const users = data.users;
+        setUsers(users);
       } else {
         setMessage("Error fetching Users");
         setUsers([]);
@@ -40,17 +37,6 @@ export default function CreateManager() {
       setUsers([]);
     } finally {
       setLoadingUsers(false);
-    }
-  };
-
-  //Select User Handler finds by user_id
-  const handleUserSelect = (e) => {
-    const userId = e.target.value;
-    if (userId) {
-      const user = users.find((u) => u._id === userId);
-      setSelectedUser(user);
-    } else {
-      setSelectedUser(null);
     }
   };
 
@@ -64,9 +50,10 @@ export default function CreateManager() {
     const data = Object.fromEntries(formData);
 
     // Add manager role to the data
-    data.role = 'manager';
+    data.role = "manager";
+    data.status = "approved";
 
-    if (!data.name || !data.email || !data.password) {
+    if (!data.firstName || !data.lastName || !data.email || !data.password) {
       setMessage("Please fill all fields.");
       setLoading(false);
       return;
@@ -75,12 +62,12 @@ export default function CreateManager() {
     try {
       const sessionToken = localStorage.getItem("sessionToken");
       const response = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/userUpdate/addUser`,
+        `${import.meta.env.VITE_SERVER_URL}/signup`,
         {
           method: "POST",
-          headers: { 
+          headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionToken
+            Authorization: sessionToken,
           },
           body: JSON.stringify(data),
         }
@@ -93,43 +80,9 @@ export default function CreateManager() {
         setShowCreateForm(false);
       } else {
         const errorResult = await response.json();
-        setMessage(`Failed to create manager: ${errorResult.error || 'Unknown error'}`);
-      }
-    } catch (err) {
-      setMessage(`Error: ${err.message}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Promote existing user to manager
-  const handlePromoteToManager = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const sessionToken = localStorage.getItem("sessionToken");
-      const response = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/userUpdate/updateUser/${selectedUser._id}`,
-        {
-          method: "PUT",
-          headers: { 
-            "Content-Type": "application/json",
-            "Authorization": sessionToken
-          },
-          body: JSON.stringify({ role: 'manager' }),
-        }
-      );
-
-      if (response.ok) {
-        setMessage(`${selectedUser.name} has been promoted to Manager.`);
-        fetchUsers();
-        setSelectedUser(null);
-        setShowPromoteForm(false);
-      } else {
-        const errorResult = await response.json();
-        setMessage(`Failed to promote user: ${errorResult.error || 'Unknown error'}`);
+        setMessage(
+          `Failed to create manager: ${errorResult.error || "Unknown error"}`
+        );
       }
     } catch (err) {
       setMessage(`Error: ${err.message}`);
@@ -143,26 +96,14 @@ export default function CreateManager() {
       {/* Action Buttons */}
       <div className="flex gap-4 mb-6">
         <button
-          className="flex-1 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
+          className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
           onClick={() => {
             setShowCreateForm(!showCreateForm);
-            setShowPromoteForm(false);
-            setSelectedUser(null);
           }}
         >
           {showCreateForm ? "Cancel Create" : "Create New Manager"}
         </button>
-        <button
-          className="flex-1 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer"
-          onClick={() => {
-            setShowPromoteForm(!showPromoteForm);
-            setShowCreateForm(false);
-          }}
-        >
-          {showPromoteForm ? "Cancel Promote" : "Promote to Manager"}
-        </button>
       </div>
-
       {/* Success/Error message */}
       {message && (
         <div className="mb-4 p-3 rounded bg-blue-50 text-blue-800 border border-blue-200">
@@ -176,11 +117,21 @@ export default function CreateManager() {
           <h3 className="mb-4 text-lg font-semibold">Create New Manager</h3>
           <form onSubmit={handleCreateManager} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium">Name:</label>
+              <label className="text-sm font-medium">First Name:</label>
               <input
                 type="text"
-                name="name"
-                placeholder="Manager Name"
+                name="firstName"
+                placeholder="First Name"
+                required
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">Last Name:</label>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
                 required
                 className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
               />
@@ -190,7 +141,7 @@ export default function CreateManager() {
               <input
                 type="email"
                 name="email"
-                placeholder="Manager Email"
+                placeholder="Email"
                 required
                 className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
               />
@@ -205,6 +156,66 @@ export default function CreateManager() {
                 className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
               />
             </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">Address 1:</label>
+              <input
+                type="string"
+                name="street1"
+                placeholder="Address 1"
+                required
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">Address 2 :</label>
+              <input
+                type="string"
+                name="street2"
+                placeholder="Address 2"
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">City:</label>
+              <input
+                type="string"
+                name="city"
+                placeholder="City"
+                required
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">State:</label>
+              <input
+                type="string"
+                name="state"
+                required
+                placeholder="State"
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">Zip Code:</label>
+              <input
+                type="string"
+                name="zip"
+                placeholder="Zip Code"
+                required
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-sm font-medium">Phone Number:</label>
+              <input
+                type="string"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+            </div>
+
             <button
               type="submit"
               disabled={loading}
@@ -213,52 +224,6 @@ export default function CreateManager() {
               {loading ? "Creating..." : "Create Manager"}
             </button>
           </form>
-        </div>
-      )}
-
-      {/* Promote to Manager Form */}
-      {showPromoteForm && (
-        <div>
-          <h3 className="mb-4 text-lg font-semibold">Promote Staff to Manager</h3>
-          <div className="mb-4 flex flex-col gap-1">
-            <label className="text-sm font-medium">
-              Select Staff Member:
-            </label>
-            <select
-              onChange={handleUserSelect}
-              value={selectedUser?._id || ""}
-              className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
-            >
-              <option value="">-- Select a Staff Member --</option>
-              {loadingUsers ? (
-                <option>Loading users...</option>
-              ) : users.length === 0 ? (
-                <option>No staff members available</option>
-              ) : (
-                users.map((user) => (
-                  <option key={user._id} value={user._id}>
-                    {user.name} ({user.email})
-                  </option>
-                ))
-              )}
-            </select>
-          </div>
-          {selectedUser && (
-            <form onSubmit={handlePromoteToManager} className="flex flex-col gap-4">
-              <div className="p-3 rounded bg-yellow-50 border border-yellow-200">
-                <p className="text-sm text-yellow-800">
-                  <strong>Confirm:</strong> Promote {selectedUser.name} to Manager role?
-                </p>
-              </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-4 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition disabled:opacity-60"
-              >
-                {loading ? "Promoting..." : "Promote to Manager"}
-              </button>
-            </form>
-          )}
         </div>
       )}
     </div>

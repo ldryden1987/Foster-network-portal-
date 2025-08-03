@@ -8,6 +8,9 @@ export default function ManagePasswords() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [loadingUsers, setLoadingUsers] = useState(true);
 
+    // Filter out admin users from the list
+  const filteredUsers = users.filter(user => user.role !== 'admin');
+
   // Fetch all users based on role when component loads
   useEffect(() => {
     fetchUsers();
@@ -149,7 +152,7 @@ export default function ManagePasswords() {
               {loadingUsers ? (
                 <option>Loading users...</option>
               ) : (
-                users.map((user) => (
+                filteredUsers.map((user) => (
                   <option key={user._id} value={user._id}>
                     {user.name} ({user.email})
                   </option>

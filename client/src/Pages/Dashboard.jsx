@@ -57,65 +57,65 @@ export default function Dashboard() {
     switch (user.role) {
       case "admin":
         return (
-          //  User Management Section
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Admin Dashboard</h2>
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            {/* User Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 User Management
-              </h3>
-              <div className="flex flex-row gap-4">
-                <div className="w-full xl:w-1/3">
-                  <CreateManager />
-                </div>
-                <div className="w-full xl:w-1/3">
+              </summary>
+              <div className="flex flex-row gap-4 text-sm mt-4">
+                <div className="w-full m-2">
                   <ManagePasswords />
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
+                  <CreateManager/>
+                </div>
+                <div className="w-full m-2">
                   <ManageUserRoles />
                 </div>
-                <div className="w-full xl:w-1/4">
+                <div className="w-full m-2">
                   <DeleteUsers />
                 </div>
               </div>
-            </div>
+            </details>
 
-            {/* Animal Management Section */}
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" close>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
-              </h3>
-              <div className="flex flex-row gap-4">
-                <div className="w-full xl:w-1/3">
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
                   {/* Placeholder for animal management component */}
                   <div>Animal Intake</div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Manage Animal Records</div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
-            
-            {/* Website Management Section */}
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" close>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Website Management
-              </h3>
-              <div className="flex flex-row gap-4">
-                <div className="w-full xl:w-1/3">
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
                   <div><ManageFAQs/></div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div><ManageResource/></div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Some other thing</div>
                 </div>
               </div>
-            </div>
+            </details>
           </section>
         );
 
@@ -124,58 +124,58 @@ export default function Dashboard() {
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Manager Dashboard</h2>
             {/* User Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4 bg-base-100" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4" open>
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 User Management
               </summary>
               <div className="flex flex-row gap-4 text-sm mt-4">
-                <div className="w-full xl:w-1/4">
+                <div className="w-full m-2">
                   <ManagePasswords />
                 </div>
-                <div className="w-full xl:w-1/4">
+                <div className="w-full m-2">
                   <CreateStaff/>
                 </div>
-                <div className="w-full xl:w-1/4">
+                <div className="w-full m-2">
                   <ManageUserRoles />
                 </div>
-                <div className="w-full xl:w-1/4">
+                <div className="w-full m-2">
                   <DeleteUsers />
                 </div>
               </div>
             </details>
 
             {/* Animal Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4 bg-base-100" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" close>
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
               </summary>
               <div className="flex flex-row gap-4 mt-4">
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   {/* Placeholder for animal management component */}
                   <div>Animal Intake</div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Manage Animal Records</div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Adoption Status</div>
                 </div>
               </div>
             </details>
 
             {/* Website Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 bg-base-100" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" close>
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Website Management
               </summary>
               <div className="flex flex-row gap-4 mt-4">
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div><ManageFAQs/></div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div><ManageResource/></div>
                 </div>
-                <div className="w-full xl:w-1/3">
+                <div className="w-full m-2">
                   <div>Some other thing</div>
                 </div>
               </div>
@@ -187,28 +187,42 @@ export default function Dashboard() {
         return (
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Staff Dashboard</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="rounded-lg p-6 border-2 border-[#F87575]">
-                <h3 className="text-lg font-semibold mb-4">Getting Started</h3>
-                <p className="mb-6">
-                  You have nothing pending. How can you make a difference today?
-                </p>
-              </div>
-              <div className="space-y-6">
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Available Pets</h3>
-                  <p>Browse pets available for adoption</p>
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Animal Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-                  <p>Volunteer opportunities and foster applications</p>
+                <div className="w-full m-2">
+                  <div>Manage Animal Records</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                  <p>Pet care guides and helpful information</p>
+                <div className="w-full m-2">
+                  <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Website Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div>Some other thing</div>
+                </div>
+              </div>
+            </details>
           </section>
         );
 
@@ -216,30 +230,43 @@ export default function Dashboard() {
         return (
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Volunteer Dashboard</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="rounded-lg p-6 border-2 border-[#F87575]">
-                <h3 className="text-lg font-semibold mb-4">Getting Started</h3>
-                <p className="mb-6">
-                  You have nothing pending. How can you make a difference today?
-                </p>
-              </div>
-              <div className="space-y-6">
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4]">
-                    Available Pets
-                  </h3>
-                  <p>Browse pets available for adoption</p>
+
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Animal Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-                  <p>Volunteer opportunities and foster applications</p>
+                <div className="w-full m-2">
+                  <div>Manage Animal Records</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                  <p>Pet care guides and helpful information</p>
+                <div className="w-full m-2">
+                  <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Website Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div>Some other thing</div>
+                </div>
+              </div>
+            </details>
           </section>
         );
 
@@ -247,28 +274,43 @@ export default function Dashboard() {
         return (
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Foster Dashboard</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="rounded-lg p-6 border-2 border-[#F87575]">
-                <h3 className="text-lg font-semibold mb-4">Getting Started</h3>
-                <p className="mb-6">
-                  You have nothing pending. How can you make a difference today?
-                </p>
-              </div>
-              <div className="space-y-6">
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Available Pets</h3>
-                  <p>Browse pets available for adoption</p>
+
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Animal Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-                  <p>Volunteer opportunities and foster applications</p>
+                <div className="w-full m-2">
+                  <div>Manage Animal Records</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                  <p>Pet care guides and helpful information</p>
+                <div className="w-full m-2">
+                  <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Website Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div>Some other thing</div>
+                </div>
+              </div>
+            </details>
           </section>
         );
 
@@ -276,32 +318,43 @@ export default function Dashboard() {
         return (
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Adoption Dashboard</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="rounded-lg p-6 border-2 border-[#F87575]">
-                <h3 className="text-lg font-semibold mb-4">Getting Started</h3>
-                <p className="mb-6">
-                  You have nothing pending. How can you make a difference today?
-                </p>
-              </div>
-              <div className="space-y-6">
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Available Pets</h3>
-                  <p className="text-[#102542] dark:text-[#CDD7D6]">
-                    Browse pets available for adoption
-                  </p>
+
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Animal Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-                  <p className="text-[#102542]">
-                    Volunteer opportunities and foster applications
-                  </p>
+                <div className="w-full m-2">
+                  <div>Manage Animal Records</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                  <p>Pet care guides and helpful information</p>
+                <div className="w-full m-2">
+                  <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
+                Website Management
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
+                <div className="w-full m-2">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full m-2">
+                  <div>Some other thing</div>
+                </div>
+              </div>
+            </details>
           </section>
         );
 

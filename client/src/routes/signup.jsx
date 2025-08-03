@@ -32,8 +32,8 @@ export default function Signup() {
 
       if (response.ok) {
         localStorage.setItem("sessionToken", result.sessionToken);
-        alert(`You have successfully created an account!`);
-        navigate("/");
+        alert(`You have successfully created an account! Please sign in to continue.`);
+        navigate("/signin");
       } else {
         if (result.error === "User already exists") {
           console.log(result.error);

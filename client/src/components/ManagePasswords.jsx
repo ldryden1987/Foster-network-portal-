@@ -124,9 +124,10 @@ export default function ManagePasswords() {
           className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
           onClick={() => {
             setShowUpdateForm(!showUpdateForm);
+            if (showUpdateForm) setMessage(""); // Clear status text when closing
           }}
         >
-          {showUpdateForm ? "Close Reset Password" : "Reset Password"}
+          {showUpdateForm ? "Close Manage Passwords" : "Manage Passwords"}
         </button>
       </div>
 
@@ -177,7 +178,7 @@ export default function ManagePasswords() {
                 disabled={loading}
                 className="flex-1 py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition disabled:opacity-60"
               >
-                {loading ? "Updating..." : "Reset Password"}
+                {loading ? "Updating..." : "Manage Password"}
               </button>
             </form>
           )}

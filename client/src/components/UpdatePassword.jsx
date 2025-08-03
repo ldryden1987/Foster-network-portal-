@@ -12,6 +12,11 @@ export default function UpdatePassword () {
     setLoading(true);
     setMessage("");
 
+  console.log("Frontend debug:");
+  console.log("- User object:", user);
+  console.log("- User ID:", user._id);
+  console.log("- URL:", `${import.meta.env.VITE_SERVER_URL}/userUpdate/changePassword/${user._id}`);
+
     const formData = new FormData(event.currentTarget);
     const currentPassword = formData.get("currentPassword");
     const newPassword = formData.get("newPassword");
@@ -118,7 +123,15 @@ export default function UpdatePassword () {
           </button>
         </form>
       )}
-      {message && <div className="mt-2 text-red-500">{message}</div>}
+      {message && (
+        <div
+          className={`mt-2 ${
+            message === "Password updated successfully!" ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {message}
+        </div>
+      )}
     </div>
   );
 }

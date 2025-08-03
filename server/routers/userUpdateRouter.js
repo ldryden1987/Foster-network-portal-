@@ -4,6 +4,7 @@ import { Router } from "express";
 import User from "../models/User.js";
 import isAdminManagerorStaff from "../middlewares/isAdminManagerorStaff.js";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
+import isAdminOrManager from "../middlewares/isAdminOrManager.js";
 
 const app = express();
 app.use(express.json());
@@ -103,11 +104,11 @@ userUpdateRouter.put(
   }
 );
 
-// Dedicated route for admin/Manager/staff to reset user passwords
+// Dedicated route for admin/Manager to reset user passwords
 userUpdateRouter.put(
   "/resetPasswordAdmin/:user_ID",
   isAuthenticated,
-  isAdminManagerorStaff,
+  isAdminOrManager,
   async (req, res) => {
     try {
       const user_id = req.params.user_ID;
@@ -154,6 +155,49 @@ userUpdateRouter.put(
       res.status(200).json({
         notice: "Password reset successfully",
         message: `Password updated for user: ${targetUser.email}`,
+      });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
+
+// Dedicated route for admin/Manager to Delete Users
+userUpdateRouter.delete(
+  "/deleteUser/:user_ID",
+  isAuthenticated,
+  isAdminOrManager,
+  async (req, res) => {
+    try {
+      const user_id = req.params.user_ID;
+      const requestorRole = req.user.role;
+
+      if (!user_id) {
+        return res.status(400).json({ error: "A user must be selected to delete" });
+      }
+
+      const targetUser = await User.findById(user_id);
+      if (!targetUser) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      // Role-based authorization checks
+      if (requestorRole === "manager") {
+        if (targetUser.role === "admin" || targetUser.role === "manager") {
+          return res
+            .status(403)
+            .json({
+              error: "Managers cannot delete Admin or Other Manager Accounts.",
+            });
+        }
+      }
+
+      // Proceed to delete the user
+      await User.findByIdAndDelete(user_id);
+
+      res.status(200).json({
+        notice: "User deleted successfully",
+        message: `User deleted: ${targetUser.email}`,
       });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -229,6 +273,14 @@ userUpdateRouter.put(
       const user_id = req.params.user_ID;
       const authenticatedUserId = req.user._id.toString(); // Get the authenticated user's ID
       const { currentPassword, newPassword } = req.body;
+      
+      // Debugging Logs
+      console.log("Change password debug:");
+      console.log("- Target user_id (from URL):", user_id);
+      console.log("- Target user_id type:", typeof user_id);
+      console.log("- Authenticated user ID (raw):", req.user._id);
+      console.log("- Authenticated user ID (string):", authenticatedUserId);
+      console.log("- User IDs match:", user_id === authenticatedUserId);
 
       // Validate that password is provided
       if (!newPassword) {

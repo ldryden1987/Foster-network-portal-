@@ -101,7 +101,7 @@ authRouter.post('/signin', async (req, res) => {
             return res.status(400).json( { error: "incorrect password"});
         }
             const sessionToken = jwt.sign(
-            {_id: user._id},
+            { _id: user._id },
             process.env.JWT_SECRET,
             //expires in 1 day
             { expiresIn: 60 *60 *24 }

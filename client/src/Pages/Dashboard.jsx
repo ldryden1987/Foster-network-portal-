@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import ManagePasswords from "../components/ManagePasswords.jsx";
 import { useUser } from "../context/UserContext.jsx";
 import CreateManager from "../components/CreateManager.jsx";
-import ManagerUserRoles from "../components/ManagerUserRoles.jsx";
+import ManageUserRoles from "../components/ManageUserRoles.jsx";
+import UpdatePassword from "../components/UpdatePassword.jsx";
+import DeleteUsers from "../components/DeleteUsers.jsx";
+import ManageResource from "../components/ManageResource.jsx"
+import ManageFAQs from "../components/ManageFAQs.jsx"
+import CreateStaff from "../components/CreateStaff.jsx";
 
 export default function Dashboard() {
   const { user, loading } = useUser();
@@ -51,49 +56,125 @@ export default function Dashboard() {
   const renderDashboardContent = () => {
     switch (user.role) {
       case "admin":
-      return (
-        <section className="flex flex-col h-full">
-        <h2 className="text-2xl font-bold mb-6">Admin Dashboard</h2>
-        <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
-          <h3 className="text-lg font-semibold mb-4 text-left">
-          User Management
-          </h3>
-          <div className="flex flex-row gap-4">
-            <div className="w-full xl:w-1/3">
-          <ManagePasswords /></div>
-          <div className="w-full xl:w-1/3">
-          <CreateManager /></div>
-          <div className="w-full xl:w-1/3">
-          <ManagerUserRoles /></div> </div>
-        </div>
-        </section>
-      );
+        return (
+          //  User Management Section
+          <section className="flex flex-col h-full">
+            <h2 className="text-2xl font-bold mb-6">Admin Dashboard</h2>
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                User Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/3">
+                  <CreateManager />
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <ManagePasswords />
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <ManageUserRoles />
+                </div>
+                <div className="w-full xl:w-1/4">
+                  <DeleteUsers />
+                </div>
+              </div>
+            </div>
+
+            {/* Animal Management Section */}
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                Animal Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/3">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div>Manage Animal Records</div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div>Adoption Status</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Website Management Section */}
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                Website Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/3">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div>Some other thing</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
 
       case "manager":
         return (
+          //  User Management Section
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Manager Dashboard</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="rounded-lg p-6 border-2 border-[#F87575]">
-                <h3 className="text-lg font-semibold mb-4 ">Getting Started</h3>
-                <p className="mb-6">
-                  You have nothing pending. How can you make a difference today?
-                </p>
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                User Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/4">
+                  <ManagePasswords />
+                </div>
+                <div className="w-full xl:w-1/4">
+                  <CreateStaff/>
+                </div>
+                <div className="w-full xl:w-1/4">
+                  <ManageUserRoles />
+                </div>
+                <div className="w-full xl:w-1/4">
+                  <DeleteUsers />
+                </div>
               </div>
-              <div className="space-y-6">
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4 ">
-                    Available Pets
-                  </h3>
-                  <p>Browse pets available for adoption</p>
+            </div>
+            {/* Animal Management Section */}
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                Animal Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/3">
+                  {/* Placeholder for animal management component */}
+                  <div>Animal Intake</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4 ">Quick Actions</h3>
-                  <p>Volunteer opportunities and foster applications</p>
+                <div className="w-full xl:w-1/3">
+                  <div>Manage Animal Records</div>
                 </div>
-                <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4 ">Resources</h3>
-                  <p>Pet care guides and helpful information</p>
+                <div className="w-full xl:w-1/3">
+                  <div>Adoption Status</div>
+                </div>
+              </div>
+            </div>
+            {/* Website Management Section */}
+            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
+              <h3 className="text-lg font-semibold mb-4 text-left">
+                Website Management
+              </h3>
+              <div className="flex flex-row gap-4">
+                <div className="w-full xl:w-1/3">
+                  <div><ManageFAQs/></div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div><ManageResource/></div>
+                </div>
+                <div className="w-full xl:w-1/3">
+                  <div>Some other thing</div>
                 </div>
               </div>
             </div>
@@ -235,10 +316,7 @@ export default function Dashboard() {
               </div>
               <div className="space-y-6">
                 <div className="rounded-lg p-4 border-2 border-[#F87575]">
-                  <h3 className="text-lg font-semibold mb-4">
-                    Quick Actions
-                    <UpdatePassword />
-                  </h3>
+                  <h3 className="text-lg font-semibold mb-4">Quick Action</h3>
                 </div>
                 <div className="rounded-lg p-4 border-2 border-[#F87575]">
                   <h3 className="text-lg font-semibold mb-4">Available Pets</h3>
@@ -271,16 +349,21 @@ export default function Dashboard() {
       <Header />
       <Nav />
 
-      <main className="flex flex-1 px-8 py-8">
+      <main className="flex flex-row px-8 py-8">
         {/* Welcome message */}
         <div className="w-full">
-          <div className="mb-4">
-            <h1 className="text-3xl font-bold">
-              Welcome, {user.firstName || user.email}!
-            </h1>
-            <p className="">
-              Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-            </p>
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">
+                Welcome, {user.firstName || user.email}!
+              </h1>
+              <p className="mb-4">
+                Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+              </p>
+            </div>
+            <div>
+              <UpdatePassword />
+            </div>
           </div>
 
           {/* Role-specific dashboard content */}

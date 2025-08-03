@@ -121,14 +121,14 @@ export default function Dashboard() {
 
       case "manager":
         return (
-          //  User Management Section
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Manager Dashboard</h2>
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            {/* User Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4 bg-base-100" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 User Management
-              </h3>
-              <div className="flex flex-row gap-4">
+              </summary>
+              <div className="flex flex-row gap-4 text-sm mt-4">
                 <div className="w-full xl:w-1/4">
                   <ManagePasswords />
                 </div>
@@ -142,13 +142,14 @@ export default function Dashboard() {
                   <DeleteUsers />
                 </div>
               </div>
-            </div>
-            {/* Animal Management Section */}
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            </details>
+
+            {/* Animal Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4 bg-base-100" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
-              </h3>
-              <div className="flex flex-row gap-4">
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
                 <div className="w-full xl:w-1/3">
                   {/* Placeholder for animal management component */}
                   <div>Animal Intake</div>
@@ -160,13 +161,14 @@ export default function Dashboard() {
                   <div>Adoption Status</div>
                 </div>
               </div>
-            </div>
-            {/* Website Management Section */}
-            <div className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-8">
-              <h3 className="text-lg font-semibold mb-4 text-left">
+            </details>
+
+            {/* Website Management Collapsible */}
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 bg-base-100" open>
+              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Website Management
-              </h3>
-              <div className="flex flex-row gap-4">
+              </summary>
+              <div className="flex flex-row gap-4 mt-4">
                 <div className="w-full xl:w-1/3">
                   <div><ManageFAQs/></div>
                 </div>
@@ -177,7 +179,7 @@ export default function Dashboard() {
                   <div>Some other thing</div>
                 </div>
               </div>
-            </div>
+            </details>
           </section>
         );
 

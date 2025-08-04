@@ -9,9 +9,11 @@ export default function Signup() {
   const navigate = useNavigate();
   const [showSignInLink, setShowSignInLink] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSignUp(event) {
     try {
+      setLoading(true);
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
 
@@ -38,13 +40,15 @@ export default function Signup() {
           setErrorMessage(result.error);
           // Show the Signin button
           setShowSignInLink(true);
-        } else {
+        } else { 
+          console.log(result.error);
           setErrorMessage(result.error || "Signup failed");
           setShowSignInLink(false);
         }
       }
     } catch (err) {
       setErrorMessage("Network error. Please try again.");
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -95,6 +99,7 @@ export default function Signup() {
               <button
                 type="submit"
                 className="m-2 px-4 py-2 rounded bg-[#102542] text-[#CDD7D6] font-semibold cursor-pointer w-full"
+                disabled={ loading }
               >
                 Sign Up
               </button>

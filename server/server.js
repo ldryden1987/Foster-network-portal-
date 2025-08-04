@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
+import updateUserRouter from './routers/userUpdateRouter.js';
+import contactRoutes from './routers/contact.js';
 import applicationRouter from './routes/Application.js';
 import dotenv from 'dotenv';
 import 'dotenv/config';
@@ -22,6 +24,8 @@ app.use(express.json());
 app.use(authRouter);
 app.use(resourceRouter);
 app.use(faqRouter);
+app.use('/userUpdate', updateUserRouter);
+app.use('/api/contact', contactRoutes);
 app.use('/api/applications', applicationRouter);
 
 
@@ -35,6 +39,7 @@ mongoose.connect(process.env.MONGO_URI, {
   //SLA disabled these because they were stating they are deprecated. Can turn back on if we need them.
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000, // 30 seconds
 })
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error(err));

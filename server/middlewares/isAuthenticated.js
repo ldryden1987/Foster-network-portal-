@@ -8,17 +8,21 @@ export default async function isAuthenticated(req, res, next) {
         if (!sessionToken) {
             return res.json({ error: "Authentication token missing. Please sign in to continue." });
         }
-        // Verify and decode token
-        const decoded = jwt.verify(sessionToken, process.env.JWT_SECRET);
-        // Find user by ID from token
-        const user = await User.findById(decoded._id);
-        if (!user) {
-            return res.json({ error: "User not found. Invalid or expired token." });
-        }
-        req.user = user;
-        next(); //continue on to the route handler
 
-    } catch (err) {
-        res.json({ error: err });
+    // Verify and decode token
+    const decoded = jwt.verify(sessionToken, process.env.JWT_SECRET);
+    // Find user by ID from token
+    const user = await User.findById(decoded._id);
+    if (!user) {
+      return res.status(401).json({ error: "User not found. Invalid or expired token." });
     }
+    if (user.role !== 'staff' && user.role !== 'admin') {
+      return res.status(403).json({ error: "Access denied. Administrator privileges required." });
+    }
+    req.user = user;
+    next(); //continue on to the route handler
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 }

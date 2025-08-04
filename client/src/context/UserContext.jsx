@@ -8,7 +8,8 @@ export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const login = (userData, token) => {
-        setUser(userData);
+        const userWithToken = { ...userData, sessionToken: token }; // Add sessionToken to user objec
+        setUser(userWithToken);
         localStorage.setItem('sessionToken', token);
     };
     // Check for existing session on app load
@@ -30,7 +31,8 @@ export const UserProvider = ({ children }) => {
             
             if (response.ok) {
                 const userData = await response.json();
-                setUser(userData);
+                const userWithToken = { ...userData, sessionToken: token }; 
+                setUser(userWithToken);
             } else {
                 localStorage.removeItem('sessionToken');
                 setUser(null);

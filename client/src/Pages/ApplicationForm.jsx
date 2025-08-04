@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 function ApplicationForm() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const appTypeFromURL = params.get("type") || "Adopt";
+  const appTypeFromURL = params.post("type") || "Adopt";
 
   const [formData, setFormData] = useState({
     type: appTypeFromURL,

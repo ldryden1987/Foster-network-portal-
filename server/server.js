@@ -7,7 +7,7 @@ import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
 import updateUserRouter from './routers/userUpdateRouter.js';
 import contactRoutes from './routers/contact.js';
-import applicationRouter from './routes/Application.js';
+import applicationRouter from './routers/applicationRouter.js';
 import dotenv from 'dotenv';
 import 'dotenv/config';
 

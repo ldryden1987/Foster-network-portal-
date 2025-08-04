@@ -28,14 +28,26 @@ function Application() {
                     </article>
 
                     <article>
-                        <h4>Foster Program</h4>
+                        <h4 className="text-xl font-bold mb-2">Foster Program</h4>
                         <p className="text-black-700">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates quisquam temporibus, architecto animi neque in, earum illum libero blanditiis sapiente rerum deleniti exercitationem mollitia et. Nisi neque voluptatem voluptate, ut cupiditate, ipsum natus sapiente illo, laudantium minus ipsam exercitationem nulla dolor soluta repellat? Excepturi, unde, quos aut beatae magni cumque quidem neque est asperiores quisquam dignissimos porro quam impedit voluptatibus, maiores hic! Nostrum odio voluptate ea nam illum, hic repellat fugiat blanditiis dolorum architecto mollitia voluptatum possimus iusto sunt, temporibus quibusdam minima expedita, voluptates debitis non dolorem animi ab necessitatibus? Eos voluptates accusantium excepturi voluptatum adipisci molestiae aliquam consequatur?</p>
                     </article>
 
                     <article>
-                        <h4>Volunteer Opportunities</h4>
+                        <h4 className="text-xl font-bold mb-2">Volunteer Opportunities</h4>
                         <p className="text-black-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor repellat dignissimos recusandae soluta tenetur voluptatum totam eligendi illo, ad temporibus repudiandae impedit quaerat similique fuga officiis molestias, voluptate assumenda dolore eos error est eveniet, magnam nobis. Repellendus eaque, unde eos nulla odio at asperiores rem excepturi ipsam facere. Recusandae odit ad ipsa illo quae numquam aliquam adipisci? Ratione ex deserunt aperiam quos dignissimos reiciendis nisi vel sapiente quo, adipisci accusantium consectetur eius laudantium rerum! Laborum, fugiat? A, soluta excepturi, voluptas voluptatum optio non accusamus fugiat recusandae aliquid, nam eius iure explicabo illo! Nisi ratione voluptatum corrupti tempore, voluptates voluptatibus!</p>
                     </article>
+
+                    <h1 className="text-3xl font-bold text-gray-800">Join Our Mission</h1>
+                <p className="text-gray-700 max-w-2xl">
+                    Whether you’re interested in adopting, fostering, or volunteering, we welcome your support!
+                    Click the button below to get started with your application.
+                </p>
+
+                <Link to="/apply">
+                    <button className="mt-6 px-6 py-3 bg-blue-600 text-white text-lg rounded-xl hover:bg-blue-700 transition">
+                        Apply Now
+                    </button>
+                </Link>
                 </section>
             </main>
 

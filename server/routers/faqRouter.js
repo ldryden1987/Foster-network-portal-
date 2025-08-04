@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import FAQ from '../models/faqs.js';
-import isAdminorStaff from '../middlewares/isAdminorStaff.js'
+import isAdminorStaff from '../middlewares/isAdminorStaff.js';
+import isAuthenticated from '../middlewares/isAuthenticated.js';
 
 const faqRouter = Router();
 
 // CREATE - Post new FAQ
-faqRouter.post('/faqs', isAdminorStaff, async (req, res) => {
+faqRouter.post('/faqs', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const newFAQ = new FAQ({
             ...req.body
@@ -45,7 +46,7 @@ faqRouter.get('faqs/:id', async (req, res) => {
 });
 
 // UPDATE - Update existing FAQ
-faqRouter.put('/faqs/:id', isAdminorStaff, async (req, res) => {
+faqRouter.put('/faqs/:id', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const { id } = req.params;
         
@@ -67,7 +68,7 @@ faqRouter.put('/faqs/:id', isAdminorStaff, async (req, res) => {
 });
 
 // DELETE - Delete resource
-faqRouter.delete('/faqs/:id', isAdminorStaff, async (req, res) => {
+faqRouter.delete('/faqs/:id', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const { id } = req.params;
         

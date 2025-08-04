@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import Resource from '../models/Resources.js';
-import isAdminorStaff from '../middlewares/isAdminorStaff.js'
+import isAdminorStaff from '../middlewares/isAdminorStaff.js';
+import isAuthenticated from '../middlewares/isAuthenticated.js';
 
 const resourceRouter = Router();
 
 // CREATE - Post new resource
-resourceRouter.post('/resources', isAdminorStaff, async (req, res) => {
+resourceRouter.post('/resources', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const newResource = new Resource({
             ...req.body
@@ -45,7 +46,7 @@ resourceRouter.get('/resources/:id', async (req, res) => {
 });
 
 // UPDATE - Update existing resource
-resourceRouter.put('/resources/:id', isAdminorStaff, async (req, res) => {
+resourceRouter.put('/resources/:id', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const { id } = req.params;
         
@@ -67,7 +68,7 @@ resourceRouter.put('/resources/:id', isAdminorStaff, async (req, res) => {
 });
 
 // DELETE - Delete resource
-resourceRouter.delete('/resources/:id', isAdminorStaff, async (req, res) => {
+resourceRouter.delete('/resources/:id', isAuthenticated, isAdminorStaff, async (req, res) => {
     try {
         const { id } = req.params;
         

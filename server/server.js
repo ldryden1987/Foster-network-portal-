@@ -1,13 +1,15 @@
 // server/server.js
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
 import mongoose from 'mongoose';
 import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
 import applicationRouter from './routes/Application.js';
 import dotenv from 'dotenv';
+import 'dotenv/config';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,9 +17,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+//Routers
 app.use(authRouter);
 app.use(resourceRouter);
 app.use(faqRouter);
+app.use('/api/applications', applicationRouter);
+
 
 // Routes
 app.get('/', (req, res) => {
@@ -38,9 +44,6 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-dotenv.config();
-const app= express();
 
-app.use('/api/applications', applicationRouter);
 
 

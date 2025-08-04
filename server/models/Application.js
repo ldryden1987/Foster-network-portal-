@@ -1,21 +1,45 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const applicationSchema = new mongoose.Schema({
-    applicantName: String,
-    email: String,
-    Phone: String,
-    address: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  type: {
+    type: String,
+    enum: ['Adopt', 'Foster', 'Volunteer'], // This makes sure it's only one of the three
+    required: true
+  },
+  petName: {
+    type: String,
+    required: false
+  },
+  aboutYou: {
+    type: String,
+    required: true
+  },
+  experience: {
+    type: String
+  },
+  availability: {
+    type: String
+  },
+  address: {
+    street1: String,
+    street2: String,
     city: String,
     state: String,
-    zip: String,
-    rentOrOwn: String,
-    petName: String,
-    petAgePref: String,
-    submissionDate: {
-        type: Date,
-        default: Date.now,
-    }
+    zip: String
+  },
+  phone: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-})
-
-export default mongoose.model('Application', applicationSchema);
+const Application = mongoose.model('Application', applicationSchema);
+export default Application;

@@ -9,6 +9,7 @@ import ResourcesPage from "./Pages/Resources.jsx";
 import AboutUs from "./Pages/AboutUs.jsx"
 import { UserProvider } from './context/UserContext.jsx';
 import Dashboard from './Pages/Dashboard.jsx'
+import ApplicationForm from "./Pages/ApplicationForm.jsx";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
         <Route path="/resources" element={<ResourcesPage/>}/>
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/application" element={<Application/>}/>
+        <Route path="/apply" element={<ApplicationForm />}/>
+        
       </Routes>
     </Router>
     </UserProvider>

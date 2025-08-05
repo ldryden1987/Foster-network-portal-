@@ -113,6 +113,7 @@ function Home() {
     </div>
 
      {/*  Applications button & text */}
+     <Link to={"/application"}>
     <div className="flex flex-col items-center space-y-2 text-center">
       <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
         Applications
@@ -121,6 +122,7 @@ function Home() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
     </div>
+    </Link>
 
   </div>
 </section>

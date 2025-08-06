@@ -25,10 +25,10 @@ function Footer() {
 
   <div className="flex flex-col items-center text-[#102542]">
     <span className="footer-title font-bold">Get Connected</span>
-    <a className="link link-hover" href="#">Facebook</a>
-    <a className="link link-hover" href="#">LinkedIn</a>
-    <a className="link link-hover" href="#">YouTube</a>
-    <a className="link link-hover" href="#">Instagram</a>
+    <Link className="link link-hover" to="#">Facebook</Link>
+    <Link className="link link-hover" to="#">LinkedIn</Link>
+    <Link className="link link-hover" to="#">YouTube</Link>
+    <Link className="link link-hover" to="#">Instagram</Link>
   </div>
 </footer>
 

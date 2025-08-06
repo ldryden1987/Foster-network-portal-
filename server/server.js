@@ -12,6 +12,8 @@ import dotenv from 'dotenv';
 import 'dotenv/config';
 
 dotenv.config();
+import animalRouter from './routers/animalRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +30,8 @@ app.use('/userUpdate', updateUserRouter);
 app.use('/api/contact', contactRoutes);
 app.use('/api/applications', applicationRouter);
 
+app.use(animalRouter);
+app.use(uploadRouter);
 
 // Routes
 app.get('/', (req, res) => {

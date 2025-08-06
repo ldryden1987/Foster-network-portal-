@@ -10,6 +10,7 @@ import AboutUs from "./Pages/AboutUs.jsx"
 import { UserProvider } from './context/UserContext.jsx';
 import Dashboard from './Pages/Dashboard.jsx'
 import ApplicationForm from "./Pages/ApplicationForm.jsx";
+import Animals from "./routes/Animals.jsx";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/application" element={<Application/>}/>
         <Route path="/apply" element={<ApplicationForm />}/>
-        
+        <Route path="/animals" element={<Animals/>}/>
       </Routes>
     </Router>
     </UserProvider>

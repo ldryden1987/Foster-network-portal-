@@ -55,7 +55,7 @@ function ApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${import.meta.env.VITE_SERVER_URL}/apply`, formData);
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/applications`, formData);
       alert("Application submitted!");
     } catch (err) {
       alert("Failed to submit application.");

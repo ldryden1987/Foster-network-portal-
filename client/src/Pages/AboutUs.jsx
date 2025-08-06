@@ -10,18 +10,18 @@ function Home() {
   console.log(user);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542] dark:text-white">
       {/* Header */}
       <Header />
       <Nav />
 
       {/* Main content */}
-      <main className="flex flex-col lg:flex-row items-start justify-between gap-8 px-6 py-10 bg-[#00000] flex-grow text-[#102542]">
+      <main className="flex flex-col lg:flex-row items-start justify-between gap-8 px-6 py-10 bg-[#00000] flex-grow text-[#102542] dark:text-white">
         
         {/* About Us Section */}
         <section className="lg:w-1/2 space-y-4">
           <h2 className="text-4xl font-black border-b-4 border-dotted border-[#102542] pb-2">ABOUT US</h2>
-          <h3 className="text-2xl font-medium text-[#102542]">What makes SafePaws special!</h3>
+          <h3 className="text-2xl font-medium text-[#102542] dark:text-white">What makes SafePaws special!</h3>
           <p className="text-2xl" >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione quasi, harum quo eos eligendi consequatur, hic amet libero quis, alias nulla! Optio, expedita? Corporis est non commodi perspiciatis cum quod autem dolore, iste totam animi ex dolorum laborum officiis recusandae corrupti amet repudiandae quia beatae sit, provident sint. Maiores, tempora nulla. Repudiandae iusto voluptatem expedita ducimus repellat! Quaerat natus, magnam cum aliquam earum ex similique itaque omnis rem eaque vel minima iusto, doloremque sunt est tempore delectus perferendis alias fuga! Iste atque sint similique impedit animi at ratione perferendis rerum ea et repudiandae voluptatum porro facere laboriosam, ad fuga cupiditate!
           </p>
@@ -31,7 +31,7 @@ function Home() {
         </section>
 
         {/* Image Section */}
-        <section className="lg:w-1/2 flex justify-center">
+        <section className="lg:w-1/2 flex justify-center dark:text-white">
           <img 
             src="https://placecats.com/neo_banana/800/600" 
             alt="Cat licking bannana"
@@ -41,15 +41,14 @@ function Home() {
       </main>
 
       {/* Contact Section */}
-      {/* Contact Section */}
-        <section className="bg-[#00000] px-6 py-10 text-[#102542]">
+        <section className="bg-[#00000] px-6 py-10 text-[#102542] dark:text-white">
           <h2 className="text-2xl font-bold mb-4">CONTACT US</h2>
           <ContactForm />
         </section>
 
 
       {/* Google Map Section */}
-      <section className="bg-[#00000] px-6 py-10 text-[#102542]">
+      <section className="bg-[#00000] px-6 py-10 text-[#102542] dark:text-white">
         <h2 className="text-2xl font-bold mb-4">Visit Us</h2>
 
         {/* Embedded Google Map */}
@@ -67,23 +66,23 @@ function Home() {
 
         {/* Info Tabs */}
         {/* Labels above the content boxes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-center dark:text-white">
           <h3 className="text-xl font-bold">Address</h3>
           <h3 className="text-xl font-bold">Hours</h3>
           <h3 className="text-xl font-bold">Phone</h3>
         </div>
 
         {/* Info blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 text-center dark:text-white">
           <div className="bg-white p-4 rounded-lg shadow">
             <p className="text-lg text-[#102542]">1234 Example St.</p>
             <p>San Francisco, CA 94109</p>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow">
+          <div className="bg-white p-4 rounded-lg shadow dark:text-white">
             <p className="text-lg text-[#102542]">Mon–Fri: 10am – 6pm</p>
             <p>Sat–Sun: 11am – 4pm</p>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow">
+          <div className="bg-white p-4 rounded-lg shadow dark:text-white">
             <p className="text-lg text-[#102542]">(555) 123-4567</p>
           </div>
         </div>

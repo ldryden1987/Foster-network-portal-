@@ -42,7 +42,7 @@ function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="border border-gray-300 p-2 w-full"
+          className="border border-gray-300 p-2 w-full dark:placeholder-white"
         />
         <input
           type="text"
@@ -50,7 +50,7 @@ function ContactForm() {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
-          className="border border-gray-300 p-2 w-full"
+          className="border border-gray-300 p-2 w-full dark:placeholder-white"
         />
       </div>
       <input
@@ -59,7 +59,7 @@ function ContactForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="border border-gray-300 p-2 w-full"
+        className="border border-gray-300 p-2 w-full dark:placeholder-white"
       />
       <textarea
         placeholder="Enter your question or message"
@@ -67,11 +67,11 @@ function ContactForm() {
         onChange={(e) => setMessage(e.target.value)}
         required
         rows={4}
-        className="border border-gray-300 p-2 w-full"
+        className="border border-gray-300 p-2 w-full dark:placeholder-white"
       ></textarea>
       <button
         type="submit"
-        className="bg-[#102542] text-white px-4 py-2 hover:bg-[#1c3a5f]"
+        className="bg-[#102542] text-white px-4 py-2 hover:bg-[#F87060] dark:bg-[#F87060] dark:hover:bg-[#102542]"
       >
         Submit
       </button>

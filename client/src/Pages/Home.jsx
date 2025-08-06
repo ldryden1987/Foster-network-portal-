@@ -9,7 +9,7 @@ function Home() {
    const { user, loading } = useUser();
   console.log (user)
   return (
-     <div className="flex flex-col min-h-screen">
+     <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       {/* Header */}
       <Header />
       <Nav />

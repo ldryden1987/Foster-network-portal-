@@ -19,8 +19,7 @@ function Footer() {
 
   <div className="flex flex-col items-center text-[#102542]">
     <span className="footer-title font-bold">More Info</span>
-    <Link className="link link-hover">About Us</Link>
-    <Link className="link link-hover">Contact Us</Link>
+    <Link className="link link-hover" to="/about" >Contact us</Link>
   </div>
 
   <div className="flex flex-col items-center text-[#102542]">

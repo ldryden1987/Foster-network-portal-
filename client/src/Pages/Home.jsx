@@ -70,7 +70,7 @@ function Home() {
       </section>
 
       {/* Welcome Section */}
-      <section className="text-center bg-[#102542] py-10 px-6">
+      <section className="text-center dark:bg-[#102542] py-10 px-6">
         <h3 className="text-xl font-bold mb-4 ">Welcome</h3>
         <p className="max-w-2xl mx-auto text-gray-700 dark:text-white">
           Thank you for visiting SafePaws Animal Rescue! We are dedicated to connecting loving families with amazing animals. Whether you're looking to adopt, foster, or volunteer, there's a place for you here.

@@ -4,7 +4,7 @@ import Application from '../models/Application.js'; // Add .js if needed for ES 
 const router = express.Router();
 
 // Create a new application
-router.post('/', async (req, res) => {
+applicationRouter.post('/', async (req, res) => {
   try {
     const newApp = new Application(req.body);
     const savedApp = await newApp.save();
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get all applications
-router.get('/', async (req, res) => {
+applicationRouter.get('/', async (req, res) => {
   try {
     const apps = await Application.find().populate('user', 'email firstName lastName');
     res.status(200).json(apps);
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get applications by type (Adopt, Foster, Volunteer)
-router.get('/type/:type', async (req, res) => {
+applicationRouter.get('/type/:type', async (req, res) => {
   const { type } = req.params;
   try {
     const appsByType = await Application.find({ type });
@@ -36,7 +36,7 @@ router.get('/type/:type', async (req, res) => {
 });
 
 // (Optional) Get applications by user ID
-router.get('/user/:userId', async (req, res) => {
+applicationRouter.get('/user/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
     const userApps = await Application.find({ user: userId });
@@ -46,4 +46,4 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
-export default router;
+export default applicationRouter;

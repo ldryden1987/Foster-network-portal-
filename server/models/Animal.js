@@ -16,6 +16,10 @@ const animalSchema = new Schema({
     age: {
         type: Number
     },
+    sex: {
+        type: String, 
+        required: true,
+    },
     intake: {
         type: Date,
         required: true,
@@ -30,11 +34,9 @@ const animalSchema = new Schema({
         type: String,
         required: true
     },
-    flags: {
-        type: [String]
-    },
-    medicalNotes: {
-        type: String
+    blobUrl: {
+        type: String, 
+        required: true
     }
 
     

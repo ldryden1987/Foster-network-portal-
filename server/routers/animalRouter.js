@@ -36,7 +36,7 @@ animalRouter.post('/animals', (req, res) => {
     
 })
 
-animalRouter.push('/animals/:id', async (req, res) => {
+animalRouter.put('/animals/:id', async (req, res) => {
     try{ 
         const { id } = req.params.id;
         const foundAnimal = await Animal.find(id);

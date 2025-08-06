@@ -7,6 +7,7 @@ import authRouter from './routers/authRouter.js';
 import resourceRouter from './routers/resourceRouter.js'
 import faqRouter from './routers/faqRouter.js';
 import animalRouter from './routers/animalRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.use(authRouter);
 app.use(resourceRouter);
 app.use(faqRouter);
 app.use(animalRouter);
+app.use(uploadRouter);
 
 // Routes
 app.get('/', (req, res) => {

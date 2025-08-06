@@ -76,11 +76,11 @@ function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 text-center dark:text-white">
           <div className="bg-white p-4 rounded-lg shadow">
             <p className="text-lg text-[#102542]">1234 Example St.</p>
-            <p>San Francisco, CA 94109</p>
+            <p className="text-lg text-[#102542]"> San Francisco, CA 94109</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow dark:text-white">
             <p className="text-lg text-[#102542]">Mon–Fri: 10am – 6pm</p>
-            <p>Sat–Sun: 11am – 4pm</p>
+            <p className="text-lg text-[#102542]">Sat–Sun: 11am – 4pm</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow dark:text-white">
             <p className="text-lg text-[#102542]">(555) 123-4567</p>

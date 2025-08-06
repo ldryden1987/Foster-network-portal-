@@ -1,7 +1,7 @@
 import express from 'express';
 import Application from '../models/Application.js'; // Add .js if needed for ES Modules
 
-const router = express.Router();
+const applicationRouter = express.Router();
 
 // Create a new application
 applicationRouter.post('/', async (req, res) => {

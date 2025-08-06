@@ -1,6 +1,7 @@
 import express from 'express';
 import Application from '../models/Application.js'; // Add .js if needed for ES Modules
 
+//fixed router variable to match server.js SLA
 const applicationRouter = express.Router();
 
 // Create a new application

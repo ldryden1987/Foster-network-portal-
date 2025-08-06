@@ -55,6 +55,7 @@ function ApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // fixed route to match server.js SLA
       await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/applications`, formData);
       alert("Application submitted!");
     } catch (err) {

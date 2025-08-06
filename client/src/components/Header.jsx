@@ -15,7 +15,6 @@ function Header() {
         }}
       >
         <h1 style={{ color: "#102542" }}>Safe Paws Animal Rescue</h1>
-s
         <div style={{ flexGrow: 1, justifyContent: "left" }}>
           <Link to = "/">
           <img src={logo} style={{height:"50px", marginLeft:"25px" }} alt="Company Logo" />

@@ -1,15 +1,16 @@
 import mongoose from 'mongoose';
 
+//set all required to false. Should be made required on the front end. Many of these fields are hidden depending on the application type. SLA
 const applicationSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: false
   },
   type: {
     type: String,
     enum: ['Adopt', 'Foster', 'Volunteer'], // This makes sure it's only one of the three
-    required: true
+    required: false
   },
   petName: {
     type: String,
@@ -17,7 +18,7 @@ const applicationSchema = new mongoose.Schema({
   },
   aboutYou: {
     type: String,
-    required: true
+    required: false
   },
   experience: {
     type: String

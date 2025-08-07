@@ -12,7 +12,6 @@ const userUpdateRouter = Router();
 
 //ADMIN/MANAGER/STAFF ROUTES
 // Get all users (Admin/Manager/Staff only)
-//need to add filters
 userUpdateRouter.get(
   "/allUsers",
   isAuthenticated,
@@ -21,7 +20,11 @@ userUpdateRouter.get(
     try {
       const requestorRole = req.user.role;
       let userFilter = {};
-
+      if (!req.user || !req.user.role) {
+        return res.status(401).json({ 
+          error: "Authentication required. User not found in request." 
+        });
+      }
       // Apply role-based filtering
       if (requestorRole === "admin") {
         // Admins can see everyone - no filter needed
@@ -50,9 +53,45 @@ userUpdateRouter.get(
   }
 );
 
+// Get one user by ID (Admin/Manager/Staff only)
+userUpdateRouter.get(
+  "/user/:userId",
+  isAuthenticated,
+  isAdminManagerorStaff,
+  async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const requestorRole = req.user.role;
+
+      // Apply role-based filtering
+      let userFilter = { _id: userId };
+      
+      if (requestorRole === "manager") {
+        userFilter.role = { $ne: "admin" };
+      } else if (requestorRole === "staff") {
+        userFilter.role = { $nin: ["admin", "manager"] };
+      }
+
+      const user = await User.findOne(userFilter).select("-password");
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found or access denied" });
+      }
+
+      res.status(200).json({
+        message: "User retrieved successfully",
+        user: user,
+      });
+    } catch (err) {
+      console.error("Get user error:", err);
+      res.status(500).json({ error: "Internal server error: " + err.message });
+    }
+  }
+);
+
 //Admin/Manager/Staff route to update other user's profiles.
 userUpdateRouter.put(
-  "/updateUser/:user_ID",
+  "/user/:user_ID",
   isAuthenticated,
   isAdminManagerorStaff,
   async (req, res) => {
@@ -164,7 +203,7 @@ userUpdateRouter.put(
 
 // Dedicated route for admin/Manager to Delete Users
 userUpdateRouter.delete(
-  "/deleteUser/:user_ID",
+  "/user/:user_ID",
   isAuthenticated,
   isAdminOrManager,
   async (req, res) => {

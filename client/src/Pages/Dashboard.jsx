@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import ManagePasswords from "../components/ManagePasswords.jsx";
 import { useUser } from "../context/UserContext.jsx";
 import CreateManager from "../components/CreateManager.jsx";
-import ManageUserRoles from "../components/ManageUserRoles.jsx";
 import UpdatePassword from "../components/UpdatePassword.jsx";
-import DeleteUsers from "../components/DeleteUsers.jsx";
 import ManageResource from "../components/ManageResource.jsx"
 import ManageFAQs from "../components/ManageFAQs.jsx"
 import CreateStaff from "../components/CreateStaff.jsx";
+import AllUsers from "../components/AllUsers.jsx";
 
 export default function Dashboard() {
   const { user, loading } = useUser();
@@ -60,7 +59,7 @@ export default function Dashboard() {
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Admin Dashboard</h2>
             {/* User Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 User Management
               </summary>
@@ -72,16 +71,13 @@ export default function Dashboard() {
                   <CreateManager/>
                 </div>
                 <div className="w-full m-2">
-                  <ManageUserRoles />
-                </div>
-                <div className="w-full m-2">
-                  <DeleteUsers />
+                  <AllUsers />
                 </div>
               </div>
             </details>
 
             {/* Animal Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" close>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
               </summary>
@@ -100,7 +96,7 @@ export default function Dashboard() {
             </details>
 
             {/* Website Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" close>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Website Management
               </summary>
@@ -124,28 +120,22 @@ export default function Dashboard() {
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Manager Dashboard</h2>
             {/* User Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mb-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 User Management
               </summary>
               <div className="flex flex-row gap-4 text-sm mt-4">
                 <div className="w-full m-2">
-                  <ManagePasswords />
-                </div>
-                <div className="w-full m-2">
                   <CreateStaff/>
                 </div>
                 <div className="w-full m-2">
-                  <ManageUserRoles />
-                </div>
-                <div className="w-full m-2">
-                  <DeleteUsers />
+                  <AllUsers />
                 </div>
               </div>
             </details>
 
             {/* Animal Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" close>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
               </summary>
@@ -164,7 +154,7 @@ export default function Dashboard() {
             </details>
 
             {/* Website Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" close>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Website Management
               </summary>
@@ -188,7 +178,7 @@ export default function Dashboard() {
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Staff Dashboard</h2>
             {/* Animal Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
+            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4">
               <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
                 Animal Management
               </summary>
@@ -219,7 +209,9 @@ export default function Dashboard() {
                   <div><ManageResource/></div>
                 </div>
                 <div className="w-full m-2">
-                  <div>Some other thing</div>
+                <div className="w-full m-2">
+                  <AllUsers />
+                </div>
                 </div>
               </div>
             </details>

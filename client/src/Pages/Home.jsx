@@ -9,7 +9,7 @@ function Home() {
    const { user, loading } = useUser();
   console.log (user)
   return (
-     <div className="flex flex-col min-h-screen">
+     <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       {/* Header */}
       <Header />
       <Nav />
@@ -62,7 +62,7 @@ function Home() {
         {/* View All Pets Button */}
         <div className="mt-6">
           <Link to="/adopt">
-            <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#dc5a4e] transition duration-300">
+            <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#102542]">
               Click here to view all our available pets
             </button>
           </Link>
@@ -70,9 +70,9 @@ function Home() {
       </section>
 
       {/* Welcome Section */}
-      <section className="text-center bg-[#fef7f4] py-10 px-6">
-        <h3 className="text-xl font-bold mb-4">Welcome</h3>
-        <p className="max-w-2xl mx-auto text-gray-700">
+      <section className="text-center dark:bg-[#102542] py-10 px-6">
+        <h3 className="text-xl font-bold mb-4 ">Welcome</h3>
+        <p className="max-w-2xl mx-auto text-gray-700 dark:text-white">
           Thank you for visiting SafePaws Animal Rescue! We are dedicated to connecting loving families with amazing animals. Whether you're looking to adopt, foster, or volunteer, there's a place for you here.
         </p>
       </section>
@@ -83,31 +83,31 @@ function Home() {
     {/*  Resources button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
       <Link to="/resources">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
+      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
         Resources
       </button>
       </Link>
-      <p className="text-sm text-gray-700 max-w-md">
+      <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
     </div>
 
      {/* volunteer button & events */}
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
+      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
         Volunteer
       </button>
-      <p className="text-sm text-gray-700 max-w-md">
+      <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
     </div>
 
     {/*  events button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
+      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
         Events
       </button>
-      <p className="text-sm text-gray-700 max-w-md">
+      <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
     </div>
@@ -115,10 +115,10 @@ function Home() {
      {/*  Applications button & text */}
      <Link to={"/application"}>
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
+      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
         Applications
       </button>
-      <p className="text-sm text-gray-700 max-w-md">
+      <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
     </div>

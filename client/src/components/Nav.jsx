@@ -8,6 +8,7 @@ function Nav() {
 
   //logout function
   const handleLogout = () => {
+        localStorage.clear();
         logout();
         navigate('/');
     };

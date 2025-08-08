@@ -3,12 +3,14 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import React from "react";
 import ApplyNow from '../components/ApplyNow.jsx'
+import Nav from "../components/Nav.jsx";
 
 
 function Application() {
     return (
         <div className="min-h-screen bg-white flex flex-col">
             <Header />
+            <Nav />
                 {/* Left Sidebar */}
             <main className="flex flex-1 p-8 gap-8">
 

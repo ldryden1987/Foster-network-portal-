@@ -12,7 +12,7 @@ export default function Signup() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-const { user , setUser} = useUser();
+const { user , login} = useUser();
 
   async function handleSignUp(event) {
     try {
@@ -36,11 +36,13 @@ const { user , setUser} = useUser();
       if (response.ok) {
          // Store session token
         localStorage.setItem("sessionToken", result.sessionToken);
+        console.log(result.sessionToken)
         
         // Store user info if provided in response
         if (result.user) {
           localStorage.setItem("userInfo", JSON.stringify(result.user));
-          setUser(result.user);
+          console.log(result.user)
+          login(result.user, result.sessionToken);
         }
         // Navigate back to previous page (user is now signed in)
         const urlParams = new URLSearchParams(location.search);

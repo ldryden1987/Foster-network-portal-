@@ -67,7 +67,10 @@ authRouter.post('/signup', async (req, res) => {
                 process.env.JWT_SECRET,
                 { expiresIn: 60 * 60 * 24 }
             );
-            res.json({ message: 'Sign up successful', sessionToken });
+             // Add user data to self-signup response
+    const userResponse = newUser.toObject();
+    delete userResponse.password;
+            res.json({ message: 'Sign up successful', sessionToken, user: userResponse });
         } else {
             // Admin creating user - don't return session token
             const userResponse = newUser.toObject();

@@ -125,10 +125,10 @@ export default function Dashboard() {
                 User Management
               </summary>
               <div className="flex flex-row gap-4 text-sm mt-4">
-                <div className="w-full m-2">
+                <div className="w-1/3 m-2">
                   <CreateStaff/>
                 </div>
-                <div className="w-full m-2">
+                <div className="w-2/3 m-2">
                   <AllUsers />
                 </div>
               </div>
@@ -202,18 +202,14 @@ export default function Dashboard() {
                 Website Management
               </summary>
               <div className="flex flex-row gap-4 mt-4">
-                <div className="w-full m-2">
+                <div className="w-1/3 m-2">
                   <div><ManageFAQs/></div>
-                </div>
-                <div className="w-full m-2">
                   <div><ManageResource/></div>
                 </div>
-                <div className="w-full m-2">
-                <div className="w-full m-2">
+                <div className="w-3/4 m-2">
                   <AllUsers />
                 </div>
                 </div>
-              </div>
             </details>
           </section>
         );

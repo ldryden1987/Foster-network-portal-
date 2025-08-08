@@ -145,7 +145,7 @@ userUpdateRouter.put(
 
 // Dedicated route for admin/Manager to reset user passwords
 userUpdateRouter.put(
-  "/resetPasswordAdmin/:user_ID",
+  "/user/resetPasswordAdmin/:user_ID",
   isAuthenticated,
   isAdminOrManager,
   async (req, res) => {

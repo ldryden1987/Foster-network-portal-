@@ -9,7 +9,7 @@ import UpdatePassword from "../components/UpdatePassword.jsx";
 import ManageResource from "../components/ManageResource.jsx"
 import ManageFAQs from "../components/ManageFAQs.jsx"
 import CreateStaff from "../components/CreateStaff.jsx";
-// import AllUsers from "../components/AllUsers.jsx";
+import AllUsers from "../components/AllUsers.jsx";
 
 export default function Dashboard() {
   const { user, loading } = useUser();
@@ -71,7 +71,7 @@ export default function Dashboard() {
                   <CreateManager/>
                 </div>
                 <div className="w-full m-2">
-                  {/* <AllUsers /> */}
+                  <AllUsers />
                 </div>
               </div>
             </details>
@@ -129,7 +129,7 @@ export default function Dashboard() {
                   <CreateStaff/>
                 </div>
                 <div className="w-2/3 m-2">
-                  {/* <AllUsers /> */}
+                  <AllUsers />
                 </div>
               </div>
             </details>
@@ -207,7 +207,7 @@ export default function Dashboard() {
                   <div><ManageResource/></div>
                 </div>
                 <div className="w-3/4 m-2">
-                  {/* <AllUsers /> */}
+                  <AllUsers />
                 </div>
                 </div>
             </details>
@@ -401,7 +401,7 @@ export default function Dashboard() {
                 Welcome, {user.firstName || user.email}!
               </h1>
               <p className="mb-4">
-                Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                Role: {user?.role?.charAt(0).toUpperCase() + user?.role?.slice(1) || 'No Role Assigned'}
               </p>
             </div>
             <div>

@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import React from "react";
+import ApplyNow from '../components/ApplyNow.jsx'
 
 
 function Application() {
@@ -43,11 +44,15 @@ function Application() {
                     Click the button below to get started with your application.
                 </p>
 
+                <ApplyNow/>
+
+                {/* Changed to a Component SLA 
                 <Link to="/apply">
                     <button className="mt-6 px-6 py-3 bg-blue-600 text-white text-lg rounded-xl hover:bg-blue-700 transition">
                         Apply Now
                     </button>
-                </Link>
+                </Link> */}
+
                 </section>
             </main>
 

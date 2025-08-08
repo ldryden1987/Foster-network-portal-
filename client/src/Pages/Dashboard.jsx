@@ -9,47 +9,47 @@ import UpdatePassword from "../components/UpdatePassword.jsx";
 import ManageResource from "../components/ManageResource.jsx"
 import ManageFAQs from "../components/ManageFAQs.jsx"
 import CreateStaff from "../components/CreateStaff.jsx";
-import AllUsers from "../components/AllUsers.jsx";
+// import AllUsers from "../components/AllUsers.jsx";
 
 export default function Dashboard() {
   const { user, loading } = useUser();
 
   // Loading state
-  // if (loading) {
-  //   return (
-  //     <div className="flex flex-col min-h-screen">
-  //       <Header />
-  //       <Nav />
-  //       <main className="flex-1 flex items-center justify-center">
-  //         <div>Loading dashboard...</div>
-  //       </main>
-  //       <Footer />
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <Nav />
+        <main className="flex-1 flex items-center justify-center">
+          <div>Loading dashboard...</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
-  // // Not authenticated
-  // if (!user) {
-  //   return (
-  //     <div className="flex flex-col min-h-screen">
-  //       <Header />
-  //       <Nav />
-  //       <main className="flex-1 flex items-center justify-center">
-  //         <div className="text-center">
-  //           <h2 className="text-2xl font-bold mb-4">Access Denied</h2>
-  //           <p>Please log in to access your dashboard.</p>
-  //           <Link
-  //             to="/signin"
-  //             className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded"
-  //           >
-  //             Login
-  //           </Link>
-  //         </div>
-  //       </main>
-  //       <Footer />
-  //     </div>
-  //   );
-  //}
+  // Not authenticated
+  if (!user) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <Nav />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold mb-4">Access Denied</h2>
+            <p>Please log in to access your dashboard.</p>
+            <Link
+              to="/signin"
+              className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              Login
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   // Render dashboard based on user role
   const renderDashboardContent = () => {
@@ -71,7 +71,7 @@ export default function Dashboard() {
                   <CreateManager/>
                 </div>
                 <div className="w-full m-2">
-                  <AllUsers />
+                  {/* <AllUsers /> */}
                 </div>
               </div>
             </details>
@@ -129,7 +129,7 @@ export default function Dashboard() {
                   <CreateStaff/>
                 </div>
                 <div className="w-2/3 m-2">
-                  <AllUsers />
+                  {/* <AllUsers /> */}
                 </div>
               </div>
             </details>
@@ -207,7 +207,7 @@ export default function Dashboard() {
                   <div><ManageResource/></div>
                 </div>
                 <div className="w-3/4 m-2">
-                  <AllUsers />
+                  {/* <AllUsers /> */}
                 </div>
                 </div>
             </details>
@@ -387,40 +387,34 @@ export default function Dashboard() {
     }
   };
 
-//   return (
-//     <div className="flex flex-col min-h-screen">
-//       <Header />
-//       <Nav />
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <Nav />
 
-//       <main className="flex flex-row px-8 py-8">
-//         {/* Welcome message */}
-//         <div className="w-full">
-//           <div className="mb-4 flex items-center justify-between">
-//             <div>
-//               <h1 className="text-3xl font-bold">
-//                 Welcome, {user.firstName || user.email}!
-//               </h1>
-//               <p className="mb-4">
-//                 Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-//               </p>
-//             </div>
-//             <div>
-//               <UpdatePassword />
-//             </div>
-//           </div>
+      <main className="flex flex-row px-8 py-8">
+        {/* Welcome message */}
+        <div className="w-full">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">
+                Welcome, {user.firstName || user.email}!
+              </h1>
+              <p className="mb-4">
+                Role: {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+              </p>
+            </div>
+            <div>
+              <UpdatePassword />
+            </div>
+          </div>
 
-//           {/* Role-specific dashboard content */}
-//           {renderDashboardContent()}
-//         </div>
-//       </main>
+          {/* Role-specific dashboard content */}
+          {renderDashboardContent()}
+        </div>
+      </main>
 
-//       <Footer />
-//     </div>
-//   );
-// 
-return (
-  <>Hi</>
- )
- }
-
- 
+      <Footer />
+    </div>
+  );
+}

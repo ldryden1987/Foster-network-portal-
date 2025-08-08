@@ -2,27 +2,32 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
 export default async function isAuthenticated(req, res, next) {
-    try{
-         // Get token from Authorization header
-        const sessionToken = req.headers.authorization; // must be added to the value of the Authorization Key in the Headers in PostMan to test!
-        if (!sessionToken) {
-            return res.json({ error: "Authentication token missing. Please sign in to continue." });
+    try {
+        console.log("isAuthenticated middleware - Start");
+        console.log("- Authorization header:", req.headers.authorization);
+        
+        const token = req.headers.authorization;
+        if (!token) {
+            console.log("isAuthenticated - No token provided");
+            return res.status(401).json({ error: "Authorization token required" });
         }
 
-    // Verify and decode token
-    const decoded = jwt.verify(sessionToken, process.env.JWT_SECRET);
-    // Find user by ID from token
-    const user = await User.findById(decoded._id);
-    if (!user) {
-      return res.status(401).json({ error: "User not found. Invalid or expired token." });
-    }
-    if (user.role !== 'staff' && user.role !== 'admin') {
-      return res.status(403).json({ error: "Access denied. Administrator privileges required." });
-    }
-    req.user = user;
-    next(); //continue on to the route handler
+        //token verification
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("isAuthenticated - Token decoded:", decoded);
+        
+        //decode token
+        const user = await User.findById(decoded._id);
+        if (!user) {
+            console.log("isAuthenticated - User not found with ID:", decoded._id);
+            return res.status(401).json({ error: "User not found" });
+        }
 
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+        console.log("isAuthenticated - User found:", user.email, "Role:", user.role);
+        req.user = user;
+        next();
+    } catch (err) {
+        console.error("isAuthenticated middleware error:", err);
+        res.status(401).json({ error: "Invalid token" });
+    }
 }

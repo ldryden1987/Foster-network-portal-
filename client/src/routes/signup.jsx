@@ -1,15 +1,18 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 export default function Signup() {
   const navigate = useNavigate();
   const [showSignInLink, setShowSignInLink] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+const { user , setUser} = useUser();
 
   async function handleSignUp(event) {
     try {
@@ -31,9 +34,23 @@ export default function Signup() {
       const result = await response.json();
 
       if (response.ok) {
+         // Store session token
         localStorage.setItem("sessionToken", result.sessionToken);
-        alert(`You have successfully created an account! Please sign in to continue.`);
-        navigate("/signin");
+        
+        // Store user info if provided in response
+        if (result.user) {
+          localStorage.setItem("userInfo", JSON.stringify(result.user));
+          setUser(result.user);
+        }
+        // Navigate back to previous page (user is now signed in)
+        const urlParams = new URLSearchParams(location.search);
+        const returnTo = urlParams.get('returnTo');
+        //if there are urlParams, will navigate back to that URL. If not, will move to dashboard
+        if (returnTo) {
+          navigate(returnTo);
+        } else {
+        navigate("/dashboard");
+        }
       } else {
         if (result.error === "User already exists") {
           console.log(result.error);

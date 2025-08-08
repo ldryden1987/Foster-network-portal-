@@ -2,7 +2,6 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx";
 import { Link } from "react-router-dom";
-import ManagePasswords from "../components/ManagePasswords.jsx";
 import { useUser } from "../context/UserContext.jsx";
 import CreateManager from "../components/CreateManager.jsx";
 import UpdatePassword from "../components/UpdatePassword.jsx";
@@ -64,13 +63,10 @@ export default function Dashboard() {
                 User Management
               </summary>
               <div className="flex flex-row gap-4 text-sm mt-4">
-                <div className="w-full m-2">
-                  <ManagePasswords />
-                </div>
-                <div className="w-full m-2">
+                <div className="w-1/3 m-2">
                   <CreateManager/>
                 </div>
-                <div className="w-full m-2">
+                <div className="w-2/3 m-2">
                   <AllUsers />
                 </div>
               </div>

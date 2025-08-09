@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
-import { getRoleColor, getStatusColor} from "../utils/userColors"
+import { getRoleColor, getStatusColor } from "../utils/userColors";
 import DeleteUser from "./DeleteUser";
 import ResetPassword from "./ResetPassword";
 import UpdateUser from "./UpdateUser";
@@ -128,13 +128,25 @@ export default function DisplayUser() {
                     "?"}
                 </span>
               </div>
+
               <div className="ml-4">
                 <h2 className="text-xl font-semibold text-gray-900">
                   {selectedUser.firstName && selectedUser.lastName
                     ? `${selectedUser.firstName} ${selectedUser.lastName}`
                     : selectedUser.name || "No Name"}
-                </h2>
-                <p className="text-gray-600">{selectedUser.email}</p>
+                </h2>{" "}
+                <a
+                  href={`mailto:${selectedUser.email}`}
+                  className="text-blue-600 hover:underline"
+                >
+                  {selectedUser.email}
+                </a>
+                <span className="text-sm text-gray-700 font-medium block">
+                  Joined:{" "}
+                  {selectedUser.createdAt
+                    ? new Date(selectedUser.createdAt).toLocaleDateString()
+                    : "Unknown"}
+                </span>
                 <div className="flex gap-2 mt-2">
                   <span
                     className={`px-2 py-1 text-xs font-semibold rounded border ${getRoleColor(
@@ -160,94 +172,80 @@ export default function DisplayUser() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  First Name
+                  Street 1
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.firstName || "Not provided"}
+                  {selectedUser.street1 || "Not provided"}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Last Name
+                  Street 2
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.lastName || "Not provided"}
+                  {selectedUser.street1 || "Not provided"}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Email
+                  City
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.email}
+                  {selectedUser.city || "Not provided"}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Phone Number
+                  State
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.phone || "Not provided"}
+                  {selectedUser.state || "Not provided"}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Role
+                  Zip Code
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.role || "Not assigned"}
+                  {selectedUser.zip || "Not provided"}
                 </p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Status
+                  Phone
                 </label>
                 <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.status || "Unknown"}
+                  {selectedUser.phone || "Unknown"}
                 </p>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Joined
-                </label>
-                <p className="mt-1 text-sm text-gray-900">
-                  {selectedUser.createdAt
-                    ? new Date(selectedUser.createdAt).toLocaleDateString()
-                    : "Unknown"}
-                </p>
-              </div>
-
-              </div>
-                            {/* Admin/Manager User Maintenance Buttons */}
-              <div className="px-6 py-4 border-t flex flex-row gap-2 justify-center">
-                <ResetPassword
-                  userId={selectedUser._id}
-                  userName={
-                    selectedUser.firstName && selectedUser.lastName
-                      ? `${selectedUser.firstName} ${selectedUser.lastName}`
-                      : selectedUser.email
-                  }
-                />
-                <UpdateUser
-                  userId={selectedUser._id}
-                  userData={selectedUser}
-                  userName={
-                    selectedUser.firstName && selectedUser.lastName
-                      ? `${selectedUser.firstName} ${selectedUser.lastName}`
-                      : selectedUser.email
-                  }
-                />
-                <DeleteUser
-                  userId={selectedUser._id}
-                  userName={
-                    selectedUser.firstName && selectedUser.lastName
-                      ? `${selectedUser.firstName} ${selectedUser.lastName}`
-                      : selectedUser.email
-                  }
-                  onDeleteSuccess={() => {
-                    navigate("/dashboard");
-                  }}
-                />
+            </div>
+            {/* Admin/Manager User Maintenance Buttons */}
+            <div className="px-6 py-4 border-t flex flex-row gap-2 justify-center">
+              <ResetPassword
+                userId={selectedUser._id}
+                userName={
+                  selectedUser.firstName && selectedUser.lastName
+                    ? `${selectedUser.firstName} ${selectedUser.lastName}`
+                    : selectedUser.email
+                }
+              />
+              <UpdateUser
+                userId={selectedUser._id}
+                userData={selectedUser}
+                onUpdateSuccess={() => fetchUser()
+                }
+              />
+              <DeleteUser
+                userId={selectedUser._id}
+                userName={
+                  selectedUser.firstName && selectedUser.lastName
+                    ? `${selectedUser.firstName} ${selectedUser.lastName}`
+                    : selectedUser.email
+                }
+                onDeleteSuccess={() => {
+                  navigate("/dashboard");
+                }}
+              />
             </div>
           </div>
         </div>

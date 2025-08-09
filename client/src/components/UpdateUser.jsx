@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getRoleColor, getStatusColor } from "../utils/userColors";
+import { roleOptions, statusOptions } from "../utils/userColors";
 
 export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +13,12 @@ export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
     email: "",
     phone: "",
     role: "",
-    status: ""
+    status: "",
+    street1: "",
+    street2: "",
+    city: "",
+    state: "",
+    zip: ""
   });
   const navigate = useNavigate();
 
@@ -24,7 +29,12 @@ export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
       email: userData?.email || "",
       phone: userData?.phone || "",
       role: userData?.role || "",
-      status: userData?.status || ""
+      status: userData?.status || "",
+      street1: userData?.street1 || "",
+      street2: userData?.street2 || "",
+      city: userData?.city || "",
+      state: userData?.state || "",
+      zip: userData?.zip || "",
     });
     setIsModalOpen(true);
     setError("");
@@ -124,7 +134,12 @@ export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
       email: "",
       phone: "",
       role: "",
-      status: ""
+      status: "",
+      street1: "",
+      street2: "",
+      city: "",
+      state: "",
+      zip: ""
     });
   };
 
@@ -217,7 +232,7 @@ export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
                   />
                 </div>
               </div>
-
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email
@@ -249,6 +264,89 @@ export default function UpdateUser({ userId, userData, onUpdateSuccess }) {
                   disabled={isUpdating || success}
                 />
               </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="street1" className="block text-sm font-medium text-gray-700 mb-1">
+                  Street 1
+                </label>
+                <input
+                  id="street1"
+                  name="street1"
+                  type="string"
+                  value={formData.street1}
+                  onChange={handleInputChange}
+                  placeholder="Enter street 1"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isUpdating || success}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="street2" className="block text-sm font-medium text-gray-700 mb-1">
+                  Street 2
+                </label>
+                <input
+                  id="street2"
+                  name="street2"
+                  type="string"
+                  value={formData.street2}
+                  onChange={handleInputChange}
+                  placeholder="Enter street 2"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isUpdating || success}
+                />
+              </div>
+              </div>
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div>
+    <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
+      City
+    </label>
+    <input
+      id="city"
+      name="city"
+      type="text"
+      value={formData.city}
+      onChange={handleInputChange}
+      placeholder="Enter city"
+      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      disabled={isUpdating || success}
+    />
+  </div>
+  <div>
+    <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
+      State
+    </label>
+    <input
+      id="state"
+      name="state"
+      type="text"
+      value={formData.state}
+      onChange={handleInputChange}
+      placeholder="Enter state"
+      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      disabled={isUpdating || success}
+    />
+  </div>
+  <div>
+    <label htmlFor="zip" className="block text-sm font-medium text-gray-700 mb-1">
+      Zip Code
+    </label>
+    <input
+      id="zip"
+      name="zip"
+      type="text"
+      value={formData.zip}
+      onChange={handleInputChange}
+      placeholder="Enter zip code"
+      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      disabled={isUpdating || success}
+    />
+  </div>
+</div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

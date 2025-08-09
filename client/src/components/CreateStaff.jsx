@@ -208,7 +208,7 @@ export default function CreateStaff() {
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Phone Number:</label>
               <input
-                type="string"
+                type="tel"
                 name="phone"
                 placeholder="Phone Number"
                 required

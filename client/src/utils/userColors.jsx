@@ -21,3 +21,20 @@ export const getStatusColor = (status) => {
   };
   return colors[status?.toLowerCase()] || "bg-gray-100 text-gray-800 border-gray-200";
 };
+
+export const roleOptions = [
+  { value: "admin", label: "Admin" },
+  { value: "manager", label: "Manager" },
+  { value: "staff", label: "Staff" },
+  { value: "foster", label: "Foster" },
+  { value: "adopter", label: "Adopter" },
+  { value: "volunteer", label: "Volunteer" },
+  { value: "initial", label: "Initial" }
+];
+
+export const statusOptions = [
+  { value: "approved", label: "Approved" },
+  { value: "pending", label: "Pending" },
+  { value: "denied", label: "Denied" },
+  { value: "initial", label: "Initial"}
+]

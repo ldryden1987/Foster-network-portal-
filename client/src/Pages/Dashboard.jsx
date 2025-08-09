@@ -210,50 +210,6 @@ export default function Dashboard() {
           </section>
         );
 
-      case "volunteer":
-        return (
-          <section className="flex flex-col h-full">
-            <h2 className="text-2xl font-bold mb-6">Volunteer Dashboard</h2>
-
-            {/* Animal Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4 mb-4" open>
-              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
-                Animal Management
-              </summary>
-              <div className="flex flex-row gap-4 mt-4">
-                <div className="w-full m-2">
-                  {/* Placeholder for animal management component */}
-                  <div>Animal Intake</div>
-                </div>
-                <div className="w-full m-2">
-                  <div>Manage Animal Records</div>
-                </div>
-                <div className="w-full m-2">
-                  <div>Adoption Status</div>
-                </div>
-              </div>
-            </details>
-
-            {/* Website Management Collapsible */}
-            <details className="rounded-lg p-4 border-2 border-[#F87575] text-left mt-4" open>
-              <summary className="text-lg font-semibold mb-4 cursor-pointer select-none">
-                Website Management
-              </summary>
-              <div className="flex flex-row gap-4 mt-4">
-                <div className="w-full m-2">
-                  <div><ManageFAQs/></div>
-                </div>
-                <div className="w-full m-2">
-                  <div><ManageResource/></div>
-                </div>
-                <div className="w-full m-2">
-                  <div>Some other thing</div>
-                </div>
-              </div>
-            </details>
-          </section>
-        );
-
       case "foster":
         return (
           <section className="flex flex-col h-full">
@@ -343,6 +299,7 @@ export default function Dashboard() {
         );
 
       case "initial":
+      case "volunteer":
         return (
           <section className="flex flex-col h-full">
             <h2 className="text-2xl font-bold mb-6">Dashboard</h2>

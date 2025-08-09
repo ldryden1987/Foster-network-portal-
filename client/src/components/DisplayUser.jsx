@@ -220,33 +220,34 @@ export default function DisplayUser() {
               </div>
             </div>
             {/* Admin/Manager User Maintenance Buttons */}
-            <div className="px-6 py-4 border-t flex flex-row gap-2 justify-center">
-              <ResetPassword
-                userId={selectedUser._id}
-                userName={
-                  selectedUser.firstName && selectedUser.lastName
-                    ? `${selectedUser.firstName} ${selectedUser.lastName}`
-                    : selectedUser.email
-                }
-              />
-              <UpdateUser
-                userId={selectedUser._id}
-                userData={selectedUser}
-                onUpdateSuccess={() => fetchUser()
-                }
-              />
-              <DeleteUser
-                userId={selectedUser._id}
-                userName={
-                  selectedUser.firstName && selectedUser.lastName
-                    ? `${selectedUser.firstName} ${selectedUser.lastName}`
-                    : selectedUser.email
-                }
-                onDeleteSuccess={() => {
-                  navigate("/dashboard");
-                }}
-              />
-            </div>
+            {user?.role !== "staff" && (
+              <div className="px-6 py-4 border-t flex flex-row gap-2 justify-center">
+                <ResetPassword
+                  userId={selectedUser._id}
+                  userName={
+                    selectedUser.firstName && selectedUser.lastName
+                      ? `${selectedUser.firstName} ${selectedUser.lastName}`
+                      : selectedUser.email
+                  }
+                />
+                <UpdateUser
+                  userId={selectedUser._id}
+                  userData={selectedUser}
+                  onUpdateSuccess={() => fetchUser()}
+                />
+                <DeleteUser
+                  userId={selectedUser._id}
+                  userName={
+                    selectedUser.firstName && selectedUser.lastName
+                      ? `${selectedUser.firstName} ${selectedUser.lastName}`
+                      : selectedUser.email
+                  }
+                  onDeleteSuccess={() => {
+                    navigate("/dashboard");
+                  }}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}

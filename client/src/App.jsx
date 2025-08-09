@@ -12,7 +12,6 @@ import Dashboard from './Pages/Dashboard.jsx'
 import ApplicationForm from "./Pages/ApplicationForm.jsx";
 import Animals from "./routes/Animals.jsx";
 import DisplayUser from "./components/DisplayUser.jsx";
-
 function App() {
   return (
     <UserProvider>

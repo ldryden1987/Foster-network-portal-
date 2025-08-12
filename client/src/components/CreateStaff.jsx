@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function CreateManager() {
+export default function CreateStaff() {
   // State variables
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,8 +40,8 @@ export default function CreateManager() {
     }
   };
 
-  // Create new manager
-  const handleCreateManager = async (event) => {
+  // Create new Staff
+  const handleCreateStaff = async (event) => {
     event.preventDefault();
     setLoading(true);
     setMessage("");
@@ -50,7 +50,7 @@ export default function CreateManager() {
     const data = Object.fromEntries(formData);
 
     // Add manager role to the data
-    data.role = "manager";
+    data.role = "staff";
     data.status = "approved";
 
     if (!data.firstName || !data.lastName || !data.email || !data.password) {
@@ -74,14 +74,14 @@ export default function CreateManager() {
       );
 
       if (response.ok) {
-        setMessage("Manager created successfully.");
+        setMessage("Staff created successfully.");
         fetchUsers();
         event.target.reset();
         setShowCreateForm(false);
       } else {
         const errorResult = await response.json();
         setMessage(
-          `Failed to create manager: ${errorResult.error || "Unknown error"}`
+          `Failed to create Staff: ${errorResult.error || "Unknown error"}`
         );
       }
     } catch (err) {
@@ -101,7 +101,7 @@ export default function CreateManager() {
             setShowCreateForm(!showCreateForm);
           }}
         >
-          {showCreateForm ? "Cancel Create" : "Create New Manager"}
+          {showCreateForm ? "Cancel Create" : "Create New Staff"}
         </button>
       </div>
       {/* Success/Error message */}
@@ -114,8 +114,8 @@ export default function CreateManager() {
       {/* Create New Manager Form */}
       {showCreateForm && (
         <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold">Create New Manager</h3>
-          <form onSubmit={handleCreateManager} className="flex flex-col gap-4">
+          <h3 className="mb-4 text-lg font-semibold">Create New Staff</h3>
+          <form onSubmit={handleCreateStaff} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">First Name:</label>
               <input
@@ -221,7 +221,7 @@ export default function CreateManager() {
               disabled={loading}
               className="px-4 py-2 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition disabled:opacity-60"
             >
-              {loading ? "Creating..." : "Create Manager"}
+              {loading ? "Creating..." : "Create Staff"}
             </button>
           </form>
         </div>

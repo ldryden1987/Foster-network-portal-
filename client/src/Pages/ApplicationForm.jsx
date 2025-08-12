@@ -213,7 +213,7 @@ function ApplicationForm() {
   const isVolunteer = formData.type === "Volunteer";
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <main className="flex-grow">
         <div className="max-w-4xl mx-auto p-8">

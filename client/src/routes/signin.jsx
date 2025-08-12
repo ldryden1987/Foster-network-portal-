@@ -1,10 +1,10 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import { useUser } from "../context/UserContext.jsx";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -12,6 +12,9 @@ export default function Signin() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { login } = useUser(); // Get the login function from context
+    const location = useLocation();
+    
+
 
   // Check for existing session token on component mount
   useEffect(() => {
@@ -45,12 +48,31 @@ export default function Signin() {
       if (response.ok) {
         login(result.user, result.sessionToken);
         setIsLoggedIn(true);
-        navigate(`/dashboard/`);
+        // Store session token
+        localStorage.setItem("sessionToken", result.sessionToken);
+        
+        // Store user info if provided in response
+        if (result.user) {
+          localStorage.setItem("userInfo", JSON.stringify(result.user));
+          // Use the login function to update UserContext
+      login(result.user, result.sessionToken);
+      setIsLoggedIn(true);
+        }
+        // Navigate back to previous page (user is now signed in)
+        const urlParams = new URLSearchParams(location.search);
+        const returnTo = urlParams.get('returnTo');
+        //if there are urlParams, will navigate back to that URL. If not, will move to dashboard
+        if (returnTo) {
+          navigate(returnTo);
+        } else {
+        navigate("/dashboard");
+        }
       } else {
         setErrorMessage(result.error || "Sign in failed");
       }
     } catch (err) {
       setErrorMessage("Network error. Please try again.");
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -58,7 +80,7 @@ export default function Signin() {
 
   // Login Form
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <Nav />
       <div className="flex items-center justify-center flex-1">
@@ -105,7 +127,7 @@ export default function Signin() {
               <div className="flex justify-center items-center gap-2 mt-2">
                 <span>Don't have an account?</span>
                 <Link to = "/signup"
-                  className="text-[#CDD7D6] underline whitespace-nowrap"
+                  className="text-[#CDD7D6] underline whitespace-nowrap hover:text-[#102542]"
                 >
                   Click here to create one!
                 </Link>

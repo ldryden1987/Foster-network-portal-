@@ -21,27 +21,65 @@ function authenticateToken(req, res, next) {
 
 authRouter.post('/signup', async (req, res) => {
     try {
+        // Check if this is an admin creating a user (has Authorization header)
+        const isAdminCreating = req.headers['authorization'];
+        let requestorRole = null;
+        
+        if (isAdminCreating) {
+            // Verify the admin token
+            const token = req.headers['authorization'];
+            try {
+                const decoded = jwt.verify(token, process.env.JWT_SECRET);
+                const requestor = await User.findById(decoded._id);
+                requestorRole = requestor?.role;
+                
+                // Only admin can create manager accounts
+                if (req.body.role === 'manager' && requestorRole !== 'admin') {
+                    return res.status(403).json({ error: 'Only admins can create manager accounts' });
+                }
+            } catch (err) {
+                return res.status(403).json({ error: 'Invalid authorization token' });
+            }
+        }
+
         // Check if user already exists
-        const existingUser = await User.findOne({ email: req.body.email.toLowerCase(), });
+        const existingUser = await User.findOne({ email: req.body.email.toLowerCase() });
         if (existingUser) {
             return res.status(400).json({ error: 'User already exists' });
         }
+
         // Encrypt password to store in the db
         const passwordHash = bcrypt.hashSync(req.body.password, 10);
+        
         const newUser = new User({
             ...req.body,
             password: passwordHash,
-            role: 'initial',
-            status: 'initial'
+            role: isAdminCreating ? (req.body.role || 'initial') : 'initial',
+            status: isAdminCreating ? 'approved' : 'initial' // Admin-created users are pre-approved
         });
+        
         await newUser.save();
-        // Create a sessionToken that is unique to one person _id and JWT Secret
-        const sessionToken = jwt.sign(
-            { _id: newUser._id },
-            process.env.JWT_SECRET,
-            { expiresIn: 60 * 60 * 24 }
-        );
-        res.json({ message: 'Sign up successful', sessionToken });
+
+        // Only create session token for self-signup, not admin-created accounts
+        if (!isAdminCreating) {
+            const sessionToken = jwt.sign(
+                { _id: newUser._id },
+                process.env.JWT_SECRET,
+                { expiresIn: 60 * 60 * 24 }
+            );
+             // Add user data to self-signup response
+    const userResponse = newUser.toObject();
+    delete userResponse.password;
+            res.json({ message: 'Sign up successful', sessionToken, user: userResponse });
+        } else {
+            // Admin creating user - don't return session token
+            const userResponse = newUser.toObject();
+            delete userResponse.password;
+            res.status(201).json({ 
+                message: `${newUser.role} created successfully`, 
+                user: userResponse 
+            });
+        }
     } catch (err) {
         res.status(400).json({ error: err.message });
         console.log(err);
@@ -66,7 +104,7 @@ authRouter.post('/signin', async (req, res) => {
             return res.status(400).json( { error: "incorrect password"});
         }
             const sessionToken = jwt.sign(
-            {_id: user._id},
+            { _id: user._id },
             process.env.JWT_SECRET,
             //expires in 1 day
             { expiresIn: 60 *60 *24 }

@@ -3,11 +3,13 @@ import Header from "../components/Header";
 import Nav from "../components/Nav";
 import { useState, useRef, useEffect } from "react";
 import UploadAnimal from "../components/UploadAnimal";
+import { useUser } from "../context/UserContext.jsx"
 
 export default function Animals() {
   const inputFileRef = useRef(null);
   const [blob, setBlob] = useState(null);
   const [animals, setAnimals] = useState([]);
+  const { user } = useUser();
 
   useEffect(() => {
     async function doFetch() {
@@ -22,10 +24,16 @@ export default function Animals() {
 
     doFetch();
   }, []);
+
+    // Helper function to check if user can upload animals
+  const canUploadAnimals = () => {
+    return user && (user.role === "admin" || user.role === "manager" || user.role === "staff");
+  };
+
 console.log(animals);
 console.log(animals.length);
   return (
-    <div>
+    <div className="dark:bg-[#102542]">
       <Header />
       <Nav />
       <main className="flex flex-col m-2">
@@ -53,24 +61,28 @@ console.log(animals.length);
         </div>
 
         {/* upload animal component needs admin authentication  */}
-        <button
-          className="btn max-w-100 mx-auto mb-8"
-          onClick={() => document.getElementById("my_modal_1").showModal()}
-        >
-          Upload New Animal
-        </button>
-        <dialog id="my_modal_1" className="modal">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Upload New Animal</h3>
-            <UploadAnimal />
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn">Close</button>
-              </form>
-            </div>
+        {canUploadAnimals() && (
+          <div>
+            <button
+              className="btn max-w-100 mx-auto mb-8"
+              onClick={() => document.getElementById("my_modal_1").showModal()}
+            >
+              Upload New Animal
+            </button>
+            <dialog id="my_modal_1" className="modal">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">Upload New Animal</h3>
+                <UploadAnimal />
+                <div className="modal-action">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn">Close</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
           </div>
-        </dialog>
+        )}
       </main>
 
       <Footer />

@@ -12,9 +12,9 @@ function Footer() {
 
   <div className="flex flex-col items-center text-[#102542]">
     <span className="footer-title font-bold">Services</span>
-    <Link className="link link-hover">Adopt</Link>
-    <Link className="link link-hover">Volunteer</Link>
-    <Link className="link link-hover">Foster</Link>
+    <Link to="/application" className="link link-hover">Adopt</Link>
+    <Link to="/application" className="link link-hover">Volunteer</Link>
+    <Link to="/application" className="link link-hover">Foster</Link>
   </div>
 
   <div className="flex flex-col items-center text-[#102542]">

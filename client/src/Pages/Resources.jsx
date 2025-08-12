@@ -8,7 +8,7 @@ import DisplayFAQs from "../components/DisplayFAQs.jsx";
 
 export default function ResourcesPage() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen dark:bg-[#102542]">
             <Header />
             <Nav />
         

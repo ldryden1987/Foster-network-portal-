@@ -74,7 +74,7 @@ const { user , login} = useUser();
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <Nav />
       <div className="flex items-center justify-center flex-1">
@@ -136,7 +136,7 @@ const { user , login} = useUser();
                 <span>Have an account already?</span>
                 <Link
                   to="/signin"
-                  className="text-[#CDD7D6] underline whitespace-nowrap"
+                  className="text-[#CDD7D6] underline whitespace-nowrap hover:text-[#102542]"
                 >
                   Click here to sign in!
                 </Link>

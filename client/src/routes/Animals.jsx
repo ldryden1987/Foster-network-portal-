@@ -33,7 +33,7 @@ export default function Animals() {
 console.log(animals);
 console.log(animals.length);
   return (
-    <div>
+    <div className="dark:bg-[#102542]">
       <Header />
       <Nav />
       <main className="flex flex-col m-2">

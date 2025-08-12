@@ -67,7 +67,7 @@ function ApplicationForm() {
   const isVolunteer = formData.type === "Volunteer";
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <main className="flex-grow">
         <div className="max-w-4xl mx-auto p-8">
@@ -127,7 +127,7 @@ function ApplicationForm() {
               </>
             )}
 
-            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <button type="submit" className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
               Submit {formData.type} Application
             </button>
           </form>

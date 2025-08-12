@@ -80,7 +80,7 @@ export default function Signin() {
 
   // Login Form
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <Nav />
       <div className="flex items-center justify-center flex-1">
@@ -127,7 +127,7 @@ export default function Signin() {
               <div className="flex justify-center items-center gap-2 mt-2">
                 <span>Don't have an account?</span>
                 <Link to = "/signup"
-                  className="text-[#CDD7D6] underline whitespace-nowrap"
+                  className="text-[#CDD7D6] underline whitespace-nowrap hover:text-[#102542]"
                 >
                   Click here to create one!
                 </Link>

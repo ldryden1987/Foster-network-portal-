@@ -1,15 +1,18 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 export default function Signup() {
   const navigate = useNavigate();
   const [showSignInLink, setShowSignInLink] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+const { user , login} = useUser();
 
   async function handleSignUp(event) {
     try {
@@ -31,9 +34,25 @@ export default function Signup() {
       const result = await response.json();
 
       if (response.ok) {
+         // Store session token
         localStorage.setItem("sessionToken", result.sessionToken);
-        alert(`You have successfully created an account!`);
-        navigate("/");
+        console.log(result.sessionToken)
+        
+        // Store user info if provided in response
+        if (result.user) {
+          localStorage.setItem("userInfo", JSON.stringify(result.user));
+          console.log(result.user)
+          login(result.user, result.sessionToken);
+        }
+        // Navigate back to previous page (user is now signed in)
+        const urlParams = new URLSearchParams(location.search);
+        const returnTo = urlParams.get('returnTo');
+        //if there are urlParams, will navigate back to that URL. If not, will move to dashboard
+        if (returnTo) {
+          navigate(returnTo);
+        } else {
+        navigate("/dashboard");
+        }
       } else {
         if (result.error === "User already exists") {
           console.log(result.error);
@@ -55,7 +74,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-[#102542]">
       <Header />
       <Nav />
       <div className="flex items-center justify-center flex-1">
@@ -117,7 +136,7 @@ export default function Signup() {
                 <span>Have an account already?</span>
                 <Link
                   to="/signin"
-                  className="text-[#CDD7D6] underline whitespace-nowrap"
+                  className="text-[#CDD7D6] underline whitespace-nowrap hover:text-[#102542]"
                 >
                   Click here to sign in!
                 </Link>

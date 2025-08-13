@@ -3,11 +3,13 @@ import Header from "../components/Header";
 import Nav from "../components/Nav";
 import { useState, useEffect } from "react";
 import UploadAnimal from "../components/UploadAnimal";
+import { useUser } from "../context/UserContext.jsx"
 import EditAnimal from "../components/EditAnimal";
 import DeleteAnimal from "../components/DeleteAnimal";
 
 export default function Animals() {
   const [animals, setAnimals] = useState([]);
+  const { user } = useUser();
 
   //get request to fetch all animals from mongodb on load
   useEffect(() => {
@@ -24,6 +26,13 @@ export default function Animals() {
     doFetch();
   }, []);
 
+    // Helper function to check if user can upload animals
+  const canUploadAnimals = () => {
+    return user && (user.role === "admin" || user.role === "manager" || user.role === "staff");
+  };
+
+console.log(animals);
+console.log(animals.length);
   return (
     <div className="dark:bg-[#102542]">
       <Header />
@@ -80,10 +89,29 @@ export default function Animals() {
             }): <p>No animals available for adoption at the moment.</p>}
         </div>
 
-            {/* uses a model to house form for new animal and vercel blob image upload */}
-            <UploadAnimal />
-            
-            
+        {/* upload animal component needs admin authentication  */}
+        {canUploadAnimals() && (
+          <div>
+            <button
+              className="btn max-w-100 mx-auto mb-8"
+              onClick={() => document.getElementById("my_modal_1").showModal()}
+            >
+              Upload New Animal
+            </button>
+            <dialog id="my_modal_1" className="modal">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">Upload New Animal</h3>
+                <UploadAnimal />
+                <div className="modal-action">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn">Close</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+          </div>
+        )}
       </main>
 
       <Footer />

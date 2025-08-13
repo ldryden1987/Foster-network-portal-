@@ -34,10 +34,12 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl w-full mx-auto">
+    <form action="https://formsubmit.co/safepawsar@gmail.com" method="POST"  className="space-y-4 max-w-2xl w-full mx-auto">
       <div className="flex flex-col md:flex-row gap-4">
         <input
           type="text"
+          id="firstName"
+          name="firstName"
           placeholder="First name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -46,6 +48,8 @@ function ContactForm() {
         />
         <input
           type="text"
+          id="lastName"
+          name="lastName"
           placeholder="Last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
@@ -55,6 +59,8 @@ function ContactForm() {
       </div>
       <input
         type="email"
+        id="email"
+        name="email"
         placeholder="Email address"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

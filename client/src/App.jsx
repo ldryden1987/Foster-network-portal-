@@ -11,7 +11,7 @@ import { UserProvider } from './context/UserContext.jsx';
 import Dashboard from './Pages/Dashboard.jsx'
 import ApplicationForm from "./Pages/ApplicationForm.jsx";
 import Animals from "./routes/Animals.jsx";
-
+import DisplayUser from "./components/DisplayUser.jsx";
 function App() {
   return (
     <UserProvider>
@@ -22,6 +22,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/resources" element={<ResourcesPage/>}/>
         <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/user/:userId" element={<DisplayUser />} />
         <Route path="/about" element={<AboutUs/>}/>
         <Route path="/application" element={<Application/>}/>
         <Route path="/apply" element={<ApplicationForm />}/>

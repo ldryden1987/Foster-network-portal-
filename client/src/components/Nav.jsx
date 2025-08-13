@@ -8,6 +8,7 @@ function Nav() {
 
   //logout function
   const handleLogout = () => {
+        localStorage.clear();
         logout();
         navigate('/');
     };
@@ -15,7 +16,7 @@ function Nav() {
   return (
     <nav className="flex justify-end gap-4 py-4 text-sm">
       <Link to="/animals" className="hover:underline">Meet Your Future Friends!</Link>
-      <Link to="/applications" className="hover:underline">Applications</Link>
+      <Link to="/application" className="hover:underline">Applications</Link>
       <Link to="/about" className="hover:underline">About Us!</Link>
       {user?.sessionToken ? (
         <Link to="/dashboard" className="hover:underline">My Dashboard</Link>

@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { del } from "@vercel/blob";
 import Animal from "../models/Animal.js";
+import isAdminManagerOrStaff from "../middlewares/isAdminManagerorStaff.js";
+import isAuthenticated from "../middlewares/isAuthenticated.js";
 
 //TODO: 
 // import authentication middleware
@@ -26,7 +28,7 @@ animalRouter.get('/animals', async (req, res) => {
 })
 
 //create new animal
-animalRouter.post('/animals', (req, res) => {
+animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff,(req, res) => {
     try{
         const newAnimal = new Animal(req.body);
         newAnimal.save(); 

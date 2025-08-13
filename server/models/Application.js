@@ -1,46 +1,74 @@
-import mongoose from 'mongoose';
+// models/Application.js
+import mongoose from "mongoose";
 
-//set all required to false. Should be made required on the front end. Many of these fields are hidden depending on the application type. SLA
-const applicationSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: false
-  },
-  type: {
-    type: String,
-    enum: ['Adopt', 'Foster', 'Volunteer'], // This makes sure it's only one of the three
-    required: false
-  },
-  petName: {
-    type: String,
-    required: false
-  },
-  aboutYou: {
-    type: String,
-    required: false
-  },
-  experience: {
-    type: String
-  },
-  availability: {
-    type: String
-  },
-  address: {
-    street1: String,
-    street2: String,
-    city: String,
-    state: String,
-    zip: String
-  },
-  phone: {
-    type: String
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
+const ApplicationSchema = new mongoose.Schema({
+  //added model fields per form SLA
+  type: { type: String, required: true },
+  firstName: { type: String, requried: true },
+  lastName: {type: String, required: true },
+  age: {type: Number },
+  gender: { type: String},
+  phone: { type: String },
+  email: { type: String },
+  residenceType: { type: String },
+  ownOrRent: { type: String },
+  landlordName: { type: String },
+  landlordPhone: { type: String },
+  petRestrictions: { type: String },
+  additionalResidents: [
+  {
+    name: { type: String },
+    age: { type: Number },
+    relationship: { type: String }
   }
+],
+  hasAllergies: { type: Boolean },  
+  allergies: { type: String },
+  otherPets: { type: Boolean },
+  vetInfo: { type: String },
+  aloneTime: { type: String },
+  playTime: { type: String },
+  livingSituation: { type: String },
+  budget: { type: String }, 
+  street1: { type: String },
+  street2: { type: String }, 
+  city: { type: String },
+  state: { type: String },
+  zipCode: { type: String },
+  otherPets: [
+  {
+    type: { type: String },
+    breed: { type: String },
+    age: { type: Number }
+  }
+],
+volunteer: {
+  availability: [
+    {
+      day: { type: String },      // e.g., "Monday"
+      start: { type: String },    // e.g., "09:00"
+      end: { type: String }       // e.g., "17:00"
+    }
+  ],
+},
+
+//do Not see these on the form currently SLA
+  // petName: { type: String },
+  // petType: { type: String },
+  // petAge: { type: Number},
+  // reasonForAdoption: { type: String },
+  // experienceWithPets: { type: String },
+  // name: { type: String },
+  // housingType: { type: String },
+  // landlordPermission: { type: String }, // Only required if renting
+  // householdMembers: { type: Number },
+  // vetName: { type: String },
+  // vetPhone: { type: String },
+  // volunteerAvailability: { type: String }, // Optional field
+  // additionalNotes: { type: String },
+  createdAt: { type: Date, default: Date.now }
 });
 
-const Application = mongoose.model('Application', applicationSchema);
+const Application = mongoose.model("Application", ApplicationSchema);
+
 export default Application;

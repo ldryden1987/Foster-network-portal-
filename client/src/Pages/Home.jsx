@@ -13,7 +13,14 @@ function Home() {
       {/* Header */}
       <Header />
       <Nav />
-
+{/* Welcome Section */}
+      <section className="text-center dark:bg-[#102542] py-10 px-6">
+        <h3 className="text-xl font-bold mb-4 ">Welcome</h3>
+        <p className="max-w-2xl mx-auto text-gray-700 dark:text-white">
+          Thank you for visiting SafePaws Animal Rescue! We are dedicated to connecting loving families with amazing animals. Whether you're looking to adopt, foster, or volunteer, there's a place for you here.
+        </p>
+      </section>
+      
       {/* Main Image */}
       <div className="flex justify-center my-8 px-4">
         <img
@@ -34,7 +41,7 @@ function Home() {
               alt="Pet 1"
               className="w-full h-[300px] object-cover rounded shadow-md"
             />
-            <p className="mt-3 font-semibold text-gray-800">Roscoe</p>
+            <p className="mt-3 font-semibold text-gray-800 dark:text-white">Roscoe</p>
           </div>
 
           {/* Pet 2 */}
@@ -44,7 +51,7 @@ function Home() {
               alt="Pet 2"
               className="w-full h-[300px] object-cover rounded shadow-md"
             />
-            <p className="mt-3 font-semibold text-gray-800">Bert</p>
+            <p className="mt-3 font-semibold text-gray-800 dark:text-white">Bert</p>
           </div>
 
           {/* Pet 3 */}
@@ -54,7 +61,7 @@ function Home() {
               alt="Pet 3"
               className="w-full h-[300px] object-cover rounded shadow-md"
             />
-            <p className="mt-3 font-semibold text-gray-800">Earnie</p>
+            <p className="mt-3 font-semibold text-gray-800 dark:text-white">Earnie</p>
           </div>
         </div>
 
@@ -62,19 +69,11 @@ function Home() {
         {/* View All Pets Button */}
         <div className="mt-6">
           <Link to="/animals">
-            <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#102542]">
+            <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
               Click here to view all our available pets
             </button>
           </Link>
         </div>
-      </section>
-
-      {/* Welcome Section */}
-      <section className="text-center dark:bg-[#102542] py-10 px-6">
-        <h3 className="text-xl font-bold mb-4 ">Welcome</h3>
-        <p className="max-w-2xl mx-auto text-gray-700 dark:text-white">
-          Thank you for visiting SafePaws Animal Rescue! We are dedicated to connecting loving families with amazing animals. Whether you're looking to adopt, foster, or volunteer, there's a place for you here.
-        </p>
       </section>
 
     <section className="p-4 mx-auto">
@@ -83,7 +82,7 @@ function Home() {
     {/*  Resources button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
       <Link to="/resources">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
+      <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Resources
       </button>
       </Link>
@@ -94,7 +93,7 @@ function Home() {
 
      {/* volunteer button & events */}
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
+      <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Volunteer
       </button>
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
@@ -104,7 +103,7 @@ function Home() {
 
     {/*  events button & text */}
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
+      <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Events
       </button>
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
@@ -113,9 +112,9 @@ function Home() {
     </div>
 
      {/*  Applications button & text */}
-     <Link to={"/application"}>
+     <Link to="/application">
     <div className="flex flex-col items-center space-y-2 text-center">
-      <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition dark:bg-[#F87060] dark:hover:bg-[#102542]">
+      <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Applications
       </button>
       <p className="text-sm text-gray-700 max-w-md dark:text-white">

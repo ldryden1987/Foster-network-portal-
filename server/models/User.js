@@ -38,6 +38,10 @@ const userSchema = new Schema({
     },
     phone: {
         type: String
+    },
+        createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 export default model('User', userSchema)

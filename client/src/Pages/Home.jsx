@@ -3,6 +3,7 @@ import Footer from "../components/Footer.jsx";
 import Nav from "../components/Nav.jsx"; 
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext.jsx";
+import ImageCarousel from "../components/ImageCarousel.jsx";
 import React from "react";
 
 function Home() {
@@ -22,13 +23,7 @@ function Home() {
       </section>
       
       {/* Main Image */}
-      <div className="flex justify-center my-8 px-4">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/66ec3b49803ab81bf84f89e4/1726789423907-OMC6SOD7GIZ2NLNGMGM9/house-cat-lying-on-floor-8529064-scaled.jpg?format=2500w"
-          alt="Main"
-          className="rounded-xl shadow-lg max-w-5xl w-full h-100 object-cover"
-        />
-      </div>
+      <ImageCarousel />
 
 
       <section className="text-center my-10">

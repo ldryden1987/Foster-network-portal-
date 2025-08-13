@@ -5,7 +5,7 @@ const uploadRouter = Router();
 
 uploadRouter.post('/upload', async (req, res) => {
  try {
-    console.log("test upload");
+
     const jsonResponse = await handleUpload({
       body: req.body,
       request: req,

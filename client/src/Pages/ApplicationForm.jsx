@@ -191,7 +191,7 @@ function ApplicationForm() {
     } else {
       payload.otherPets = [];
     }
-
+    
     // Remove helper fields we don't need to send (optional)
     delete payload.address;
     delete payload.additionalResidentsList;

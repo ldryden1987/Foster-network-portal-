@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { del } from "@vercel/blob";
 import Animal from "../models/Animal.js";
 
 //TODO: 
@@ -24,33 +25,36 @@ animalRouter.get('/animals', async (req, res) => {
     
 })
 
+//create new animal
 animalRouter.post('/animals', (req, res) => {
     try{
         const newAnimal = new Animal(req.body);
         newAnimal.save(); 
-        res.json({ message: 'Animal created'})
+        res.status(200).json({ message: 'Animal created'})
     } 
     catch (err) {
-        return res.json({ error: err.message });
+        return res.status(500).json({ error: err.message });
     }
     
 })
 
+//update animal by ID
 animalRouter.put('/animals/:id', async (req, res) => {
-    try{ 
-        const { id } = req.params.id;
-        const foundAnimal = await Animal.find(id);
+    try { 
+        const { id } = req.params;
+        const foundAnimal = await Animal.findById(id);
         if (!foundAnimal) {
             return res.status(404).json({ error: 'Animal not found' });
-        };
-        foundAnimal = req.body;
+        }
+        Object.assign(foundAnimal, req.body);
         await foundAnimal.save();
-        res.json({ message: 'Animal found', foundAnimal });
+        res.status(200).json({ message: 'Animal updated', foundAnimal });
     } catch (err) {
-        res.json({ error: err.message });
+        res.status(500).json({ error: err.message });
     }
 })
 
+//delete animal by ID
 animalRouter.delete('/animals/:id', async (req, res) => {
     try{
         const { id } = req.params;
@@ -59,10 +63,12 @@ animalRouter.delete('/animals/:id', async (req, res) => {
         if (!deletedAnimal) {
             return res.status(404).json({ error: 'Animal not found' });
         }
+
+        await del(deletedAnimal.blobUrl); // Delete the blob from Vercel Blob storage
         await deletedAnimal.deleteOne();
-        res.json({ message: `Animal with ID ${id} deleted` });
+        res.status(200).json({ message: `Animal with ID ${id} deleted` });
     } catch (err) {
-        return res.json({ error: err.message });
+        return res.status(500).json({ error: err.message });
     }
     
     

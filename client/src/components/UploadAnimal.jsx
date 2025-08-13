@@ -3,32 +3,47 @@ import { useState, useRef } from "react";
 
 export default function UploadAnimal() {
   const inputFileRef = useRef(null);
-  const [blob, setBlob] = useState(null);
 
   return (
     <div>
-      {/* needs authentication */}
+              <button
+          className="btn max-w-100 mx-auto mb-8"
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+        >
+          Upload New Animal
+        </button>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Upload New Animal</h3>
         <form
           className="flex flex-col items-center gap-y-3"
           onSubmit={async (event) => {
             event.preventDefault();
 
+            //access the file from the image input ref
             const file = inputFileRef.current.files[0];
 
+            //initialize upload to vercel blob storage
             const newBlob = await upload(file.name, file, {
+
+              //must be public to be viewable on the web
               access: "public",
+
+              //post request to server to get a signed url for upload
               handleUploadUrl: `${import.meta.env.VITE_SERVER_URL}/upload`,
             });
-
-            setBlob(newBlob);
             
-             try {
-            fetch(`${import.meta.env.VITE_SERVER_URL}/animals`, {
+            // POST form data to server
+             try { 
+              console.log(event.target.intakeDate.value);
+            const response =  await fetch(`${import.meta.env.VITE_SERVER_URL}/animals`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({
+
+              //converts form data to json
+              body: JSON.stringify({ 
                 name: event.target.animalName.value,
                 species: event.target.animalSpecies.value,
                 breed: event.target.animalBreed.value,
@@ -39,11 +54,22 @@ export default function UploadAnimal() {
                 description: event.target.animalDescription.value,
                 blobUrl: newBlob.url
               }),
-            })} catch (err) {
+            });
+              if (response.ok) {
+                  // Ensure reload happens after everything is done
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 100);
+                } else {
+                  alert("Error uploading animal. Please try again.");
+                }
+          } catch (err) { //TODO: add user friendly error handling
                 console.log(err.message);
             }
           }}
         >
+
+          {/* input and label for local image file, takes any format */}
           <label htmlFor="file" className="label">Upload Animal Image</label>
           <input
             id="file"
@@ -54,6 +80,7 @@ export default function UploadAnimal() {
             required
           />
 
+          {/* inputs and labels for the rest of animal data */}
           <label htmlFor="animalName" className="label">Animal Name</label>
           <input id="animalName"className="input"type="text" placeholder="Animal Name" required/>
 
@@ -70,7 +97,7 @@ export default function UploadAnimal() {
           <input id="animalAge" className="input"type="text" placeholder="Age" required/> 
 
           <label htmlFor="intakeDate" className="label">Intake Date</label>
-          <input id="intakeDate" className="input"type="text" placeholder="YYYY-MM-DD" required/> 
+          <input id="intakeDate" className="input"type="date" placeholder="YYYY-MM-DD" required/> 
           {/* eventualy add calendar for easy date picking, for now must be YYYY-MM-DD */}
 
           <label htmlFor="animalWeight"className="label">Animal Weight (lbs)</label>
@@ -81,6 +108,14 @@ export default function UploadAnimal() {
 
           <button className="btn" type="submit">Upload</button>
         </form>
+        <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
     </div>
   );
 }

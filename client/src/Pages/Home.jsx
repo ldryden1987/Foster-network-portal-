@@ -61,7 +61,7 @@ function Home() {
 
         {/* View All Pets Button */}
         <div className="mt-6">
-          <Link to="/adopt">
+          <Link to="/animals">
             <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#102542]">
               Click here to view all our available pets
             </button>

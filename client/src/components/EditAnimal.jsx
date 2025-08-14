@@ -190,7 +190,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
               required
             />
 
-            <button className="btn" type="submit">
+            <button className="btn" type="submit" onClick={() => {console.log("click")}}>
               Submit Changes
             </button>
           </form>

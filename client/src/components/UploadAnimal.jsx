@@ -122,7 +122,7 @@ export default function UploadAnimal() {
         <input id="animalAge" className="input" type="text" placeholder="Age" required/> 
 
         <label htmlFor="intakeDate" className="label">Intake Date</label>
-        <input id="intakeDate" className="input" type="text" placeholder="YYYY-MM-DD" required/> 
+        <input id="intakeDate" className="input" type="date" placeholder="YYYY-MM-DD" required/> 
 
         <label htmlFor="animalWeight" className="label">Animal Weight (lbs)</label>
         <input id="animalWeight" className="input" type="text" placeholder="Weight" required/> 

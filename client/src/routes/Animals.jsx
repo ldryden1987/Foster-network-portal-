@@ -91,26 +91,8 @@ console.log(animals.length);
 
         {/* upload animal component needs admin authentication  */}
         {canUploadAnimals() && (
-          <div>
-            <button
-              className="btn max-w-100 mx-auto mb-8"
-              onClick={() => document.getElementById("my_modal_1").showModal()}
-            >
-              Upload New Animal
-            </button>
-            <dialog id="my_modal_1" className="modal">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">Upload New Animal</h3>
+          
                 <UploadAnimal />
-                <div className="modal-action">
-                  <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn">Close</button>
-                  </form>
-                </div>
-              </div>
-            </dialog>
-          </div>
         )}
       </main>
 

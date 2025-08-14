@@ -28,7 +28,7 @@ animalRouter.get('/animals', async (req, res) => {
 })
 
 //create new animal
-animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff,(req, res) => {
+animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff,async (req, res) => {
     try{
         const newAnimal = new Animal(req.body);
         newAnimal.save(); 
@@ -41,7 +41,7 @@ animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff,(req, res) =
 })
 
 //update animal by ID
-animalRouter.put('/animals/:id', async (req, res) => {
+animalRouter.put('/animals/:id', isAuthenticated, isAdminManagerOrStaff, async (req, res) => {
     try { 
         const { id } = req.params;
         const foundAnimal = await Animal.findById(id);
@@ -57,7 +57,7 @@ animalRouter.put('/animals/:id', async (req, res) => {
 })
 
 //delete animal by ID
-animalRouter.delete('/animals/:id', async (req, res) => {
+animalRouter.delete('/animals/:id', isAuthenticated, isAdminManagerOrStaff, async (req, res) => {
     try{
         const { id } = req.params;
         const deletedAnimal = await Animal.findById(id);

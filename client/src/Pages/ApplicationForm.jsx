@@ -80,9 +80,9 @@ function ApplicationForm() {
               onChange={handleChange}
               className="w-full p-2 border rounded"
             >
-              <option value="Adopt">Adopt</option>
-              <option value="Foster">Foster</option>
-              <option value="Volunteer">Volunteer</option>
+              <option className="dark:text-black" value="Adopt">Adopt</option>
+              <option className="dark:text-black"  value="Foster">Foster</option>
+              <option className="dark:text-black"  value="Volunteer">Volunteer</option>
             </select>
 
             {/* Basic Info */}

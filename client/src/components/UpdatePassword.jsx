@@ -77,7 +77,7 @@ export default function UpdatePassword () {
   return (
     <div className="max-w-lg mx-auto my-2 p-4 rounded-lg">
       <button
-        className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
+        className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black"
         onClick={() => setShowPasswordForm((prev) => !prev)}
       >
         {showPasswordForm ? "Cancel" : "Change Password"}
@@ -116,7 +116,7 @@ export default function UpdatePassword () {
           </div>
           <button
             type="submit"
-            className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition"
+            className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black"
             disabled={loading}
           >
             {loading ? "Updating..." : "Update Password"}

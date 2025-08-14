@@ -1,16 +1,17 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import UploadAnimal from "../components/UploadAnimal";
 import { useUser } from "../context/UserContext.jsx"
+import EditAnimal from "../components/EditAnimal";
+import DeleteAnimal from "../components/DeleteAnimal";
 
 export default function Animals() {
-  const inputFileRef = useRef(null);
-  const [blob, setBlob] = useState(null);
   const [animals, setAnimals] = useState([]);
   const { user } = useUser();
 
+  //get request to fetch all animals from mongodb on load
   useEffect(() => {
     async function doFetch() {
       const response = await fetch(
@@ -41,47 +42,57 @@ console.log(animals.length);
         <p className="text-center mb-10">
           Here you can find all the animals available for adoption.
         </p>
-        <div className="flex flex-row items-center gap-x-10">
-            {animals.length > 0 ? animals.map((animal) => (
-                <div key={animal._id} className="card w-96 bg-base-100 mb-4 hover:shadow-md shadow-[#F87060]">
-                    <figure>
-                    <img src={animal.blobUrl} style={{ width:384, height:270}} alt={animal.name+" image"} />
-                    </figure>
-                    <div className="card-body shadow-lg">
-                    <h2 className="card-title">{animal.name}</h2>
-                    <p>Species: {animal.species}</p>
-                    <p>Breed: {animal.breed}</p>
-                    <p>Sex: {animal.sex}</p>
-                    <p>Approximate Age: {animal.age} {animal.age>1?"years":"year"}</p>
-                    <p>Weight: {animal.weight} lbs</p>
-                    <p>Description: {animal.description}</p>
+        <div className="grid grid-cols-4 items-center gap-x-10">
+
+            {animals.length > 0 ? animals.map((animal) => { 
+              // creates a card for each animal object fetched from the db
+
+              //creates a unique modal id for each edit modal
+              const modalId = `edit_modal_${animal._id}`;
+
+              //returns a card for each animal fetched
+              return (
+                <div
+                  key={animal._id}
+                  className="card flex flex-col w-96 h-[32rem] bg-base-100 mb-4 hover:shadow-md dark:shadow-[#F87060] hover:bg-[#F87060] hover:text-[#102542] relative"
+                  style={{ minWidth: '24rem', minHeight: '32rem' }}
+                >
+
+                  {/* Image as background */}
+                  <figure style={{backgroundImage: `url(${animal.blobUrl})`}} className="h-64 bg-cover bg-center"/>
+                  
+                  {/* Edit and delete tools in top-right corner */}
+                  <div className="absolute top-2 right-2 z-10">
+                    <div className="flex justify-end gap-2">
+                    <DeleteAnimal targetAnimal={animal} modalId={`delete_modal_${animal._id}`} />
+                    <EditAnimal targetAnimal={animal} modalId={modalId} />
                     </div>
+                  </div>
+
+                  {/* Animal details */}
+                  <div className="card-body shadow-lg flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col h-full justify-between">
+                      <div>
+                        <h2 className="card-title mb-4">{animal.name}</h2>
+                        <p className="mb-2">Species: {animal.species}</p>
+                        <p className="mb-2">Breed: {animal.breed}</p>
+                        <p className="mb-2">Sex: {animal.sex}</p>
+                        <p className="mb-2">Approximate Age: {animal.age} {animal.age>1?"years":"year"}</p>
+                        <p className="mb-2">Weight: {animal.weight} lbs</p>
+                        <p className="mb-2">Description: {animal.description}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                )): <p>No animals available for adoption at the moment.</p>}
+              );
+                //ternary operator to display message if no animals are available
+            }): <p>No animals available for adoption at the moment.</p>}
         </div>
 
         {/* upload animal component needs admin authentication  */}
         {canUploadAnimals() && (
-          <div>
-            <button
-              className="btn max-w-100 mx-auto mb-8"
-              onClick={() => document.getElementById("my_modal_1").showModal()}
-            >
-              Upload New Animal
-            </button>
-            <dialog id="my_modal_1" className="modal">
-              <div className="modal-box">
-                <h3 className="font-bold text-lg">Upload New Animal</h3>
+          
                 <UploadAnimal />
-                <div className="modal-action">
-                  <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn">Close</button>
-                  </form>
-                </div>
-              </div>
-            </dialog>
-          </div>
         )}
       </main>
 

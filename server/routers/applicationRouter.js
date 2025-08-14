@@ -7,10 +7,15 @@ const applicationRouter = express.Router();
 // Create a new application
 applicationRouter.post('/', async (req, res) => {
   try {
+    //Add logs for troubleshooting SLA
+    console.log("Received application POST request:");
+    console.log(JSON.stringify(req.body, null, 2)); 
     const newApp = new Application(req.body);
     const savedApp = await newApp.save();
     res.status(201).json(savedApp);
   } catch (error) {
+    //Add logs for troubleshooting SLA
+    console.error("Error submitting application:", error)
     res.status(500).json({ error: 'Failed to submit application' });
   }
 });

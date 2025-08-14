@@ -77,6 +77,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
                     window.location.reload();
                   }, 100);
                 } else {
+                  console.log(response.status);
                   alert("Error updating animal. Please try again.");
                 }
               } catch (err) {

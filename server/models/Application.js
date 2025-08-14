@@ -24,7 +24,7 @@ const ApplicationSchema = new mongoose.Schema({
 ],
   hasAllergies: { type: Boolean },  
   allergies: { type: String },
-  otherPets: { type: Boolean },
+  // otherPets: { type: Boolean },
   vetInfo: { type: String },
   aloneTime: { type: String },
   playTime: { type: String },

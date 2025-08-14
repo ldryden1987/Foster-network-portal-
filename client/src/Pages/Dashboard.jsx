@@ -19,7 +19,7 @@ export default function Dashboard() {
       <div className="flex flex-col min-h-screen">
         <Header />
         <Nav />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex-1 flex items-center justify-center dark:bg-[#102542]">
           <div>Loading dashboard...</div>
         </main>
         <Footer />
@@ -30,7 +30,7 @@ export default function Dashboard() {
   // Not authenticated
   if (!user) {
     return (
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen dark:bg-[#102542]">
         <Header />
         <Nav />
         <main className="flex-1 flex items-center justify-center">
@@ -326,7 +326,7 @@ export default function Dashboard() {
                     family? Check our FAQs/Resources Page!
                   </p>
                   <Link to="/resources">
-                    <button className="bg-[#102542] text-white px-4 py-2 rounded hover:bg-[#dc5a4e] transition">
+                    <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
                       Resources
                     </button>
                   </Link>

@@ -44,7 +44,7 @@ function ApplicationForm() {
     otherPetType: '',
     dogBreed: '',
     dogAge: '',
-    // list for multiple pets
+    // list for multiple petsß
     otherPetsList: [],
     vetInfo: '',
     aloneTime: '',
@@ -306,9 +306,22 @@ function ApplicationForm() {
                               <input
                                 value={res}
                                 onChange={(e) => updateResident(i, e.target.value)}
-                                placeholder="Resident name / age / gender"
+                                placeholder="name "
                                 className="flex-1 p-2 border-b"
                               />
+                               <input
+                                value={res}
+                                onChange={(e) => updateResident(i, e.target.value)}
+                                placeholder="age"
+                                className="flex-1 p-2 border-b"
+                              />
+                               <input
+                                value={res}
+                                onChange={(e) => updateResident(i, e.target.value)}
+                                placeholder="relationship"
+                                className="flex-1 p-2 border-b"
+                              />
+                              
                               <button type="button" onClick={() => removeResident(i)} className="px-2 bg-red-500 text-white rounded">−</button>
                             </div>
                           ))}
@@ -317,7 +330,7 @@ function ApplicationForm() {
                       ) : (
                         // No list yet: show the single input + an "Add" button that converts it into the list
                         <div className="flex gap-2 items-center">
-                          <input name="additionalResidents" value={formData.additionalResidents} onChange={handleChange} placeholder="Additional resident (Name/Age/Gender)" className="flex-1 p-2 border-b" />
+                          <input name="additionalResidents" value={formData.additionalResidents} onChange={handleChange} placeholder="Additional resident (Name/Age/Relationship)" className="flex-1 p-2 border-b" />
                           <button type="button" onClick={addResidentFromSingle} className="px-3 py-1 bg-blue-600 text-white rounded">Add</button>
                         </div>
                       )}

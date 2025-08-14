@@ -56,6 +56,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
                   method: "PUT",
                   headers: {
                     "Content-Type": "application/json",
+                    'Authorization': sessionToken,
                   },
                   body: JSON.stringify({
                     name: formData.name,

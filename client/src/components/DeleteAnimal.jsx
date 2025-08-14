@@ -21,6 +21,9 @@ export default function DeleteAnimal({ targetAnimal, modalId }) {
                     `${import.meta.env.VITE_SERVER_URL}/animals/${targetAnimal._id}`,
                     {
                       method: "DELETE",
+                      headers: {
+                        'Authorization': sessionToken,
+                      }
                     }
                   );
                   if (response.ok) {

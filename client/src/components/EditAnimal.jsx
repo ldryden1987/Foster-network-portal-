@@ -39,7 +39,10 @@ export default function EditAnimal({ targetAnimal, modalId }) {
     <div>
       <button
         className="btn max-w-100 mx-auto mb-8"
-        onClick={() => document.getElementById(modalId).showModal()}
+        onClick={(e) => {
+          document.getElementById(modalId).showModal()
+          e.preventDefault();
+        }}
       >
         Edit
       </button>
@@ -194,7 +197,10 @@ export default function EditAnimal({ targetAnimal, modalId }) {
           </form>
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button onClick={(e) => {
+                e.preventDefault()
+                document.getElementById(modalId).close();
+                }} className="btn">Close</button>
             </form>
           </div>
         </div>

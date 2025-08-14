@@ -6,6 +6,7 @@ import UploadAnimal from "../components/UploadAnimal";
 import { useUser } from "../context/UserContext.jsx"
 import EditAnimal from "../components/EditAnimal";
 import DeleteAnimal from "../components/DeleteAnimal";
+import { NavLink } from "react-router-dom";
 
 export default function Animals() {
   const [animals, setAnimals] = useState([]);
@@ -31,8 +32,7 @@ export default function Animals() {
     return user && (user.role === "admin" || user.role === "manager" || user.role === "staff");
   };
 
-console.log(animals);
-console.log(animals.length);
+
   return (
     <div className="dark:bg-[#102542]">
       <Header />
@@ -52,6 +52,7 @@ console.log(animals.length);
 
               //returns a card for each animal fetched
               return (
+                <NavLink to={`/animals/${animal._id}`} className="no-underline" key={animal._id}>
                 <div
                   key={animal._id}
                   className="card flex flex-col w-96 h-[32rem] bg-base-100 mb-4 hover:shadow-md dark:shadow-[#F87060] hover:bg-[#F87060] hover:text-[#102542] relative"
@@ -84,6 +85,7 @@ console.log(animals.length);
                     </div>
                   </div>
                 </div>
+                </NavLink>
               );
                 //ternary operator to display message if no animals are available
             }): <p>No animals available for adoption at the moment.</p>}

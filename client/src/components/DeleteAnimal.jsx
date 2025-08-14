@@ -4,7 +4,10 @@ export default function DeleteAnimal({ targetAnimal, modalId }) {
     <div>
       <button
         className="btn max-w-100 mx-auto mb-8"
-        onClick={() => document.getElementById(modalId).showModal()}
+        onClick={(e) => {
+          document.getElementById(modalId).showModal()
+          e.preventDefault()
+        }}
       >
         Delete
       </button>
@@ -38,7 +41,10 @@ export default function DeleteAnimal({ targetAnimal, modalId }) {
             </button>
             <button
               className="btn"
-              onClick={() => document.getElementById(modalId).close()}
+              onClick={(e) => {
+                document.getElementById(modalId).close();
+                e.preventDefault();
+              }}
             >
               Cancel
             </button>

@@ -27,8 +27,23 @@ animalRouter.get('/animals', async (req, res) => {
     
 })
 
+//get animal by Id
+animalRouter.get('/animals/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const foundAnimal = await Animal.findById(id);
+        if (!foundAnimal) {
+            return res.status(404).json({ error: 'Animal not found' });
+        }
+        res.status(200).json({ message: 'Animal found', foundAnimal });
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+} )
+
+
 //create new animal
-animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff,(req, res) => {
+animalRouter.post('/animals', isAuthenticated,isAdminManagerOrStaff, async (req, res) => {
     try{
         const newAnimal = new Animal(req.body);
         newAnimal.save(); 

@@ -93,7 +93,7 @@ console.log(animals.length);
             }): <p>No animals available for adoption at the moment.</p>}
         </div>
 
-        {/* upload animal component needs admin authentication  */}
+        
         {canUploadAnimals() && (
           
                 <UploadAnimal />

@@ -10,7 +10,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
     intake: "",
     weight: "",
     description: "",
-    blobUrl: ""
+    blobUrl: "",
   });
 
   //useEffect to populate form data when targetAnimal changes
@@ -25,7 +25,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
         intake: targetAnimal.intake || "",
         weight: targetAnimal.weight || "",
         description: targetAnimal.description || "",
-        blobUrl: targetAnimal.blobUrl || ""
+        blobUrl: targetAnimal.blobUrl || "",
       });
     }
   }, [targetAnimal]);
@@ -51,25 +51,39 @@ export default function EditAnimal({ targetAnimal, modalId }) {
             onSubmit={async (event) => {
               event.preventDefault();
               // POST form data to server
+
               try {
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/animals/${targetAnimal._id}`, {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': sessionToken,
-                  },
-                  body: JSON.stringify({
-                    name: formData.name,
-                    species: formData.species,
-                    breed: formData.breed,
-                    sex: formData.sex,
-                    age: formData.age,
-                    intake: formData.intake,
-                    weight: formData.weight,
-                    description: formData.description,
-                    blobUrl: formData.blobUrl,
-                  }),
-                });
+                // Get session token from localStorage
+                const sessionToken = localStorage.getItem("sessionToken");
+
+                if (!sessionToken) {
+                  setError("You must be logged in to upload animals");
+                  setLoading(false);
+                  return;
+                }
+                const response = await fetch(
+                  `${import.meta.env.VITE_SERVER_URL}/animals/${
+                    targetAnimal._id
+                  }`,
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: sessionToken,
+                    },
+                    body: JSON.stringify({
+                      name: formData.name,
+                      species: formData.species,
+                      breed: formData.breed,
+                      sex: formData.sex,
+                      age: formData.age,
+                      intake: formData.intake,
+                      weight: formData.weight,
+                      description: formData.description,
+                      blobUrl: formData.blobUrl,
+                    }),
+                  }
+                );
 
                 if (response.ok) {
                   // Ensure reload happens after everything is done
@@ -77,6 +91,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
                     window.location.reload();
                   }, 100);
                 } else {
+                  console.log(response.status);
                   alert("Error updating animal. Please try again.");
                 }
               } catch (err) {
@@ -189,7 +204,10 @@ export default function EditAnimal({ targetAnimal, modalId }) {
               required
             />
 
-            <button className="btn" type="submit">
+            <button
+              className="btn"
+              type="submit"
+            >
               Submit Changes
             </button>
           </form>

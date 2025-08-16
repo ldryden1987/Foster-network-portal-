@@ -69,8 +69,8 @@ export default function AllUsers() {
       />
       
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">All Users</h2>
-        <div className="text-sm text-gray-600">
+        <h2 className="text-2xl font-bold">All Users</h2>
+        <div className="text-sm">
           Found {filteredUsers.length} of {users.length} users
         </div>
       </div>

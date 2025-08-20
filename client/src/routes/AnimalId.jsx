@@ -11,7 +11,7 @@ export default function AnimalId() {
   const { animalId } = useParams();
   const [animal, setAnimal] = useState([]);
   const { user } = useUser();
-
+console.log(animalId, "animalId");
   useEffect(() => {
     async function doFetch() {
       const response = await fetch(

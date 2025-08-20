@@ -15,7 +15,7 @@ console.log(animalId, "animalId");
   useEffect(() => {
     async function doFetch() {
       const response = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/animals/${animalId}`
+        `https://foster-network-portal-server-mzv6bb4re-safepawsars-projects.vercel.app/animals/${animalId}`
       );
       if (response.ok) {
         const result = await response.json();

@@ -22,6 +22,7 @@ console.log(animalId, "animalId");
         console.log(result, "result");
         setAnimal(result.foundAnimal);
       }
+      console.log(response, "response");
     }
 
     doFetch();

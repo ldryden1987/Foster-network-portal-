@@ -19,6 +19,7 @@ console.log(animalId, "animalId");
       );
       if (response.ok) {
         const result = await response.json();
+        console.log(result, "result");
         setAnimal(result.foundAnimal);
       }
     }

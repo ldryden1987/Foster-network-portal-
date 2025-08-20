@@ -25,7 +25,7 @@ console.log(animalId, "animalId");
 
     doFetch();
   }, []);
-  
+  console.log(animal, "animal");
   const canUploadAnimals = () => {
     return user && (user.role === "admin" || user.role === "manager" || user.role === "staff");
   };

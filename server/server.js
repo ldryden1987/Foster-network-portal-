@@ -10,10 +10,10 @@ import contactRoutes from './routers/contact.js';
 import applicationRouter from './routers/applicationRouter.js';
 import dotenv from 'dotenv';
 import 'dotenv/config';
-
-dotenv.config();
 import animalRouter from './routers/animalRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;

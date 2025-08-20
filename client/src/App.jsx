@@ -12,6 +12,7 @@ import Dashboard from './Pages/Dashboard.jsx'
 import ApplicationForm from "./Pages/ApplicationForm.jsx";
 import Animals from "./routes/Animals.jsx";
 import DisplayUser from "./components/DisplayUser.jsx";
+import AnimalId from "./routes/AnimalId.jsx";
 function App() {
   return (
     <UserProvider>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/application" element={<Application/>}/>
         <Route path="/apply" element={<ApplicationForm />}/>
         <Route path="/animals" element={<Animals/>}/>
+        <Route path="animals/:animalId" element={<AnimalId />} />
       </Routes>
     </Router>
     </UserProvider>

@@ -70,7 +70,11 @@ export default function UploadAnimal() {
                 age: event.target.animalAge.value,
                 intake: event.target.intakeDate.value,
                 weight: event.target.animalWeight.value,
-                description: event.target.animalDescription.value,
+                shortDescription: event.target.animalShortDescription.value,
+                longDescription: event.target.animalLongDescription.value,
+                medicalNotes: event.target.animalMedicalNotes.value,
+                tags: event.target.animalTags.value.split(",").map(tag => tag.trim()),
+                status: event.target.animalStatus.value,
                 blobUrl: newBlob.url
               }),
             });
@@ -127,8 +131,26 @@ export default function UploadAnimal() {
         <label htmlFor="animalWeight" className="label">Animal Weight (lbs)</label>
         <input id="animalWeight" className="input" type="text" placeholder="Weight" required/> 
 
-        <label htmlFor="animalDescription" className="label">Animal Description</label>  
-        <input id="animalDescription" className="input" type="text" placeholder="Description" required/>
+        <label htmlFor="animalShortDescription" className="label">Animal Short Description</label>  
+        <input id="animalShortDescription" className="input" type="text" placeholder="Description" required/>
+
+        <label htmlFor="animalLongDescription" className="label">Animal Long Description</label>
+        <input id="animalLongDescription" className="input" type="text" placeholder="Long Description" required/>
+
+        <label htmlFor="animalMedicalNotes" className="label">Animal Medical Notes</label>
+        <input id="animalMedicalNotes" className="input" type="text" placeholder="Medical Notes"/>
+
+        <label htmlFor="animalTags" className="label">Animal Tags (comma separated)</label>
+        <input id="animalTags" className="input" type="text" placeholder="Tags" required/>
+
+        <label htmlFor="animalStatus" className="label">Animal Status</label>
+        <select id="animalStatus" className="select select-bordered w-full max-w-xs" required>
+          <option value="initial">Initial</option>
+          <option value="Needs Adoption">Needs Adoption</option>
+          <option value="Needs Foster">Needs Foster</option>
+          <option value="Adopted">Adopted</option>
+          <option value="Fostered">Fostered</option>
+        </select>
 
         <button className="btn" type="submit" disabled={loading}>
           {loading ? "Uploading..." : "Upload"}

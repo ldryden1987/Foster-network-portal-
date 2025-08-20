@@ -11,7 +11,7 @@ export default function DeleteAnimal({ targetAnimal, modalId }) {
       >
         Delete
       </button>
-      <dialog id={modalId} className="modal hover:text-white">
+      <dialog id={modalId} className="modal dark:hover:text-white">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Delete Animal</h3>
           <p>Are you sure you want to delete {targetAnimal.name}?</p>

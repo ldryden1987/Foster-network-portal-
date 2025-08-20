@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function EditAnimal({ targetAnimal, modalId }) {
+export default function LongEditAnimal({ targetAnimal, modalId }) {
   const [formData, setFormData] = useState({
     name: "",
     species: "",
@@ -9,8 +9,12 @@ export default function EditAnimal({ targetAnimal, modalId }) {
     age: "",
     intake: "",
     weight: "",
-    description: "",
-    blobUrl: "",
+    shortDescription: "",
+    longDescription: "",
+    medicalNotes: "",
+    tags: [],
+    status: "initial",
+    blobUrl: ""
   });
 
   //useEffect to populate form data when targetAnimal changes
@@ -24,7 +28,11 @@ export default function EditAnimal({ targetAnimal, modalId }) {
         age: targetAnimal.age || "",
         intake: targetAnimal.intake || "",
         weight: targetAnimal.weight || "",
-        description: targetAnimal.shortDescription || "",
+        shortDescription: targetAnimal.shortDescription || "",
+        longDescription: targetAnimal.longDescription || "",
+        medicalNotes: targetAnimal.medicalNotes || "",
+        tags: targetAnimal.tags || [],
+        status: targetAnimal.status || "initial",
         blobUrl: targetAnimal.blobUrl || ""
       });
     }
@@ -44,7 +52,7 @@ export default function EditAnimal({ targetAnimal, modalId }) {
           e.preventDefault();
         }}
       >
-        Quick Edit
+        Edit
       </button>
       <dialog id={modalId} className="modal dark:hover:text-white" onClick={(e) => {
 
@@ -58,39 +66,29 @@ export default function EditAnimal({ targetAnimal, modalId }) {
             onSubmit={async (event) => {
               event.preventDefault();
               // POST form data to server
-
               try {
-                // Get session token from localStorage
-                const sessionToken = localStorage.getItem("sessionToken");
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/animals/${targetAnimal._id}`, {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    name: formData.name,
+                    species: formData.species,
+                    breed: formData.breed,
+                    sex: formData.sex,
+                    age: formData.age,
+                    intake: formData.intake,
+                    weight: formData.weight,
+                    shortDescription: formData.shortDescription,
+                    longDescription: formData.longDescription,
+                    medicalNotes: formData.medicalNotes,
+                    tags: formData.tags,
+                    status: formData.status,
 
-                if (!sessionToken) {
-                  setError("You must be logged in to upload animals");
-                  setLoading(false);
-                  return;
-                }
-                const response = await fetch(
-                  `${import.meta.env.VITE_SERVER_URL}/animals/${
-                    targetAnimal._id
-                  }`,
-                  {
-                    method: "PUT",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: sessionToken,
-                    },
-                    body: JSON.stringify({
-                      name: formData.name,
-                      species: formData.species,
-                      breed: formData.breed,
-                      sex: formData.sex,
-                      age: formData.age,
-                      intake: formData.intake,
-                      weight: formData.weight,
-                      shortDescription: formData.description,
-                      blobUrl: formData.blobUrl,
-                    }),
-                  }
-                );
+                    blobUrl: formData.blobUrl,
+                  }),
+                });
 
                 if (response.ok) {
                   // Ensure reload happens after everything is done
@@ -98,7 +96,6 @@ export default function EditAnimal({ targetAnimal, modalId }) {
                     window.location.reload();
                   }, 100);
                 } else {
-                  console.log(response.status);
                   alert("Error updating animal. Please try again.");
                 }
               } catch (err) {
@@ -198,23 +195,72 @@ export default function EditAnimal({ targetAnimal, modalId }) {
               required
             />
 
-            <label htmlFor="description" className="label">
+            <label htmlFor="shortDescription" className="label">
               Animal Short Description
             </label>
             <input
-              id="description"
+              id="shortDescription"
               className="input"
               type="text"
-              placeholder="Description"
-              value={formData.description}
+              placeholder="Short Description"
+              value={formData.shortDescription}
               onChange={handleChange}
               required
             />
 
-            <button
-              className="btn"
-              type="submit"
+            <label htmlFor="longDescription" className="label">
+              Animal Long Description
+            </label>
+            <input
+              id="longDescription"
+              className="input"
+              type="text"
+              placeholder="Long Description"
+              value={formData.longDescription}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="medicalNotes" className="label">
+              Animal Medical Notes
+            </label>
+            <input
+              id="medicalNotes"
+              className="input"
+              type="text"
+              placeholder="Medical Notes"
+              value={formData.medicalNotes}
+              onChange={handleChange}
+            />
+            <label htmlFor="tags" className="label">
+              Animal Tags (comma separated)
+            </label>
+            <input
+              id="tags"
+              className="input"
+              type="text"
+              placeholder="Tags"
+              value={formData.tags.join(", ")}
+              onChange={(e) => setFormData({ ...formData, tags: e.target.value.split(",").map(tag => tag.trim()) })}
+              required
+            />
+            <label htmlFor="status" className="label">
+              Animal Status
+            </label>
+            <select
+              id="status"
+                className="select select-bordered w-full max-w-xs"
+                value={formData.status}
+                onChange={handleChange}
+                required
             >
+                <option value="initial">Initial</option>
+                <option value="Needs Adoption">Needs Adoption</option>
+                <option value="Needs Foster">Needs Foster</option>
+                <option value="Adopted">Adopted</option>
+                <option value="Fostered">Fostered</option>
+            </select>
+
+            <button className="btn" type="submit">
               Submit Changes
             </button>
           </form>

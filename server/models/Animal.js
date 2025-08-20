@@ -30,9 +30,25 @@ const animalSchema = new Schema({
         type: Number,
         required: true
     },
-    description: {
+    shortDescription: {
         type: String,
         required: true
+    },
+    longDescription: {
+        type: String,
+        
+    },
+    medicalNotes: {
+        type: String
+    },
+    tags: {
+        type: [String],
+        default: []
+    },
+    status: {
+        type: String,
+        enum: ['Needs Adoption', 'Adopted', 'Fostered', 'Needs Foster', 'initial'],
+        default: 'initial'
     },
     blobUrl: {
         type: String, 

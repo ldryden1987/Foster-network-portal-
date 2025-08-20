@@ -68,8 +68,12 @@ export default function Animals() {
                   /* Edit and delete tools in top-right corner */
                   <div className="absolute top-2 right-2 z-10">
                     <div className="flex justify-end gap-2">
-                      <DeleteAnimal targetAnimal={animal} modalId={`delete_modal_${animal._id}`} />
-                      <EditAnimal targetAnimal={animal} modalId={modalId} />
+                    {canUploadAnimals() && (
+                      <>
+                        <DeleteAnimal targetAnimal={animal} modalId={`delete_modal_${animal._id}`} />
+                        <EditAnimal targetAnimal={animal} modalId={modalId} />
+                      </>
+                    )}
                     </div>
                   </div>
                     )}
@@ -100,7 +104,10 @@ export default function Animals() {
         </div>
 
         
-        
+        {canUploadAnimals() && (
+          
+                <UploadAnimal />
+        )}
       </main>
 
       <Footer />

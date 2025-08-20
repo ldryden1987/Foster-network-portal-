@@ -9,6 +9,7 @@ import ManageResource from "../components/ManageResource.jsx"
 import ManageFAQs from "../components/ManageFAQs.jsx"
 import CreateStaff from "../components/CreateStaff.jsx";
 import AllUsers from "../components/AllUsers.jsx";
+import UploadAnimal from "../components/UploadAnimal.jsx"
 
 export default function Dashboard() {
   const { user, loading } = useUser();
@@ -80,7 +81,7 @@ export default function Dashboard() {
               <div className="flex flex-row gap-4 mt-4">
                 <div className="w-full m-2">
                   {/* Placeholder for animal management component */}
-                  <div>Animal Intake</div>
+                  <div><UploadAnimal /></div>
                 </div>
                 <div className="w-full m-2">
                   <div>Manage Animal Records</div>
@@ -138,7 +139,7 @@ export default function Dashboard() {
               <div className="flex flex-row gap-4 mt-4">
                 <div className="w-full m-2">
                   {/* Placeholder for animal management component */}
-                  <div>Animal Intake</div>
+                  <div><UploadAnimal /></div>
                 </div>
                 <div className="w-full m-2">
                   <div>Manage Animal Records</div>
@@ -181,7 +182,7 @@ export default function Dashboard() {
               <div className="flex flex-row gap-4 mt-4">
                 <div className="w-full m-2">
                   {/* Placeholder for animal management component */}
-                  <div>Animal Intake</div>
+                  <div><UploadAnimal /></div>
                 </div>
                 <div className="w-full m-2">
                   <div>Manage Animal Records</div>

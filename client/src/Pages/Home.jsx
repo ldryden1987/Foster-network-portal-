@@ -82,11 +82,13 @@ function Home() {
       </button>
       </Link>
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+        Resources and FAQs to help you keep your furry friends healthy and happy!
       </p>
     </div>
 
-     {/* volunteer button & events */}
+      
+     {/* Commented out. Redundant SLA
+     volunteer button & events
     <div className="flex flex-col items-center space-y-2 text-center">
       <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Volunteer
@@ -94,9 +96,10 @@ function Home() {
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
-    </div>
+    </div> */}
 
-    {/*  events button & text */}
+     {/* Commented out. Future Development SLA
+     events button & text 
     <div className="flex flex-col items-center space-y-2 text-center">
       <button className="bg-[#102542] text-white px-6 py-3 rounded hover:bg-[#F87060] transition duration-300 dark:bg-[#F87060] dark:hover:bg-[#CDD7D6] dark:hover:text-black">
         Events
@@ -104,7 +107,7 @@ function Home() {
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
       </p>
-    </div>
+    </div> */}
 
      {/*  Applications button & text */}
      <Link to="/application">
@@ -113,7 +116,7 @@ function Home() {
         Applications
       </button>
       <p className="text-sm text-gray-700 max-w-md dark:text-white">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+        Ready to Adopt, Foster or Volunteer? Click Here!
       </p>
     </div>
     </Link>

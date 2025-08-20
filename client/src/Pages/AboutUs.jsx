@@ -23,11 +23,15 @@ function Home() {
           <h2 className="text-4xl font-black border-b-4 border-dotted border-[#102542] pb-2">ABOUT US</h2>
           <h3 className="text-2xl font-medium text-[#102542] dark:text-white">What makes SafePaws special!</h3>
           <p className="text-2xl" >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione quasi, harum quo eos eligendi consequatur, hic amet libero quis, alias nulla! Optio, expedita? Corporis est non commodi perspiciatis cum quod autem dolore, iste totam animi ex dolorum laborum officiis recusandae corrupti amet repudiandae quia beatae sit, provident sint. Maiores, tempora nulla. Repudiandae iusto voluptatem expedita ducimus repellat! Quaerat natus, magnam cum aliquam earum ex similique itaque omnis rem eaque vel minima iusto, doloremque sunt est tempore delectus perferendis alias fuga! Iste atque sint similique impedit animi at ratione perferendis rerum ea et repudiandae voluptatum porro facere laboriosam, ad fuga cupiditate!
+            We believe every animal deserves safety, compassion, and a chance to thrive. Founded on the principle that rescue is not just a service—but a promise—we work tirelessly to protect and rehome abandoned, neglected, and at-risk animals throughout our community. Whether it's a senior dog left behind, a litter of kittens found in a storm drain, or a misunderstood breed facing stigma, we step in with open arms and unwavering commitment.
           </p>
           <p className="text-2xl">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus quas dolores cum magnam ea nostrum fugit saepe architecto voluptas a. Perferendis recusandae rem omnis magnam, obcaecati fuga dolorum porro consequatur eum mollitia voluptas dolore voluptates officia nemo ad? Vel repellendus neque harum veniam voluptatum quae laborum at id dolore optio, modi nulla similique eum rerum labore molestias pariatur, ab ipsa praesentium dignissimos saepe quas distinctio provident dolorum. Aspernatur, mollitia nulla animi dolor, molestiae similique repudiandae aliquam ducimus, amet modi libero. Est aliquid quibusdam quod repudiandae ratione! Voluptates hic deserunt cum tempore nisi magnam et at delectus! Adipisci obcaecati necessitatibus temporibus.
+            Our team is made up of passionate volunteers, foster families, veterinary partners, and advocates who share one mission: to give animals the love and dignity they deserve. We don’t just rescue—we rehabilitate, educate, and connect. Through thoughtful matchmaking, behavioral support, and ongoing resources, we ensure every adoption is a lifelong success.
           </p>
+          <p className="text-2xl">
+            We also know that rescue is a community effort. That’s why we offer opportunities for fostering, volunteering, and outreach—so everyone can play a part in saving lives. Whether you're walking dogs, sharing our posts, or opening your home to a foster pet, you're helping us build a more compassionate world, one paw at a time.
+          </p>
+
         </section>
 
         {/* Image Section */}

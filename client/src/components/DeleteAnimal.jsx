@@ -20,10 +20,22 @@ export default function DeleteAnimal({ targetAnimal, modalId }) {
               className="btn btn-error"
               onClick={async () => {
                 try {
+                  
+                  // Get session token from localStorage
+                const sessionToken = localStorage.getItem("sessionToken");
+
+                if (!sessionToken) {
+                  setError("You must be logged in to upload animals");
+                  setLoading(false);
+                  return;
+                }
                   const response = await fetch(
                     `${import.meta.env.VITE_SERVER_URL}/animals/${targetAnimal._id}`,
                     {
                       method: "DELETE",
+                      headers: {
+                        'Authorization': sessionToken,
+                      }
                     }
                   );
                   if (response.ok) {
